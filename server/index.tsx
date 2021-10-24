@@ -1,11 +1,18 @@
 import fs from 'fs'
+// @ts-ignore
 import express from 'express'
+// @ts-ignore
 import React from 'react'
-import ReactDOMServer from 'react-dom/server'
+import {renderToString} from 'react-dom/server'
 import { StaticRouter } from 'react-router'
+// @ts-ignore
 import minifyHTML from 'express-minify-html';
-import App from '../src/App'
 import Html from './html'
+// @ts-ignore
+import { ChunkExtractor } from '@loadable/server';
+// @ts-ignore
+import path from "path";
+import App from '../src/App'
 
 const port = 3001
 const server = express()
@@ -14,26 +21,29 @@ const jsFiles: Array<string> = []
 server.use('/assets', express.static('./build/client/assets'))
 server.use('/css', express.static('./build/client/css'))
 server.use('/js', express.static('./build/client/js'))
-server.use(minifyHTML({
-    override: false,
-    htmlMinifier: {
-        removeComments: true,
-        collapseWhitespace: true,
-        collapseBooleanAttributes: true,
-        removeAttributeQuotes: true,
-        removeEmptyAttributes: true,
-        minifyJS: true,
-        minifyCSS: true
-    }
-}));
-
 
 server.get('*', async (req, res) => {
-    ReactDOMServer.renderToNodeStream(<Html scripts={jsFiles}>
-        <StaticRouter location={req.url} context={{}}>
-            <App />
+
+    const clientExtractor = new ChunkExtractor({
+        statsFile: path.resolve(__dirname, '../client', 'loadable-stats.json'),
+    });
+
+    const jsx = clientExtractor.collectChunks((
+        <StaticRouter location={req.path}>
+            <App/>
         </StaticRouter>
-    </Html>).pipe(res)
+    ))
+
+    return res.status(200).send(renderToString((
+        <>
+            {clientExtractor.getScriptElements()}
+            {clientExtractor.getLinkElements()}
+            {clientExtractor.getStyleElements()}
+            <div id="root">
+                {jsx}
+            </div>
+        </>
+    )));
 })
 
 server.listen(port, () => console.log(`Listening on port ${port}`))

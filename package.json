@@ -2,11 +2,16 @@
   "name": "test",
   "private": true,
   "scripts": {
-    "dev": "env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" NODE_ENV=development webpack-dev-server --config webpack.config.dev.ts --mode development",
-    "ssr": "env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" NODE_ENV=production webpack --config webpack.ssr.prod.ts --mode production",
-    "build": "env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" NODE_ENV=production webpack --config webpack.config.prod.ts --mode production",
-    "test": "node scripts/test.js"
+    "prod:build:client": "env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --config webpack/webpack.config.prod.ts --mode production",
+    "prod:build:server": "env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --config webpack/webpack.ssr.prod.ts --mode production",
+    "prod:start:server": "node ./build/server/index.js",
+
+    "dev:start:client": "env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack-dev-server --config webpack/webpack.config.dev.ts --mode development",
+    "dev:start:server": "nodemon build/server",
+    "dev:build:server": "env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --config webpack/webpack.ssr.prod.ts --mode development --watch",
+    "dev:build:client": "env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --config webpack/webpack.config.prod.ts --mode development --watch"
   },
+  "peerDependencies": {},
   "dependencies": {
     "@babel/core": "^7.10.5",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
@@ -95,6 +100,10 @@
     "express-minify-html": "^0.12.0"
   },
   "devDependencies": {
+    "@loadable/webpack-plugin": "^5.15.1",
+    "@loadable/server": "^5.15.1",
+    "@loadable/babel-plugin": "^5.13.2",
+    "@loadable/component": "^5.14.1",
     "ignore-loader": "^0.1.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.32.2",
@@ -106,7 +115,8 @@
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.10.4",
     "@babel/plugin-proposal-optional-chaining": "^7.10.4",
-    "@babel/plugin-transform-arrow-functions": "^7.10.4"
+    "@babel/plugin-transform-arrow-functions": "^7.10.4",
+    "nodemon": "^2.0.14"
   },
   "eslintConfig": {
     "extends": [

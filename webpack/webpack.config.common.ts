@@ -15,6 +15,7 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const LoadablePlugin = require('@loadable/webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin');
 
 export interface Configuration extends WebpackConfiguration {
@@ -25,9 +26,14 @@ export interface Configuration extends WebpackConfiguration {
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 const config: Configuration = {
+    target: 'web',
     entry: `./src/index.tsx`,
+
+    mode: !isDevelopment ? 'production' : 'development',
+    devtool: !isDevelopment ? 'source-map' : 'eval-source-map',
+
     output: {
-        path: path.resolve(__dirname, 'build/client'),
+        path: path.resolve(__dirname, '../build/client'),
         filename: 'js/[name].[hash].js',
         publicPath: ''
     },
@@ -68,13 +74,13 @@ const config: Configuration = {
                     },
                     {
                         loader: 'postcss-loader',
-                        options: {config: {path: path.join(__dirname, './postcss.config.js')}, sourceMap: !isDevelopment}
+                        options: {config: {path: path.join(__dirname, '../postcss.config.js')}, sourceMap: !isDevelopment}
                     },
                     {
                         loader: require.resolve('resolve-url-loader'),
                         options: {
                             sourceMap: !isDevelopment,
-                            root: path.resolve(__dirname, 'src'),
+                            root: path.resolve(__dirname, '../src'),
                         },
                     },
                     {
@@ -104,13 +110,13 @@ const config: Configuration = {
                     },
                     {
                         loader: 'postcss-loader',
-                        options: {config: {path: path.join(__dirname, './postcss.config.js')}, sourceMap: !isDevelopment}
+                        options: {config: {path: path.join(__dirname, '../postcss.config.js')}, sourceMap: !isDevelopment}
                     },
                     {
                         loader: require.resolve('resolve-url-loader'),
                         options: {
                             sourceMap: !isDevelopment,
-                            root: path.resolve(__dirname, 'src'),
+                            root: path.resolve(__dirname, '../src'),
                         },
                     },
                     {
@@ -154,7 +160,7 @@ const config: Configuration = {
                     }
                 ],
                 exclude: [
-                    path.resolve(__dirname, `./src/assets/images`)
+                    path.resolve(__dirname, `../src/assets/images`)
                 ]
             },
             {
@@ -164,14 +170,14 @@ const config: Configuration = {
                         loader: 'file-loader',
                         options: {
                             name: (file: string) => {
-                                let dirNameInsideAssets = path.relative(path.join(__dirname, './src', 'assets'), path.dirname(file));
+                                let dirNameInsideAssets = path.relative(path.join(__dirname, '../src', 'assets'), path.dirname(file));
                                 return `${dirNameInsideAssets}/[name].[ext]`;
                             }
                         }
                     }
                 ],
                 include: [
-                    path.resolve(__dirname, `./src/assets/images`)
+                    path.resolve(__dirname, `../src/assets/images`)
                 ]
             }
         ]
@@ -184,9 +190,13 @@ const config: Configuration = {
         ],
     },
     plugins: [
+        new LoadablePlugin({
+            filename: 'loadable-stats.json',
+            writeToDisk: true,
+        }),
         new CopyPlugin({
             patterns: [
-                {from: `./src/static`, to: 'assets', noErrorOnMissing: true}
+                {from: `../src/static`, to: 'assets', noErrorOnMissing: true}
             ]
         }),
         new HtmlWebpackPlugin({
@@ -213,7 +223,7 @@ const config: Configuration = {
             }),
             async: isDevelopment,
             checkSyntacticErrors: true,
-            tsconfig: path.resolve (__dirname, './tsconfig.json'),
+            tsconfig: path.resolve (__dirname, '../tsconfig.json'),
             silent: true,
             // The formatter is invoked directly in WebpackDevServerUtils during development
             formatter: !isDevelopment ? typescriptFormatter : undefined,
@@ -223,7 +233,13 @@ const config: Configuration = {
         new ForkTsCheckerWebpackPlugin(),
         new FriendlyErrorsPlugin({
             clearConsole: true
-        })
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+            },
+            isProduction: JSON.stringify(!isDevelopment),
+        }),
     ]
 }
 

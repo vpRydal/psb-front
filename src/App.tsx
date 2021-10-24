@@ -4,14 +4,17 @@ import './App.scss';
 import {provider, useInstance} from 'react-ioc';
 import { Stores } from "./stores";
 import {observer} from "mobx-react";
+import {useLocation} from "react-router-dom";
 
 function App() {
   const { app } = useInstance(Stores);
+  const location = useLocation();
 
   return (
     <div className="App">
-      <header className="App-header">
+        <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+            <h1>Current location is {location.pathname}</h1>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
