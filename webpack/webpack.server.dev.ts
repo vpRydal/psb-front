@@ -5,7 +5,7 @@ import nodeExternals from 'webpack-node-externals';
 import path from "path";
 import merge from 'webpack-merge';
 const packageJson = require('../package.json');
-
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 const config: Configuration = {
     name: 'Server',
@@ -24,6 +24,11 @@ const config: Configuration = {
         nodeExternals(),
         '@loadable/component',
         ...Object.keys(packageJson.peerDependencies),
+    ],
+    plugins: [
+        new WebpackShellPlugin({
+            onBuildEnd: ['npm run dev:build:client', 'npm run dev:run:server']
+        })
     ]
 };
 

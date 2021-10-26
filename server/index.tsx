@@ -1,10 +1,11 @@
-import fs from 'fs'
 // @ts-ignore
-import express from 'express'
+import express from 'express';
+// @ts-ignore
+import WebpackDevMiddleware from 'webpack-dev-middleware';
 // @ts-ignore
 import React from 'react'
-import {renderToString} from 'react-dom/server'
-import { StaticRouter } from 'react-router'
+import {renderToString} from 'react-dom/server';
+import { StaticRouter } from 'react-router';
 // @ts-ignore
 import minifyHTML from 'express-minify-html';
 import Html from './html'
@@ -16,7 +17,6 @@ import App from '../src/App'
 
 const port = 3001
 const server = express()
-const jsFiles: Array<string> = []
 
 server.use('/assets', express.static('./build/client/assets'))
 server.use('/css', express.static('./build/client/css'))

@@ -3,6 +3,7 @@ import {Configuration as WebpackConfiguration, ProgressPlugin} from 'webpack';
 import {Configuration as WebpackDevServerConfiguration} from 'webpack-dev-server';
 // @ts-ignore
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import PATH from "./path";
 
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -74,13 +75,13 @@ const config: Configuration = {
                     },
                     {
                         loader: 'postcss-loader',
-                        options: {config: {path: path.join(__dirname, '../postcss.config.js')}, sourceMap: !isDevelopment}
+                        options: {config: {path: path.join(PATH.root, 'postcss.config.js')}, sourceMap: !isDevelopment}
                     },
                     {
                         loader: require.resolve('resolve-url-loader'),
                         options: {
                             sourceMap: !isDevelopment,
-                            root: path.resolve(__dirname, '../src'),
+                            root: path.resolve(PATH.src),
                         },
                     },
                     {
@@ -110,13 +111,13 @@ const config: Configuration = {
                     },
                     {
                         loader: 'postcss-loader',
-                        options: {config: {path: path.join(__dirname, '../postcss.config.js')}, sourceMap: !isDevelopment}
+                        options: {config: {path: path.join(PATH.root, 'postcss.config.js')}, sourceMap: !isDevelopment}
                     },
                     {
                         loader: require.resolve('resolve-url-loader'),
                         options: {
                             sourceMap: !isDevelopment,
-                            root: path.resolve(__dirname, '../src'),
+                            root: PATH.src,
                         },
                     },
                     {
@@ -160,7 +161,7 @@ const config: Configuration = {
                     }
                 ],
                 exclude: [
-                    path.resolve(__dirname, `../src/assets/images`)
+                    path.resolve(PATH.src, `assets/images`)
                 ]
             },
             {
@@ -170,14 +171,14 @@ const config: Configuration = {
                         loader: 'file-loader',
                         options: {
                             name: (file: string) => {
-                                let dirNameInsideAssets = path.relative(path.join(__dirname, '../src', 'assets'), path.dirname(file));
+                                let dirNameInsideAssets = path.relative(path.join(PATH.src, 'assets'), path.dirname(file));
                                 return `${dirNameInsideAssets}/[name].[ext]`;
                             }
                         }
                     }
                 ],
                 include: [
-                    path.resolve(__dirname, `../src/assets/images`)
+                    path.resolve(PATH.src, `assets/images`)
                 ]
             }
         ]
@@ -196,11 +197,11 @@ const config: Configuration = {
         }),
         new CopyPlugin({
             patterns: [
-                {from: `../src/static`, to: 'assets', noErrorOnMissing: true}
+                {from: path.resolve(PATH.src, `static`), to: 'assets', noErrorOnMissing: true}
             ]
         }),
         new HtmlWebpackPlugin({
-            template: `./public/index.html`
+            template: path.resolve(PATH.root, `public/index.html`)
         }),
         new ModuleNotFoundPlugin(path.resolve(__dirname, '.')),
         ...(!isDevelopment ? [
@@ -219,11 +220,11 @@ const config: Configuration = {
         }),
         new ForkTsCheckerWebpackPlugin({
             typescript: resolve.sync('typescript', {
-                basedir: path.resolve ('node_modules'),
+                basedir: path.resolve (PATH.root, 'node_modules'),
             }),
             async: isDevelopment,
             checkSyntacticErrors: true,
-            tsconfig: path.resolve (__dirname, '../tsconfig.json'),
+            tsconfig: path.resolve (PATH.root, 'tsconfig.json'),
             silent: true,
             // The formatter is invoked directly in WebpackDevServerUtils during development
             formatter: !isDevelopment ? typescriptFormatter : undefined,
