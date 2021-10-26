@@ -28,13 +28,13 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 const config: Configuration = {
     target: 'web',
-    entry: `./src/index.tsx`,
+    entry: PATH.entryClient,
 
     mode: !isDevelopment ? 'production' : 'development',
     devtool: !isDevelopment ? 'source-map' : 'eval-source-map',
 
     output: {
-        path: path.resolve(__dirname, '../build/client'),
+        path: PATH.buildClient,
         filename: 'js/[name].[hash].js',
         publicPath: ''
     },

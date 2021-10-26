@@ -4,6 +4,7 @@ import nodeExternals from 'webpack-node-externals';
 // @ts-ignore
 import path from "path";
 import merge from 'webpack-merge';
+import PATH from "./path";
 const packageJson = require('../package.json');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 
@@ -11,10 +12,10 @@ const config: Configuration = {
     name: 'Server',
     target: 'node',
     devtool: 'source-map',
-    entry: path.resolve(__dirname, '../server'),
+    entry: PATH.entryServer,
     output: {
         filename: 'index.js',
-        path: path.resolve(__dirname, '../build/server'),
+        path: PATH.buildServer,
     },
     node: {
         __dirname: false,

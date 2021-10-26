@@ -8,7 +8,6 @@ import {renderToString} from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 // @ts-ignore
 import minifyHTML from 'express-minify-html';
-import Html from './html'
 // @ts-ignore
 import { ChunkExtractor } from '@loadable/server';
 // @ts-ignore
