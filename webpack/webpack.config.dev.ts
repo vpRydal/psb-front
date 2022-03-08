@@ -1,5 +1,9 @@
 import merge from 'webpack-merge';
-import common, {Configuration} from './webpack.config.common'
+import common, {Configuration} from './webpack.config.common';
+// @ts-ignore
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from "path";
+import PATH from "./path";
 
 const config: Configuration = {
     devServer: {
@@ -25,7 +29,11 @@ const config: Configuration = {
             publicPath: false
         }
     },
-    devtool: 'inline-source-map'
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(PATH.root, `public/index.html`)
+        }),
+    ]
 };
 
 export default merge(common, config);

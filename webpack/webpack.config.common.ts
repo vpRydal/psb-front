@@ -6,7 +6,6 @@ import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import PATH from "./path";
 
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const resolve = require('resolve');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -23,12 +22,16 @@ export interface Configuration extends WebpackConfiguration {
     devServer?: WebpackDevServerConfiguration;
 }
 
-
 const isDevelopment = process.env.NODE_ENV === 'development';
+
+console.log('MODE IS isDevelopment = ', isDevelopment)
 
 const config: Configuration = {
     target: 'web',
-    entry: PATH.entryClient,
+    entry: [
+        ...(isDevelopment ? ['webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr&timeout=20000'] : []),
+        PATH.entryClient,
+    ],
 
     mode: !isDevelopment ? 'production' : 'development',
     devtool: !isDevelopment ? 'source-map' : 'eval-source-map',
@@ -191,17 +194,11 @@ const config: Configuration = {
         ],
     },
     plugins: [
-        new LoadablePlugin({
-            filename: 'loadable-stats.json',
-            writeToDisk: true,
-        }),
+        new LoadablePlugin({ writeToDisk: { filename: PATH.statsFileClient } }),
         new CopyPlugin({
             patterns: [
                 {from: path.resolve(PATH.src, `static`), to: 'assets', noErrorOnMissing: true}
             ]
-        }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(PATH.root, `public/index.html`)
         }),
         new ModuleNotFoundPlugin(path.resolve(__dirname, '.')),
         ...(!isDevelopment ? [
@@ -237,7 +234,9 @@ const config: Configuration = {
         }),
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+                NODE_ENV: JSON.stringify(isDevelopment ? 'development' : 'prod'),
+                DEBUG: JSON.stringify(isDevelopment),
+                BROWSER: JSON.stringify(true)
             },
             isProduction: JSON.stringify(!isDevelopment),
         }),

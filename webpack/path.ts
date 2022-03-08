@@ -2,13 +2,14 @@
 import path from "path";
 
 
-const root = path.resolve(__dirname, '../')
-const src = path.resolve(root, 'src')
-const build = path.resolve(root, 'build')
-const buildServer = path.resolve(root, 'build/server')
-const buildClient = path.resolve(root, 'build/client')
-const entryClient = path.resolve(root, 'src/index.tsx')
-const entryServer = path.resolve(root, 'server/index.tsx')
+export const root = path.resolve(__dirname, '../')
+export const src = path.resolve(root, 'src')
+export const build = path.resolve(root, 'build')
+export const buildServer = path.resolve(root, 'build/server')
+export const buildClient = path.resolve(root, 'build/client')
+export const entryClient = path.resolve(root, 'src/index.tsx')
+export const entryServer = path.resolve(root, 'server/index.tsx')
+export const statsFileClient = path.resolve(root, 'public/client')
 
 const PATH = {
     root,
@@ -18,6 +19,7 @@ const PATH = {
     buildClient,
     entryClient,
     entryServer,
+    statsFileClient
 }
 
 export default PATH

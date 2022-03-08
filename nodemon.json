@@ -1,0 +1,7 @@
+{
+  "watch": [
+    "server"
+  ],
+  "ignore": ["loadable-stats.json"],
+  "ext": "js, ts, tsx, json"
+}

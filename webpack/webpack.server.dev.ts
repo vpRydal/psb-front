@@ -5,7 +5,6 @@ import nodeExternals from 'webpack-node-externals';
 import path from "path";
 import merge from 'webpack-merge';
 import PATH from "./path";
-const packageJson = require('../package.json');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 
 const config: Configuration = {
@@ -23,12 +22,11 @@ const config: Configuration = {
     },
     externals: [
         nodeExternals(),
-        '@loadable/component',
-        ...Object.keys(packageJson.peerDependencies),
+        '@loadable/component'
     ],
     plugins: [
         new WebpackShellPlugin({
-            onBuildEnd: ['npm run dev:build:client', 'npm run dev:run:server']
+            onBuildEnd: ['npm run dev:run:server']
         })
     ]
 };

@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './assets/logo192.png';
 import './App.scss';
 import {provider, useInstance} from 'react-ioc';
 import { Stores } from "./stores";
@@ -11,9 +10,9 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="App">
+    <div className="App">\
         <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={'assets/logo192.png'} className="App-logo" alt="logo" />
             <h1>Current location is {location.pathname}</h1>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
