@@ -1,6 +1,6 @@
 import express, {Application, ErrorRequestHandler, RequestHandler} from "express";
-import webpack = require("webpack");
 import webpackDevMiddleware from "webpack-dev-middleware";
+import webpack from "webpack";
 
 import IBaseController from "./controllers/Base";
 import compression from "compression";

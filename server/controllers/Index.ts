@@ -4,7 +4,7 @@ import IBaseController from "./Base";
 import render from "../utils/render";
 
 export default class IndexController extends IBaseController {
-  prefix: '';
+  prefix = '';
   router = express.Router();
 
   constructor() {

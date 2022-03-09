@@ -15,7 +15,6 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const LoadablePlugin = require('@loadable/webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin');
 
 export interface Configuration extends WebpackConfiguration {
@@ -191,7 +190,6 @@ const config: Configuration = {
         ],
     },
     plugins: [
-        new LoadablePlugin({ writeToDisk: { filename: PATH.statsFileClient } }),
         new CopyPlugin({
             patterns: [
                 {from: path.resolve(PATH.src, `static`), to: 'assets', noErrorOnMissing: true}

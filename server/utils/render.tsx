@@ -2,10 +2,11 @@ import { Request, Response } from 'express';
 import React from "react";
 import {ChunkExtractor} from "@loadable/server";
 
-import PATH from "../../webpack/path";
+import PATH, {buildClient} from "../../webpack/path";
 import {StaticRouter} from "react-router-dom";
 import App from "../../src/App";
 import {renderToString} from "react-dom/server";
+import path from "path";
 
 
 const IS_DEV = process.env.NODE_ENV === 'development';
@@ -31,7 +32,8 @@ function renderDev(req: Request, res: Response) {
 }
 function renderProd(req: Request, res: Response) {
   const clientExtractor = new ChunkExtractor({
-    statsFile: `${PATH.statsFileClient}/loadable-stats.json`
+    statsFile: path.resolve(__dirname, `../../public/client/loadable-stats.json`),
+    publicPath: 'client'
   });
 
   const jsx = clientExtractor.collectChunks((
@@ -44,7 +46,7 @@ function renderProd(req: Request, res: Response) {
     <>
       {clientExtractor.getLinkElements()}
       {clientExtractor.getStyleElements()}
-      {clientExtractor.getStyleElements()}
+      {clientExtractor.getScriptElements()}
       <div id="root">
         {jsx}
       </div>
