@@ -28,10 +28,7 @@ console.log('MODE IS isDevelopment = ', isDevelopment)
 
 const config: Configuration = {
     target: 'web',
-    entry: [
-        ...(isDevelopment ? ['webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr&timeout=20000'] : []),
-        PATH.entryClient,
-    ],
+    entry: PATH.entryClient,
 
     mode: !isDevelopment ? 'production' : 'development',
     devtool: !isDevelopment ? 'source-map' : 'eval-source-map',

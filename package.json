@@ -4,7 +4,9 @@
   "scripts": {
     "prod:build:client": "env webpack --config webpack/webpack.config.prod.ts --mode production",
     "prod:build:server": "env webpack --config webpack/webpack.server.prod.ts --mode production",
-    "prod:start:server": "node ./build/server/index.js",
+    "prod:launch:server": "node ./build/server/index.js",
+    "prod:run:server": "run-s prod:build:client prod:build:server prod:launch:server",
+
     "dev:start:client": "env webpack-dev-server --config webpack/webpack.config.dev.ts --mode development",
     "dev:start:server": "webpack --config webpack/webpack.server.dev.ts --mode development",
     "dev:build:client": "webpack --config webpack/webpack.config.dev.ts --mode development",
@@ -135,7 +137,8 @@
     "webpack-dev-middleware": "^5.3.1",
     "webpack-node-externals": "^3.0.0",
     "webpack-shell-plugin": "^0.5.0",
-    "cross-env": "7.0.2"
+    "cross-env": "7.0.2",
+    "npm-run-all": "^4.1.5"
   },
   "eslintConfig": {
     "extends": [
