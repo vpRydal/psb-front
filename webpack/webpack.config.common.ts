@@ -44,18 +44,7 @@ const config: Configuration = {
             jsRule,
             cssRule,
             cssModulesRule,
-            fontsRule,
-            {
-                test: /\.(png|jpg|gif|ico)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            outputPath: 'assets/images'
-                        }
-                    }
-                ]
-            },
+            fontsRule
         ]
     },
     optimization: {
