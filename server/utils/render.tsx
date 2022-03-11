@@ -2,11 +2,12 @@ import { Request, Response } from 'express';
 import React from "react";
 import {ChunkExtractor} from "@loadable/server";
 
-import PATH, {buildClient} from "../../webpack/path";
 import {StaticRouter} from "react-router-dom";
-import App from "../../src/App";
+import App from "../../client/App";
 import {renderToString} from "react-dom/server";
 import path from "path";
+import * as fs from "fs";
+import PATH from "../../webpack/path";
 
 
 const IS_DEV = process.env.NODE_ENV === 'development';
@@ -30,9 +31,11 @@ function renderDev(req: Request, res: Response) {
     </>
   )));
 }
+const statsFile = IS_DEV ? false : JSON.parse(fs.readFileSync(path.resolve(__dirname, `../../public/client/loadable-stats.json`)).toString());
+
 function renderProd(req: Request, res: Response) {
   const clientExtractor = new ChunkExtractor({
-    statsFile: path.resolve(__dirname, `../../public/client/loadable-stats.json`),
+    stats: statsFile,
     publicPath: 'client'
   });
 

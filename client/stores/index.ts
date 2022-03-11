@@ -1,6 +1,6 @@
-import {AppStore} from "./app";
+import AppStore from "@store/App";
 
-export class Stores {
+export default class Stores {
     readonly app: AppStore
 
     constructor() {

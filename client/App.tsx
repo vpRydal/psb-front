@@ -1,18 +1,19 @@
 import React from 'react';
 import './App.scss';
 import {provider, useInstance} from 'react-ioc';
-import { Stores } from "./stores";
+import Store from "@store";
 import {observer} from "mobx-react";
 import {useLocation} from "react-router-dom";
 
+
 function App() {
-  const { app } = useInstance(Stores);
+  const { app } = useInstance(Store);
   const location = useLocation();
 
   return (
     <div className="App">
         <header className="App-header">
-        <img src={'assets/logo192.png'} className="App-logo" alt="logo" />
+        <img src="assets/logo192.png" className="App-logo" alt="logo" />
             <h1>Current location is {location.pathname}</h1>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -34,5 +35,5 @@ function App() {
 }
 
 export default provider(
-    Stores
+    Store
 )(observer(App));

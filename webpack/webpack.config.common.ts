@@ -4,130 +4,47 @@ import {Configuration as WebpackDevServerConfiguration} from 'webpack-dev-server
 // @ts-ignore
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import PATH from "./path";
+import cssRule from "./rules/css";
+import cssModulesRule from "./rules/cssModules";
+import jsRule from "./rules/js";
+import fontsRule from "./rules/fonts";
+import {IS_DEV} from "./constants";
+import resolve from "./resolve";
+import commonPlugins from "./common-plugins";
 
 const webpack = require('webpack');
-const resolve = require('resolve');
-const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 export interface Configuration extends WebpackConfiguration {
     devServer?: WebpackDevServerConfiguration;
 }
 
-const isDevelopment = process.env.NODE_ENV === 'development';
 
-console.log('MODE IS isDevelopment = ', isDevelopment)
+console.log('MODE IS IS_DEV = ', IS_DEV)
 
 const config: Configuration = {
     target: 'web',
     entry: PATH.entryClient,
 
-    mode: !isDevelopment ? 'production' : 'development',
-    devtool: !isDevelopment ? 'source-map' : 'eval-source-map',
+    mode: !IS_DEV ? 'production' : 'development',
+    devtool: !IS_DEV ? 'source-map' : 'eval-source-map',
 
     output: {
         path: PATH.buildClient,
         filename: 'js/[name].[hash].js',
-        publicPath: ''
     },
-    resolve: {
-        alias: {
-        },
-        extensions: ['.ts', '.tsx', '.js', '.json', '.scss', '.png', '.jpg', '.gif', '.jpeg']
-    },
+    resolve: resolve,
     module: {
         rules: [
-            {
-                test: /\.(jsx|tsx|js|ts)$/,
-                use: [
-                    {
-                        loader: 'babel-loader'
-                    }
-                ],
-                exclude: isDevelopment ? /node_modules/ : []
-            },
-            {
-                test: /\.(scss|css)$/,
-                use: [
-                    ...(isDevelopment ? [
-                        {
-                            loader: require.resolve('style-loader')
-                        }
-                    ] : []),
-                    ...(!isDevelopment ? [
-                        {
-                            loader: MiniCssExtractPlugin.loader
-                        }
-                    ] : []),
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {config: {path: path.join(PATH.root, 'postcss.config.js')}, sourceMap: !isDevelopment}
-                    },
-                    {
-                        loader: require.resolve('resolve-url-loader'),
-                        options: {
-                            sourceMap: !isDevelopment,
-                            root: path.resolve(PATH.src),
-                        },
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: !isDevelopment
-                        }
-                    }
-                ],
-                include: /\.module\.(scss|css)$/
-            },
-            {
-                test: /\.(scss|css)$/,
-                use: [
-                    ...(isDevelopment ? [
-                        {
-                            loader: require.resolve('style-loader')
-                        }
-                    ] : []),
-                    ...(!isDevelopment ? [
-                        {
-                            loader: MiniCssExtractPlugin.loader
-                        }
-                    ] : []),
-                    {
-                        loader: 'css-loader',
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {config: {path: path.join(PATH.root, 'postcss.config.js')}, sourceMap: !isDevelopment}
-                    },
-                    {
-                        loader: require.resolve('resolve-url-loader'),
-                        options: {
-                            sourceMap: !isDevelopment,
-                            root: PATH.src,
-                        },
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: !isDevelopment
-                        }
-                    }
-                ],
-                exclude: /\.module\.(scss|css)$/
-            },
+            jsRule,
+            cssRule,
+            cssModulesRule,
+            fontsRule,
             {
                 test: /\.(png|jpg|gif|ico)$/,
                 use: [
@@ -139,52 +56,11 @@ const config: Configuration = {
                     }
                 ]
             },
-            {
-                test: /.(ttf|otf|eot|woff(2)?)$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'fonts/'
-                    }
-                }]
-            },
-            {
-                test: /\.svg$/,
-                use: [
-                    {
-                        loader: 'svg-sprite-loader',
-                        options: {
-                            symbolId: '[name]'
-                        }
-                    }
-                ],
-                exclude: [
-                    path.resolve(PATH.src, `assets/images`)
-                ]
-            },
-            {
-                test: /\.svg$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: (file: string) => {
-                                let dirNameInsideAssets = path.relative(path.join(PATH.src, 'assets'), path.dirname(file));
-                                return `${dirNameInsideAssets}/[name].[ext]`;
-                            }
-                        }
-                    }
-                ],
-                include: [
-                    path.resolve(PATH.src, `assets/images`)
-                ]
-            }
         ]
     },
     optimization: {
         minimizer: [
-            ...(!isDevelopment ? [
+            ...(!IS_DEV ? [
                 new UglifyJsPlugin()
             ]: [])
         ],
@@ -192,11 +68,10 @@ const config: Configuration = {
     plugins: [
         new CopyPlugin({
             patterns: [
-                {from: path.resolve(PATH.src, `static`), to: 'assets', noErrorOnMissing: true}
+                {from: path.resolve(PATH.client, `static`), to: IS_DEV ? 'assets' : path.resolve(PATH.root, `public/assets`), noErrorOnMissing: true}
             ]
         }),
-        new ModuleNotFoundPlugin(path.resolve(__dirname, '.')),
-        ...(!isDevelopment ? [
+        ...(!IS_DEV ? [
             new MiniCssExtractPlugin({
                 // Options similar to the same options in webpackOptions.output
                 // both options are optional
@@ -204,37 +79,11 @@ const config: Configuration = {
                 chunkFilename: 'css/[name].[contenthash:8].chunk.css',
             })
         ]: []),
-        ...(isDevelopment ? [
+        ...(IS_DEV ? [
             new WatchMissingNodeModulesPlugin(path.resolve ('node_modules')),
             new webpack.HotModuleReplacementPlugin()
         ]: []),
-        new webpack.DefinePlugin({
-        }),
-        new ForkTsCheckerWebpackPlugin({
-            typescript: resolve.sync('typescript', {
-                basedir: path.resolve (PATH.root, 'node_modules'),
-            }),
-            async: isDevelopment,
-            checkSyntacticErrors: true,
-            tsconfig: path.resolve (PATH.root, 'tsconfig.json'),
-            silent: true,
-            // The formatter is invoked directly in WebpackDevServerUtils during development
-            formatter: !isDevelopment ? typescriptFormatter : undefined,
-        }),
-        new ProgressPlugin(),
-        new CleanWebpackPlugin(),
-        new ForkTsCheckerWebpackPlugin(),
-        new FriendlyErrorsPlugin({
-            clearConsole: true
-        }),
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify(isDevelopment ? 'development' : 'prod'),
-                DEBUG: JSON.stringify(isDevelopment),
-                BROWSER: JSON.stringify(true)
-            },
-            isProduction: JSON.stringify(!isDevelopment),
-        }),
+      ...commonPlugins
     ]
 }
 

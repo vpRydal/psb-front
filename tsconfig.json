@@ -19,9 +19,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "paths": {
+      "@store": ["./client/stores"],
+      "@store/*": ["./client/stores/*"]
+    }
   },
   "include": [
-    "src"
+    "client"
   ]
 }

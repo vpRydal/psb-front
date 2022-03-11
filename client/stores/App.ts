@@ -1,6 +1,6 @@
 import {action, computed, observable} from "mobx";
 
-export class AppStore {
+export default class AppStore {
     @observable
     counter = 0;
 
