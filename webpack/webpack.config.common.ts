@@ -51,6 +51,12 @@ const config: Configuration = {
         minimizer: [
             new TerserPlugin({
                 parallel: true,
+                terserOptions: {
+                    compress: true,
+                    format: {
+                        comments: false,
+                    },
+                },
                 extractComments: false,
             })
         ],
