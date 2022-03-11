@@ -68,13 +68,11 @@ const config: Configuration = {
     plugins: [
         new CopyPlugin({
             patterns: [
-                {from: path.resolve(PATH.client, `static`), to: IS_DEV ? 'assets' : path.resolve(PATH.root, `public/assets`), noErrorOnMissing: true}
+                {from: path.resolve(PATH.client, 'static'), to: IS_DEV ? 'assets' : path.resolve(PATH.root, 'public/assets')}
             ]
         }),
         ...(!IS_DEV ? [
             new MiniCssExtractPlugin({
-                // Options similar to the same options in webpackOptions.output
-                // both options are optional
                 filename: 'css/[name].[contenthash:8].css',
                 chunkFilename: 'css/[name].[contenthash:8].chunk.css',
             })
