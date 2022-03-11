@@ -31,6 +31,15 @@
         "camel2DashComponentName": false
       },
       "lodash"
+    ],
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@store": "./_client/stores",
+          "@client": "./_client"
+        }
+      }
     ]
   ],
   "presets": [

@@ -6,11 +6,10 @@
     "prod:build:server": "cross-env NODE_ENV=production webpack --config webpack/webpack.server.prod.ts --mode production",
     "prod:launch:server": "node ./build/server/index.js",
     "prod:run:server": "run-s prod:build:client prod:build:server prod:launch:server",
-
     "dev:start:client": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.ts",
     "dev:start:server": "cross-env NODE_ENV=development webpack --config webpack/webpack.server.dev.ts",
     "dev:build:client": "cross-env NODE_ENV=development webpack --config webpack/webpack.config.dev.ts",
-    "dev:run:server": "cross-env NODE_ENV=development nodemon server/index.ts --mode development"
+    "dev:run:server": "cross-env NODE_ENV=development nodemon _server/index.ts --mode development"
   },
   "peerDependencies": {},
   "dependencies": {
@@ -138,7 +137,8 @@
     "webpack-node-externals": "^3.0.0",
     "webpack-shell-plugin": "^0.5.0",
     "cross-env": "7.0.2",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "babel-plugin-module-resolver": "^4.1.0"
   },
   "eslintConfig": {
     "extends": [

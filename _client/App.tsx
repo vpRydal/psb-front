@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
         <header className="App-header">
-        <img src="assets/logo192.png" className="App-logo" alt="logo" />
+        <img src="/assets/logo192.png" className="App-logo" alt="logo" />
             <h1>Current location is {location.pathname}</h1>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.

@@ -20,12 +20,15 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
+    "baseUrl": "_client",
     "paths": {
-      "@store": ["./client/stores"],
-      "@store/*": ["./client/stores/*"]
+      "@client/*": ["*"],
+      "@client": [""],
+      "@store": ["stores"],
+      "@store/*": ["stores/*"]
     }
   },
   "include": [
-    "client"
+    "_client"
   ]
 }

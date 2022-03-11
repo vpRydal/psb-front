@@ -18,10 +18,6 @@ const config: Configuration = {
     },
     resolve: resolve,
     optimization: commonConfig.optimization,
-    node: {
-        __dirname: false,
-        __filename: false,
-    },
     externals: [
         nodeExternals(),
         '@loadable/component'

@@ -3,5 +3,5 @@
     "server"
   ],
   "ignore": ["loadable-stats.json"],
-  "ext": "js, ts, tsx, json"
+  "ext": "js, ts, tsx, json, twig"
 }

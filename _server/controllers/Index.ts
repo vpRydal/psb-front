@@ -21,7 +21,7 @@ export default class IndexController extends IBaseController {
   }
 
   indexAction(req: Request, res: Response) {
-    render(req, res)
+    render(req, res, 'pages/index')
   }
 
 }

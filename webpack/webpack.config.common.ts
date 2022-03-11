@@ -13,9 +13,7 @@ import resolve from "./resolve";
 import commonPlugins from "./common-plugins";
 
 const webpack = require('webpack');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -25,7 +23,7 @@ export interface Configuration extends WebpackConfiguration {
 }
 
 
-console.log('MODE IS IS_DEV = ', IS_DEV)
+console.log('MODE IS DEVELOPMENT =', IS_DEV)
 
 const config: Configuration = {
     target: 'web',
