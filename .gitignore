@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 ./public/client/*
+./public/assets/*
+.awcache/*
 
 # testing
 /coverage

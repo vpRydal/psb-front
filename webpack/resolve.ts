@@ -1,7 +1,6 @@
 import path from "path";
 import PATH from "./path";
 
-console.log(path.resolve(PATH.client, 'stores'))
 export default {
   alias: {
     '@store': path.resolve(PATH.client, 'stores'),

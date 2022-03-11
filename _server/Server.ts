@@ -6,6 +6,8 @@ import IBaseController from "./controllers/Base";
 import compression from "compression";
 import webpackConfig from '../webpack/webpack.config.prod'
 
+var expressStaticGzip = require("express-static-gzip");
+
 
 const IS_DEV = process.env.NODE_ENV === 'development';
 
@@ -66,13 +68,14 @@ export default class Server {
     const { expressApp } = this;
 
     expressApp.use('/', express.static('public'));
+    expressApp.use('/', expressStaticGzip('public'));
   }
 
   private template(): void {
     const { expressApp } = this;
 
     expressApp.set('view engine', 'twig');
-    expressApp.set('views', `${__dirname}/views`);
+    expressApp.set('views', `_server/views`);
   }
 
   public start(callback: (app: Application) => void): void {

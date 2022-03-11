@@ -1,8 +1,7 @@
 import * as path from 'path';
 import {Configuration as WebpackConfiguration, ProgressPlugin} from 'webpack';
 import {Configuration as WebpackDevServerConfiguration} from 'webpack-dev-server';
-// @ts-ignore
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+
 import PATH from "./path";
 import cssRule from "./rules/css";
 import cssModulesRule from "./rules/cssModules";
@@ -12,6 +11,8 @@ import {IS_DEV} from "./constants";
 import resolve from "./resolve";
 import commonPlugins from "./common-plugins";
 
+const TerserPlugin = require('terser-webpack-plugin');
+const SensitivePath = require('case-sensitive-paths-webpack-plugin');
 const webpack = require('webpack');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -39,17 +40,19 @@ const config: Configuration = {
     resolve: resolve,
     module: {
         rules: [
-            jsRule,
+          ...jsRule,
             cssRule,
             cssModulesRule,
             fontsRule
         ]
     },
     optimization: {
+        minimize: !IS_DEV,
         minimizer: [
-            ...(!IS_DEV ? [
-                new UglifyJsPlugin()
-            ]: [])
+            new TerserPlugin({
+                parallel: true,
+                extractComments: false,
+            })
         ],
     },
     plugins: [
@@ -66,7 +69,8 @@ const config: Configuration = {
         ]: []),
         ...(IS_DEV ? [
             new WatchMissingNodeModulesPlugin(path.resolve ('node_modules')),
-            new webpack.HotModuleReplacementPlugin()
+            new webpack.HotModuleReplacementPlugin(),
+            new SensitivePath(),
         ]: []),
       ...commonPlugins
     ]

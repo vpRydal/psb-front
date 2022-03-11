@@ -1,10 +1,10 @@
 import path from "path";
 import webpack, {ProgressPlugin} from "webpack";
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import {IS_DEV} from "./constants";
 const resolve = require('resolve');
 import PATH from "./path";
 
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
@@ -13,8 +13,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 export default [
   new ModuleNotFoundPlugin(path.resolve(__dirname, '.')),
   new CleanWebpackPlugin(),
-  new ProgressPlugin(),
-  new ForkTsCheckerWebpackPlugin(),
+  new ProgressPlugin({}),
   new FriendlyErrorsPlugin({
     clearConsole: true
   }),
@@ -27,15 +26,7 @@ export default [
     isProduction: JSON.stringify(!IS_DEV),
   }),
   new ForkTsCheckerWebpackPlugin({
-    typescript: resolve.sync('typescript', {
-      basedir: path.resolve (PATH.root, 'node_modules'),
-    }),
     async: IS_DEV,
-    checkSyntacticErrors: true,
-    tsconfig: path.resolve (PATH.root, 'tsconfig.json'),
-    silent: true,
-    // The formatter is invoked directly in WebpackDevServerUtils during development
-    formatter: !IS_DEV ? typescriptFormatter : undefined,
   }),
 
 ]

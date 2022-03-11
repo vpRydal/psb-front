@@ -25,7 +25,7 @@ const config: Configuration = {
     module: {
         rules: [
             { test: /\.(scss|css)|(module\.(scss|css)|(png|jpg|svg))/, loader: 'ignore-loader' },
-            jsRule,
+            ...jsRule,
         ]
     },
     plugins: [

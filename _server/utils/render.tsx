@@ -5,7 +5,6 @@ import {ChunkExtractor} from "@loadable/server";
 import {StaticRouter} from "react-router-dom";
 import App from "@client/App";
 import {renderToString} from "react-dom/server";
-import path from "path";
 import * as fs from "fs";
 
 
@@ -32,7 +31,8 @@ function renderDev(req: Request, res: Response, viewName: string) {
     ))
   });
 }
-const statsFile = IS_DEV ? false : JSON.parse(fs.readFileSync(path.resolve(__dirname, `../../public/client/loadable-stats.json`)).toString());
+
+const statsFile = IS_DEV ? false : JSON.parse(fs.readFileSync(`public/client/loadable-stats.json`).toString());
 
 function renderProd(req: Request, res: Response, viewName: string) {
   const clientExtractor = new ChunkExtractor({
