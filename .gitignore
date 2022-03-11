@@ -4,9 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
-./public/client/*
-./public/assets/*
-.awcache/*
+/public/client/
+/public/assets/
+.awcache/
+.idea
 
 # testing
 /coverage
