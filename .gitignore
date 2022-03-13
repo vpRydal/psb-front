@@ -8,6 +8,7 @@
 /public/assets/
 .awcache/
 .idea
+package-lock.json
 
 # testing
 /coverage
