@@ -3,10 +3,10 @@ import express, {Request, Response} from "express";
 import IBaseController from "./Base";
 import render from "../utils/render";
 
-export default class IndexController extends IBaseController {
+export default class OtherController extends IBaseController {
   prefix = '';
   router = express.Router();
-  chunkName = 'pages-index';
+  chunkName = 'pages-other-page';
 
   constructor() {
     super();
@@ -18,7 +18,7 @@ export default class IndexController extends IBaseController {
   initRoutes(): void {
     const { router } = this;
 
-    router.get('/', this.indexAction)
+    router.get('/other-page', this.indexAction)
   }
 
   indexAction(req: Request, res: Response) {

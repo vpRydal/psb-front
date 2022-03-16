@@ -14,15 +14,10 @@
   "peerDependencies": {},
   "dependencies": {
     "lodash": "^4.17.21",
-    "@babel/core": "^7.10.5",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "10.4.9",
     "@testing-library/user-event": "^12.8.3",
     "autoprefixer": "^9.7.3",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.6.0",
-    "babel-loader": "8.1.0",
-    "babel-preset-react-app": "^10.0.0",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.3.0",
@@ -85,6 +80,10 @@
     "ignore-styles": "^5.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.7",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "7.12.1",
+    "@babel/preset-react": "^7.16.7",
     "@babel/plugin-proposal-decorators": "^7.10.5",
     "@babel/plugin-transform-runtime": "^7.10.5",
     "@types/jest": "^26.0.24",
@@ -102,7 +101,6 @@
     "@types/compression": "1.7.0",
     "@types/lodash": "^4.14.179",
     "@types/ignore-styles": "^5.0.0",
-    "@babel/preset-typescript": "7.12.1",
     "@loadable/babel-plugin": "^5.13.2",
     "@loadable/component": "^5.14.1",
     "@loadable/server": "^5.15.1",
@@ -122,7 +120,10 @@
     "awesome-typescript-loader": "^5.2.1",
     "fork-ts-checker-webpack-plugin": "6.5.0",
     "twig": "^1.15.4",
-    "compression-webpack-plugin": "5.0.2"
+    "compression-webpack-plugin": "5.0.2",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.0",
+    "babel-loader": "8.1.0"
   },
   "eslintConfig": {
     "extends": [
@@ -130,16 +131,9 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
 }

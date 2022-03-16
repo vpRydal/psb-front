@@ -14,12 +14,7 @@ export default [
     test: /\.(tsx|ts)$/,
     use: [
       {
-        options: {
-          forceIsolatedModules: true,
-          useCache: true,
-          transpileOnly: true,
-        },
-        loader: 'awesome-typescript-loader'
+        loader: 'babel-loader'
       }
     ],
     exclude: IS_DEV ? /node_modules/ : []

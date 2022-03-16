@@ -31,11 +31,12 @@ const config: Configuration = {
     entry: PATH.entryClient,
 
     mode: !IS_DEV ? 'production' : 'development',
-    devtool: !IS_DEV ? 'source-map' : 'eval-source-map',
+    devtool: !IS_DEV ? 'source-map' : 'inline-source-map',
 
     output: {
         path: PATH.buildClient,
         filename: 'js/[name].[hash].js',
+        publicPath: '/client/'
     },
     resolve: resolve,
     module: {

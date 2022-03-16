@@ -7,10 +7,8 @@ import PATH from "./path";
 
 const config: Configuration = {
   plugins: [
-    new LoadablePlugin({ writeToDisk: { filename: PATH.statsFileClient } }),
-    new WebpackManifestPlugin({
-      publicPath: '/client/'
-    }),
+    new LoadablePlugin({ writeToDisk: { filename: PATH.statsFileClient },  }),
+    new WebpackManifestPlugin(),
     new CompressionPlugin(),
   ]
 };

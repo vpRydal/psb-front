@@ -1,18 +1,20 @@
 import React from 'react';
 import {hydrate} from 'react-dom';
-import './index.scss';
+import { loadableReady } from '@loadable/component';
+import { Router } from "react-router-dom";
+import { createBrowserHistory } from 'history';
+
+import './styles/index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// @ts-ignore
-import { loadableReady } from '@loadable/component';
-import {BrowserRouter} from "react-router-dom";
+
 
 loadableReady(() => {
     hydrate((
         <React.StrictMode>
-            <BrowserRouter>
+            <Router history={createBrowserHistory()}>
              <App />
-            </BrowserRouter>
+            </Router>
         </React.StrictMode>
     ), document.getElementById('root'))
 })
