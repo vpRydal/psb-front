@@ -4,17 +4,14 @@
 /node_modules
 /.pnp
 .pnp.js
-/public/client/
-/public/assets/
-.awcache/
-.idea
-package-lock.json
 
 # testing
 /coverage
 
 # production
 /build
+/public/assets/
+/public/client/
 
 # misc
 .DS_Store
@@ -22,6 +19,11 @@ package-lock.json
 .env.development.local
 .env.test.local
 .env.production.local
+
+.awcache/
+.idea/
+
+package-lock.json
 
 npm-debug.log*
 yarn-debug.log*
