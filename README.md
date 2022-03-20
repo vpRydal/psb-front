@@ -13,6 +13,6 @@
 
 * `dev:run:server` - старт сервера (дев)
 * `dev:start:client` - старт клиента (дев)
-* `dev:start:server` - билд сервера
+* `dev:build:server` - билд сервера
 * `dev:build:client` - билд клиента
 

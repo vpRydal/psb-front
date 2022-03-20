@@ -1,8 +1,10 @@
-import merge from 'webpack-merge';
-import common, {Configuration} from './webpack.config.common';
 // @ts-ignore
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import merge from 'webpack-merge';
+import {Configuration} from "webpack";
 import path from "path";
+
+import common from './webpack.client.config.common';
 import PATH from "./path";
 
 const config: Configuration = {

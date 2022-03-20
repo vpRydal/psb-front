@@ -1,23 +1,22 @@
-import commonConfig, {Configuration} from './webpack.config.common'
 // @ts-ignore
 import nodeExternals from 'webpack-node-externals';
-// @ts-ignore
-import path from "path";
+import {Configuration} from "webpack";
+
 import PATH from "./path";
-import jsRule from "./rules/js";
 import resolve from "./resolve";
 import commonPlugins from "./common-plugins";
+import {IS_DEV} from "./constants";
 
 const config: Configuration = {
     name: 'Server',
     target: 'node',
     entry: PATH.entryServer,
+    mode: !IS_DEV ? 'production' : 'development',
     output: {
         filename: 'index.js',
         path: PATH.buildServer,
     },
     resolve: resolve,
-    optimization: commonConfig.optimization,
     externals: [
         nodeExternals(),
         '@loadable/component'
@@ -25,7 +24,11 @@ const config: Configuration = {
     module: {
         rules: [
             { test: /\.(scss|css)|(module\.(scss|css)|(png|jpg|svg))/, loader: 'ignore-loader' },
-            ...jsRule,
+            {
+                test: /\.(tsx|ts)$/,
+                use: 'babel-loader',
+                exclude: IS_DEV ? /node_modules/ : []
+            }
         ]
     },
     plugins: [

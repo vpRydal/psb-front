@@ -1,25 +1,51 @@
-// @ts-ignore
 import path from "path";
 
 
-export const root = path.resolve(__dirname, '../')
-export const client = path.resolve(root, '_client')
-export const build = path.resolve(root, 'build')
-export const buildServer = path.resolve(root, 'build/server')
-export const buildClient = path.resolve(root, 'public/client')
-export const entryClient = path.resolve(client, 'index.tsx')
-export const entryServer = path.resolve(root, '_server/index.ts')
-export const statsFileClient = buildClient
-
-const PATH = {
-    root,
-    client,
-    build,
-    buildServer,
-    buildClient,
-    entryClient,
-    entryServer,
-    statsFileClient
+export type TWebpackPaths = {
+    root: string;
+    client: string;
+    server: string;
+    build: string;
+    buildServer: string;
+    buildClient: string;
+    entryClient: string;
+    entryServer: string;
+    statsFileClient: string;
+    clientAssets: string;
 }
 
-export default PATH
+export function makeJoin(pathMain: string, additionalPath: string): string {
+    if (pathMain.includes('./')) {
+        if (pathMain[pathMain.length -1] === '/' || additionalPath[additionalPath.length -1] === '/') {
+            return `${pathMain}${additionalPath}`
+        } else {
+            return `${pathMain}/${additionalPath}`
+        }
+    } else {
+        return path.join(pathMain, additionalPath)
+    }
+}
+
+export function getPath(this: any, rootPath: string): TWebpackPaths {
+    const buildPath = makeJoin(rootPath, 'build');
+    const clientPath = makeJoin(rootPath, '_client');
+    const serverPath = makeJoin(rootPath, '_server');
+    const buildClientPath = makeJoin(rootPath, 'public/client');
+
+    return {
+        root: rootPath,
+        client: clientPath,
+        server: serverPath,
+        build: buildPath,
+        buildServer: makeJoin(buildPath, 'server'),
+        buildClient: buildClientPath,
+        entryClient: makeJoin(clientPath, 'index.tsx'),
+        entryServer: makeJoin(serverPath, 'index.ts'),
+        statsFileClient: makeJoin(buildPath, '_server/index.ts'),
+        clientAssets: makeJoin(rootPath, 'assets'),
+    }
+}
+
+export const defaultRootPath = path.resolve(__dirname, '../');
+
+export default getPath(defaultRootPath);

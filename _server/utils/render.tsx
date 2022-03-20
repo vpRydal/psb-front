@@ -1,42 +1,16 @@
 import { Request, Response } from 'express';
 import React from "react";
+import {StaticRouter} from "react-router-dom";
+import {renderToString} from "react-dom/server";
 import {ChunkExtractor, ChunkExtractorManager} from "@loadable/server";
 
-import {StaticRouter} from "react-router-dom";
 import App from "@client/App";
-import {renderToString} from "react-dom/server";
-import * as fs from "fs";
+import BaseController from "../controllers/Base";
 
-const IS_DEV = process.env.NODE_ENV === 'development';
-
-function renderDev(req: Request, res: Response, viewName: string, chunkName: string) {
-  const assetsByChunkName = Array.from(res.locals.webpack.devMiddleware.stats.compilation.assetsInfo.keys()) as string[]
-  const scripts = assetsByChunkName.filter(asset => asset.includes('.js'))
-
-  const jsx = (
-    <StaticRouter location={req.path}>
-      <App/>
-    </StaticRouter>
-  )
-
-  res.status(200).render(viewName, {
-    body: renderToString((
-      <>
-        {scripts.map(asset => (<script defer src={asset}/>))}
-        <div id="root">
-          {jsx}
-        </div>
-      </>
-    ))
-  });
-}
-
-const statsFile = IS_DEV ? false : JSON.parse(fs.readFileSync(`public/client/loadable-stats.json`).toString());
-
-function renderProd(req: Request, res: Response, viewName: string, chunkName: string) {
+export default function render(req: Request, res: Response, viewName: string, controller: BaseController) {
   const clientExtractor = new ChunkExtractor({
-    stats: statsFile,
-    entrypoints: ['main', chunkName]
+    stats: controller.server.clientFs.getLoadableStatsFile(),
+    entrypoints: ['main', controller.chunkName]
   });
 
   return res.status(200).render(viewName, {
@@ -55,11 +29,4 @@ function renderProd(req: Request, res: Response, viewName: string, chunkName: st
       </>
     ))
   });
-}
-export default function render(req: Request, res: Response, viewName: string, chunkName: string) {
-  if (IS_DEV) {
-    renderDev(req, res, viewName, chunkName);
-  } else {
-    renderProd(req, res, viewName, chunkName);
-  }
 }

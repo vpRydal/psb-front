@@ -1,10 +1,14 @@
 import express, {Application, ErrorRequestHandler, RequestHandler} from "express";
-import webpackDevMiddleware from "webpack-dev-middleware";
-import webpack from "webpack";
-
-import IBaseController from "./controllers/Base";
+import webpack, {Compiler} from "webpack";
 import compression from "compression";
-import webpackConfig from '../webpack/webpack.config.prod'
+
+import BaseClientFs from "./client-fs/Base";
+import ClientFsProd from "./client-fs/ClientFsProd";
+import ClientFsDev from "./client-fs/ClientFsDev";
+import {getPath} from "../webpack/path";
+import BaseController from "./controllers/Base";
+import {getClientDevConfig} from "../webpack/webpack.client.config.dev";
+import {getDevAssetsMiddleware} from "./middleware/get-dev-assets";
 
 var expressStaticGzip = require("express-static-gzip");
 
@@ -12,22 +16,41 @@ var expressStaticGzip = require("express-static-gzip");
 const IS_DEV = process.env.NODE_ENV === 'development';
 
 export default class Server {
-  public expressApp: Application
+  readonly expressApp: Application
+  readonly port: number
+  readonly host: string
+  readonly compiler?: Compiler
+  readonly clientFs: BaseClientFs
 
-  public port: number
-  public host: string
-
-  constructor(appInit: {
+  constructor({ controllers }: {
     middleWares: Array<RequestHandler | ErrorRequestHandler>;
-    controllers: IBaseController[];
+    controllers?: BaseController[];
   }) {
     this.expressApp = express();
     this.port = Number(process.env.PORT) || 3001;
     this.host = process.env.HOST || '127.0.01';
 
+    if (IS_DEV) {
+      const paths = getPath('./');
+      const config = getClientDevConfig(paths);
+      const compiler = webpack(config);
+
+      this.clientFs = new ClientFsDev(compiler, config);
+      this.compiler = compiler;
+
+      compiler.run(err => {
+        console.error(err)
+      })
+    } else {
+      this.clientFs = new ClientFsProd();
+    }
+
+
     this.init();
-    this.routes(appInit.controllers);
-    this.assets();
+    if (controllers) {
+      this.attachControllers(controllers);
+      this.attachAssets();
+    }
     this.template();
   }
 
@@ -35,17 +58,10 @@ export default class Server {
     const { expressApp } = this;
 
     expressApp.use(compression());
+    expressApp.use(getDevAssetsMiddleware(this));
 
     expressApp.set('host', this.host);
     expressApp.set('port', this.port);
-
-    if (IS_DEV) {
-      const compiler = webpack(webpackConfig);
-
-      expressApp.use(
-        webpackDevMiddleware(compiler, { serverSideRender: true })
-      );
-    }
   }
 
   private middlewares(middleWares: Array<RequestHandler | ErrorRequestHandler>): void {
@@ -56,7 +72,7 @@ export default class Server {
     });
   }
 
-  private routes(controllers: IBaseController[]): void {
+  attachControllers(controllers: BaseController[]): void {
     const { expressApp } = this;
 
     controllers.forEach(controller => {
@@ -64,7 +80,7 @@ export default class Server {
     });
   }
 
-  private assets(): void {
+  attachAssets(): void {
     const { expressApp } = this;
 
     expressApp.use('/', express.static('public'));

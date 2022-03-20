@@ -1,12 +1,9 @@
 import path from "path";
 import webpack, {ProgressPlugin} from "webpack";
 import {IS_DEV} from "./constants";
-const resolve = require('resolve');
-import PATH from "./path";
 
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
-const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 

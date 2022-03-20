@@ -1,15 +1,16 @@
 import express, {Request, Response} from "express";
 
-import IBaseController from "./Base";
+import BaseController from "./Base";
 import render from "../utils/render";
+import Server from "../Server";
 
-export default class IndexController extends IBaseController {
+export default class IndexController extends BaseController {
   prefix = '';
   router = express.Router();
   chunkName = 'pages-index';
 
-  constructor() {
-    super();
+  constructor(server: Server) {
+    super(server);
     this.indexAction = this.indexAction.bind(this);
 
     this.initRoutes()
@@ -22,7 +23,7 @@ export default class IndexController extends IBaseController {
   }
 
   indexAction(req: Request, res: Response) {
-    render(req, res, 'pages/index', this.chunkName)
+    render(req, res, 'pages/index', this)
   }
 
 }

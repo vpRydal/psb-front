@@ -1,47 +1,50 @@
 import path from "path";
 
-import PATH from "../path";
+import {getPath, TWebpackPaths} from "../path";
 import {IS_DEV} from "../constants";
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
-export default             {
-  test: /\.(scss|css)$/,
-  use: [
-    ...(IS_DEV ? [
+export function getCssRules(paths: TWebpackPaths) {
+  return {
+    test: /\.(scss|css)$/,
+    use: [
+      ...(IS_DEV ? [
+        {
+          loader: require.resolve('style-loader')
+        }
+      ] : []),
+      ...(!IS_DEV ? [
+        {
+          loader: MiniCssExtractPlugin.loader
+        }
+      ] : []),
       {
-        loader: require.resolve('style-loader')
-      }
-    ] : []),
-    ...(!IS_DEV ? [
-      {
-        loader: MiniCssExtractPlugin.loader
-      }
-    ] : []),
-    {
-      loader: 'css-loader',
-      options: {
-        modules: true,
-      }
-    },
-    {
-      loader: 'postcss-loader',
-      options: {config: {path: path.join(PATH.root, 'postcss.config.js')}, sourceMap: !IS_DEV}
-    },
-    {
-      loader: require.resolve('resolve-url-loader'),
-      options: {
-        sourceMap: !IS_DEV,
-        root: path.resolve(PATH.client),
+        loader: 'css-loader',
+        options: {
+          modules: true,
+        }
       },
-    },
-    {
-      loader: 'sass-loader',
-      options: {
-        sourceMap: !IS_DEV
+      {
+        loader: 'postcss-loader',
+        options: {sourceMap: !IS_DEV}
+      },
+      {
+        loader: require.resolve('resolve-url-loader'),
+        options: {
+          sourceMap: !IS_DEV
+        },
+      },
+      {
+        loader: 'sass-loader',
+        options: {
+          sourceMap: !IS_DEV
+        }
       }
-    }
-  ],
-  include: /\.module\.(scss|css)$/
+    ],
+    exclude: /\.module\.(scss|css)$/
+  }
 }
+
+export default getCssRules(getPath(path.resolve(__dirname, '../')))
