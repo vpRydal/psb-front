@@ -16,7 +16,7 @@ const webpack = require('webpack');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-console.log('MODE IS DEVELOPMENT - ', IS_DEV)
+console.log('MODE IS DEVELOPMENT -', IS_DEV)
 
 const localPaths = getPath(defaultRootPath);
 
@@ -30,8 +30,8 @@ export function getCommonConfig(paths: TWebpackPaths): Configuration {
 
         output: {
             path: localPaths.buildClient,
-            filename: 'js/[name].[hash].js',
-            publicPath: '/client/'
+            filename: 'js/[hash].[name].js',
+            publicPath: '/assets/client/'
         },
         resolve: resolve,
         module: {
