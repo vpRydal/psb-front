@@ -2,6 +2,7 @@ import React from "react";
 import {Route, Switch, useLocation} from "react-router-dom";
 import loadable, {LoadableComponent} from "@loadable/component";
 
+
 const IndexPage = loadable(() => import('./pages/index'));
 const OtherPage = loadable(() => import('./pages/other-page'));
 

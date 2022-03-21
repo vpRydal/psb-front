@@ -4,8 +4,7 @@ import {observer} from "mobx-react";
 import {Link} from "react-router-dom";
 
 import Store from "@store";
-import {ROUTES} from "@client/router";
-import Routes from "@client/router";
+import Routes, {ROUTES} from "@client/router";
 
 
 function App() {
