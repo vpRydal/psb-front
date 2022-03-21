@@ -2,16 +2,14 @@
   "name": "test",
   "private": true,
   "scripts": {
-    "prod:build:client": "cross-env NODE_ENV=production webpack --config webpack/webpack.client.config.prod.ts --mode production",
-    "prod:build:server": "cross-env NODE_ENV=production webpack --config webpack/webpack.server.prod.ts --mode production",
+    "prod:build:client": "cross-env NODE_ENV=production webpack --config webpack/webpack.client.config.prod.ts",
+    "prod:build:server": "cross-env NODE_ENV=production webpack --config webpack/webpack.server.config,common.ts",
     "prod:launch:server": "node ./build/server/index.js",
     "prod:run:server": "run-s prod:build:client prod:build:server prod:launch:server",
     "dev:start:client": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.client.config.dev-server.ts",
-    "dev:build:server": "cross-env NODE_ENV=development webpack --config webpack/webpack.server.prod.ts",
-    "dev:build:client": "cross-env NODE_ENV=development webpack --config webpack/webpack.client.dev.config.ts",
-    "dev:run:server": "cross-env NODE_ENV=development webpack _server/index.ts --mode development",
-
-    "t": "node ./build/server/index.js"
+    "dev:build:server": "cross-env NODE_ENV=development webpack --config webpack/webpack.server.config,common.ts",
+    "dev:build:client": "cross-env NODE_ENV=development webpack --config webpack/webpack.client.config.dev.ts",
+    "dev:run:server": "cross-env NODE_ENV=development nodemon _server/index.ts"
   },
   "peerDependencies": {},
   "dependencies": {

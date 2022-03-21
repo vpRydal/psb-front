@@ -11,7 +11,6 @@ export type TWebpackPaths = {
     entryClient: string;
     entryServer: string;
     statsFileClient: string;
-    clientAssets: string;
 }
 
 export function makeJoin(pathMain: string, additionalPath: string): string {
@@ -30,7 +29,7 @@ export function getPath(this: any, rootPath: string): TWebpackPaths {
     const buildPath = makeJoin(rootPath, 'build');
     const clientPath = makeJoin(rootPath, '_client');
     const serverPath = makeJoin(rootPath, '_server');
-    const buildClientPath = makeJoin(rootPath, 'public/client');
+    const buildClientPath = makeJoin(rootPath, 'public/assets/client');
 
     return {
         root: rootPath,
@@ -41,8 +40,7 @@ export function getPath(this: any, rootPath: string): TWebpackPaths {
         buildClient: buildClientPath,
         entryClient: makeJoin(clientPath, 'index.tsx'),
         entryServer: makeJoin(serverPath, 'index.ts'),
-        statsFileClient: makeJoin(buildPath, '_server/index.ts'),
-        clientAssets: makeJoin(rootPath, 'assets'),
+        statsFileClient: makeJoin(buildPath, '_server/index.ts')
     }
 }
 

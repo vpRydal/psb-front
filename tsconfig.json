@@ -30,6 +30,10 @@
     }
   },
   "include": [
-    "_client"
+    "_client",
+    "_server",
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

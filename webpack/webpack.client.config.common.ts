@@ -14,10 +14,9 @@ const TerserPlugin = require('terser-webpack-plugin');
 const SensitivePath = require('case-sensitive-paths-webpack-plugin');
 const webpack = require('webpack');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-console.log('MODE IS DEVELOPMENT =', IS_DEV)
+console.log('MODE IS DEVELOPMENT - ', IS_DEV)
 
 const localPaths = getPath(defaultRootPath);
 
@@ -59,11 +58,6 @@ export function getCommonConfig(paths: TWebpackPaths): Configuration {
             ],
         },
         plugins: [
-            new CopyPlugin({
-                patterns: [
-                    {from: path.resolve(paths.client, 'static'), to: IS_DEV ? 'assets' : paths.clientAssets}
-                ]
-            }),
             ...(!IS_DEV ? [
                 new MiniCssExtractPlugin({
                     filename: 'css/[name].[contenthash:8].css',

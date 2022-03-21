@@ -1,6 +1,8 @@
 import express, {Application, ErrorRequestHandler, RequestHandler} from "express";
 import webpack, {Compiler} from "webpack";
 import compression from "compression";
+import WDM from "webpack-dev-middleware";
+
 
 import BaseClientFs from "./client-fs/Base";
 import ClientFsProd from "./client-fs/ClientFsProd";
@@ -8,7 +10,6 @@ import ClientFsDev from "./client-fs/ClientFsDev";
 import {getPath} from "../webpack/path";
 import BaseController from "./controllers/Base";
 import {getClientDevConfig} from "../webpack/webpack.client.config.dev";
-import {getDevAssetsMiddleware} from "./middleware/get-dev-assets";
 
 var expressStaticGzip = require("express-static-gzip");
 
@@ -38,9 +39,14 @@ export default class Server {
       this.clientFs = new ClientFsDev(compiler, config);
       this.compiler = compiler;
 
-      compiler.run(err => {
-        console.error(err)
-      })
+      this.expressApp.use(
+        WDM(compiler, {
+          // @ts-ignore
+          outputFileSystem: this.clientFs.fs,
+          serverSideRender: true
+        })
+      );
+
     } else {
       this.clientFs = new ClientFsProd();
     }
@@ -58,7 +64,6 @@ export default class Server {
     const { expressApp } = this;
 
     expressApp.use(compression());
-    expressApp.use(getDevAssetsMiddleware(this));
 
     expressApp.set('host', this.host);
     expressApp.set('port', this.port);

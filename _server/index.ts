@@ -2,7 +2,6 @@ import 'ignore-styles'
 // @ts-ignore
 import register from '@babel/register';
 
-import './App'
 
 const tsConfig = require("../tsconfig.json");
 const tsConfigPaths = require("tsconfig-paths");
@@ -18,3 +17,5 @@ register({
     '@loadable/babel-plugin'
   ]
 });
+
+import('./App');

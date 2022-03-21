@@ -15,8 +15,6 @@ export default class ClientFsDev extends BaseClientFs {
 
     // @ts-ignore
     this.fs.join = path.join.bind(path);
-    // @ts-ignore
-    compiler.outputFileSystem = this.fs;
   }
 
   getLoadableStatsFile(): Object {

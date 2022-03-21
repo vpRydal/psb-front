@@ -22,5 +22,7 @@
     "@babel/preset-env",
     "@babel/react",
     "@babel/typescript"
-  ]
+  ],
+  "ignore": ["node_modules"],
+  "include": ["_client", "_server"]
 }
