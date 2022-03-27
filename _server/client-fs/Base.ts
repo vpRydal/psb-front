@@ -1,4 +1,4 @@
-import {IFs} from "memfs";
+import MemoryFileSystem from "memory-fs";
 import * as FS from "fs";
 import path from "path";
 
@@ -7,6 +7,6 @@ import {getPath} from "../../webpack/path";
 
 export default abstract class BaseClientFs {
   static pathToLoadableStatsFile = path.join(getPath('./').buildClient, LOADABLE_STATS_FILE_NAME)
-  abstract readonly fs: IFs | typeof FS;
+  abstract readonly fs: MemoryFileSystem | typeof FS;
   abstract getLoadableStatsFile(): Object;
 }

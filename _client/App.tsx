@@ -7,9 +7,9 @@ import Store from "@store";
 import Routes, {ROUTES} from "@client/router";
 
 
-function App() {
-
-  return (
+const App = provider(
+  Store
+)(observer(() => (
     <div>
       <div>
         <Link to={ROUTES.index}>На главную</Link>
@@ -17,9 +17,6 @@ function App() {
       </div>
       <Routes/>
     </div>
-  )
-}
+)));
 
-export default provider(
-  Store
-)(observer(App));
+export default App;

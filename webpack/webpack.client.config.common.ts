@@ -22,6 +22,7 @@ const localPaths = getPath(defaultRootPath);
 
 export function getCommonConfig(paths: TWebpackPaths): Configuration {
     return {
+        name: 'Clinet',
         target: 'web',
         entry: paths.entryClient,
 

@@ -1,5 +1,5 @@
 import express, {Application, ErrorRequestHandler, RequestHandler} from "express";
-import webpack, {Compiler} from "webpack";
+import webpack, {MultiCompiler} from "webpack";
 import compression from "compression";
 import WDM from "webpack-dev-middleware";
 
@@ -10,6 +10,7 @@ import ClientFsDev from "./client-fs/ClientFsDev";
 import {getPath} from "../webpack/path";
 import BaseController from "./controllers/Base";
 import {getClientDevConfig} from "../webpack/webpack.client.config.dev";
+import {getClientAppComponentDevConfig} from '../webpack/webpack.server-client-app-component.config.dev';
 
 var expressStaticGzip = require("express-static-gzip");
 
@@ -20,7 +21,7 @@ export default class Server {
   readonly expressApp: Application
   readonly port: number
   readonly host: string
-  readonly compiler?: Compiler
+  readonly serverCompiler?: MultiCompiler
   readonly clientFs: BaseClientFs
 
   constructor({ controllers }: {
@@ -34,10 +35,10 @@ export default class Server {
     if (IS_DEV) {
       const paths = getPath('./');
       const config = getClientDevConfig(paths);
-      const compiler = webpack(config);
+      const compiler = webpack([config, getClientAppComponentDevConfig(paths)]);
 
       this.clientFs = new ClientFsDev(compiler, config);
-      this.compiler = compiler;
+      this.serverCompiler = compiler;
 
       this.expressApp.use(
         WDM(compiler, {
@@ -46,7 +47,6 @@ export default class Server {
           serverSideRender: true
         })
       );
-
     } else {
       this.clientFs = new ClientFsProd();
     }

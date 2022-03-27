@@ -1,9 +1,12 @@
 import React, {FC, memo} from 'react';
-import '../styles/App.scss';
 import {useInstance} from 'react-ioc';
-import Store from "@store";
 import {useLocation, withRouter} from "react-router-dom";
 import {RouteComponentProps} from "react-router";
+import {observer} from "mobx-react-lite";
+
+import Store from "@store";
+
+import '../styles/App.scss';
 
 
 export interface TParams {}
@@ -17,7 +20,7 @@ const OtherPage: FC<IProps> = () => {
     <div className="App">
       <header className="App-header">
         <img src="/assets/images/logo192.png" className="App-logo" alt="logo" />
-        <h1>Its OTHER PAGE ({location.pathname})</h1>
+        <h1>Its OTHER PAGE asdsd ({location.pathname})</h1>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -37,4 +40,4 @@ const OtherPage: FC<IProps> = () => {
   );
 }
 
-export default withRouter(memo(OtherPage));
+export default withRouter(memo(observer(OtherPage)));

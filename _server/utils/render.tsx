@@ -1,19 +1,39 @@
+import { Stats } from 'webpack';
 import { Request, Response } from 'express';
-import React from "react";
+import React, { ReactElement, FC } from "react";
 import {StaticRouter} from "react-router-dom";
 import {renderToString} from "react-dom/server";
 import {ChunkExtractor, ChunkExtractorManager} from "@loadable/server";
 
-import App from "@client/App";
+import AppProd from "@client/App";
 import BaseController from "../controllers/Base";
 
+
+function getAppComponent(stats: Stats): FC {
+  const assets = stats.compilation.assets;
+  const source = stats.compilation.assets[Object.keys(assets)[0]].source();
+  let App: any;
+
+  eval(source)
+
+  return App!.default;
+}
+
 export default function render(req: Request, res: Response, viewName: string, controller: BaseController) {
+  let App: FC = AppProd;
+
+  if (controller.server.serverCompiler) {
+    // @ts-ignore
+    const clienAppComponentStats: Stats = res.locals.webpack.devMiddleware.stats.stats[1]
+    App = getAppComponent(clienAppComponentStats);
+  }
+
   const clientExtractor = new ChunkExtractor({
     stats: controller.server.clientFs.getLoadableStatsFile(),
     entrypoints: ['main', controller.chunkName]
   });
 
-  return res.status(200).render(viewName, {
+  res.status(200).render(viewName, {
     body: renderToString((
       <>
         {clientExtractor.getLinkElements()}
@@ -28,5 +48,6 @@ export default function render(req: Request, res: Response, viewName: string, co
         </div>
       </>
     ))
-  });
+  })
+
 }

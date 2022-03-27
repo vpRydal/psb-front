@@ -1,10 +1,12 @@
 import React, {FC, memo} from 'react';
-import '../styles/App.scss';
 import {useInstance} from 'react-ioc';
-import Store from "@store";
 import {useLocation, withRouter} from "react-router-dom";
 import {RouteComponentProps} from "react-router";
+import {observer} from "mobx-react-lite";
 
+import Store from "@store";
+
+import '../styles/App.scss';
 
 export interface TParams {}
 export interface IProps extends RouteComponentProps<TParams>{}
@@ -37,4 +39,4 @@ const IndexPage: FC<IProps> = () =>  {
   );
 }
 
-export default withRouter(memo(IndexPage));
+export default withRouter(memo(observer(IndexPage)));
