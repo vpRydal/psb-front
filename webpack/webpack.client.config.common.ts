@@ -1,5 +1,6 @@
 import * as path from 'path';
-import {Configuration} from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import webpack, {Configuration} from 'webpack';
 
 import {defaultRootPath, getPath, TWebpackPaths} from "./path";
 import {getCssRules} from "./rules/css";
@@ -9,10 +10,10 @@ import {IS_DEV} from "./constants";
 import resolve from "./resolve";
 import commonPlugins from "./common-plugins";
 import {getModuleCssRules} from "./rules/cssModules";
+import * as PATH from "path";
 
 const TerserPlugin = require('terser-webpack-plugin');
 const SensitivePath = require('case-sensitive-paths-webpack-plugin');
-const webpack = require('webpack');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -32,7 +33,7 @@ export function getCommonConfig(paths: TWebpackPaths): Configuration {
         output: {
             path: localPaths.buildClient,
             filename: 'js/[hash].[name].js',
-            publicPath: '/assets/client/'
+            publicPath: localPaths.publicClientPath
         },
         resolve: resolve,
         module: {
@@ -59,6 +60,9 @@ export function getCommonConfig(paths: TWebpackPaths): Configuration {
             ],
         },
         plugins: [
+            new HtmlWebpackPlugin({
+                template: path.resolve(paths.root, `public/index.html`)
+            }),
             ...(!IS_DEV ? [
                 new MiniCssExtractPlugin({
                     filename: 'css/[name].[contenthash:8].css',

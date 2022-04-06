@@ -9,10 +9,8 @@ import ClientFsProd from "./client-fs/ClientFsProd";
 import ClientFsDev from "./client-fs/ClientFsDev";
 import {getPath} from "../webpack/path";
 import BaseController from "./controllers/Base";
-import {getClientDevConfig} from "../webpack/webpack.client.config.dev";
+import {getClientSsrDevConfig} from "../webpack/webpack.client-ssr.config.dev";
 import {getClientAppComponentDevConfig} from '../webpack/webpack.server-client-app-component.config.dev';
-
-var expressStaticGzip = require("express-static-gzip");
 
 
 const IS_DEV = process.env.NODE_ENV === 'development';
@@ -34,7 +32,7 @@ export default class Server {
 
     if (IS_DEV) {
       const paths = getPath('./');
-      const config = getClientDevConfig(paths);
+      const config = getClientSsrDevConfig(paths);
       const compiler = webpack([config, getClientAppComponentDevConfig(paths)]);
 
       this.clientFs = new ClientFsDev(compiler, config);
@@ -89,7 +87,6 @@ export default class Server {
     const { expressApp } = this;
 
     expressApp.use('/', express.static('public'));
-    expressApp.use('/', expressStaticGzip('public'));
   }
 
   private template(): void {

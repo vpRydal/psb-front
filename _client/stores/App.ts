@@ -1,10 +1,11 @@
-import {action, computed, observable} from "mobx";
+import {action, computed, observable, makeObservable} from "mobx";
 
 export default class AppStore {
     @observable
     counter = 0;
 
     constructor() {
+        makeObservable(this)
     }
 
     @computed

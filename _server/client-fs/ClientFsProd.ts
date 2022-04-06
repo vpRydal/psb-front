@@ -1,5 +1,6 @@
-import BaseClientFs from "./Base";
 import * as fs from "fs";
+
+import BaseClientFs from "./Base";
 
 export default class ClientFsProd extends BaseClientFs {
   readonly fs = fs;
