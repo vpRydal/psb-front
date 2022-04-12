@@ -1,4 +1,3 @@
-import 'ignore-styles'
 // @ts-ignore
 import register from '@babel/register';
 

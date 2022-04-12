@@ -32,7 +32,7 @@ export function getCommonConfig(paths: TWebpackPaths): Configuration {
 
         output: {
             path: localPaths.buildClient,
-            filename: 'js/[hash].[name].js',
+            filename: 'js/[name].[hash].js',
             publicPath: localPaths.publicClientPath
         },
         resolve: resolve,
@@ -63,12 +63,6 @@ export function getCommonConfig(paths: TWebpackPaths): Configuration {
             new HtmlWebpackPlugin({
                 template: path.resolve(paths.root, `public/index.html`)
             }),
-            ...(!IS_DEV ? [
-                new MiniCssExtractPlugin({
-                    filename: 'css/[name].[contenthash:8].css',
-                    chunkFilename: 'css/[name].[contenthash:8].chunk.css',
-                })
-            ]: []),
             ...(IS_DEV ? [
                 new WatchMissingNodeModulesPlugin(path.resolve ('node_modules')),
                 new webpack.HotModuleReplacementPlugin(),

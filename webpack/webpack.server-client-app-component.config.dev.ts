@@ -10,6 +10,8 @@ const LoadablePlugin = require('@loadable/webpack-plugin')
 const WebpackManifestPlugin = require('webpack-manifest-plugin')
 
 
+const localPaths = getPath(defaultRootPath);
+
 export function getClientAppComponentDevConfig(paths: TWebpackPaths): Configuration {
   return merge(getServerCommonConfig(paths), {
     name: 'Clent App component',
@@ -18,7 +20,7 @@ export function getClientAppComponentDevConfig(paths: TWebpackPaths): Configurat
       libraryTarget: 'assign',
       library: 'App'
     },
-      plugins: [
+     plugins: [
         new webpack.optimize.LimitChunkCountPlugin({
           maxChunks: 1,
         }),

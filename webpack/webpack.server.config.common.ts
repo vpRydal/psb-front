@@ -1,8 +1,8 @@
 import webpack, {Configuration} from "webpack";
-// @ts-ignore
 import nodeExternals from 'webpack-node-externals';
-import {defaultRootPath, getPath, TWebpackPaths} from "./path";
 
+import {defaultRootPath, getPath, TWebpackPaths} from "./path";
+import {getModuleCssRules} from "./rules/cssModules";
 import resolve from "./resolve";
 import commonPlugins from "./common-plugins";
 import {IS_DEV} from "./constants";
@@ -26,12 +26,14 @@ export function getServerCommonConfig(paths: TWebpackPaths): Configuration {
         ],
         module: {
             rules: [
-                { test: /\.(scss|css)|(module\.(scss|css)|(png|jpg|svg))/, loader: 'ignore-loader' },
+                { test: /(png|jpg|svg)/, loader: 'ignore-loader' },
+                { test: /\.(scss|css)/, loader: 'ignore-loader', exclude: /\.module\./ },
                 {
                     test: /\.(tsx|ts)$/,
                     use: 'babel-loader',
                     exclude: IS_DEV ? /node_modules/ : []
-                }
+                },
+                getModuleCssRules(localPaths,  true),
             ]
         },
         plugins: [

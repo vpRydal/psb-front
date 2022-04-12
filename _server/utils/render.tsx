@@ -11,7 +11,8 @@ import BaseController from "../controllers/Base";
 
 function getAppComponent(stats: Stats): FC {
   const assets = stats.compilation.assets;
-  const source = stats.compilation.assets[Object.keys(assets)[0]].source();
+  const assetIndex = Object.keys(assets).findIndex(assetName => assetName.includes('.js'))
+  const source = stats.compilation.assets[Object.keys(assets)[assetIndex]].source();
   let App: any;
 
   eval(source)

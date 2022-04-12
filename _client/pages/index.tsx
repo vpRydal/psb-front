@@ -5,6 +5,7 @@ import {RouteComponentProps} from "react-router";
 import {observer} from "mobx-react-lite";
 
 import Store from "@store";
+import Info from "../components/info";
 
 import '../styles/App.scss';
 
@@ -31,6 +32,7 @@ const IndexPage: FC<IProps> = () =>  {
         >
           Learn React + {app.counter} + {app.counterV2}
         </a>
+        <Info/>
         <div>
           <button onClick={app.inc}>+1</button>
         </div>

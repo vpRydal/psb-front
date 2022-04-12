@@ -5,16 +5,16 @@ import {IS_DEV} from "../constants";
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-export function getModuleCssRules(paths: TWebpackPaths) {
+export function getModuleCssRules(paths: TWebpackPaths, isSsr?: boolean) {
   return {
     test: /\.module\.(scss|css)$/,
     use: [
-      ...(IS_DEV ? [
+      ...((IS_DEV && !isSsr) ? [
         {
           loader: require.resolve('style-loader')
         }
       ] : []),
-      ...(!IS_DEV ? [
+      ...(isSsr || !IS_DEV ? [
         {
           loader: MiniCssExtractPlugin.loader
         }
@@ -23,18 +23,13 @@ export function getModuleCssRules(paths: TWebpackPaths) {
         loader: 'css-loader',
         options: {
           modules: true,
+          importLoaders: 2,
+          localIdentName: IS_DEV ? '[name]_[local]--[hash:base64:2]' : '[hash:base64:8]'
         }
       },
       {
         loader: 'postcss-loader',
         options: {config: {path: path.join(paths.root, 'postcss.config.js')}, sourceMap: !IS_DEV}
-      },
-      {
-        loader: require.resolve('resolve-url-loader'),
-        options: {
-          sourceMap: !IS_DEV,
-          root: paths.client,
-        },
       },
       {
         loader: 'sass-loader',
