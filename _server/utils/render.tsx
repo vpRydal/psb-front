@@ -1,6 +1,6 @@
 import { Stats } from 'webpack';
 import { Request, Response } from 'express';
-import React, { ReactElement, FC } from "react";
+import React, { FC } from "react";
 import {StaticRouter} from "react-router-dom";
 import {renderToString} from "react-dom/server";
 import {ChunkExtractor, ChunkExtractorManager} from "@loadable/server";
@@ -12,7 +12,10 @@ import BaseController from "../controllers/Base";
 function getAppComponent(stats: Stats): FC {
   const assets = stats.compilation.assets;
   const assetIndex = Object.keys(assets).findIndex(assetName => assetName.includes('.js'))
-  const source = stats.compilation.assets[Object.keys(assets)[assetIndex]].source();
+  const outputPath = stats.compilation.compiler.outputPath
+  const outputFs = stats.compilation.compiler.outputFileSystem
+  // @ts-ignore
+  const source = outputFs.readFileSync(`${outputPath}/${Object.keys(assets)[assetIndex]}`).toString();
   let App: any;
 
   eval(source)
@@ -25,8 +28,8 @@ export default function render(req: Request, res: Response, viewName: string, co
 
   if (controller.server.serverCompiler) {
     // @ts-ignore
-    const clienAppComponentStats: Stats = res.locals.webpack.devMiddleware.stats.stats[1]
-    App = getAppComponent(clienAppComponentStats);
+    const clientAppComponentStats: Stats = res.locals.webpack.devMiddleware.stats.stats[1]
+    App = getAppComponent(clientAppComponentStats);
   }
 
   const clientExtractor = new ChunkExtractor({

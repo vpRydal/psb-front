@@ -22,7 +22,6 @@ export default [
   }),
   new webpack.DefinePlugin({
     'process.env': {
-      NODE_ENV: JSON.stringify(IS_DEV ? 'development' : 'prod'),
       DEBUG: JSON.stringify(IS_DEV),
       BROWSER: JSON.stringify(true)
     },

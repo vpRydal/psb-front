@@ -3,7 +3,7 @@ import * as FS from "fs";
 import path from "path";
 
 import {LOADABLE_STATS_FILE_NAME} from "../../webpack/constants";
-import {getPath, defaultRootPath} from "../../webpack/path";
+import {getPath} from "../../webpack/path";
 
 export default abstract class BaseClientFs {
   static pathToLoadableStatsFile = path.join(getPath('./').buildClientSsr, LOADABLE_STATS_FILE_NAME)

@@ -1,7 +1,6 @@
 import * as path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack, {Configuration} from 'webpack';
-import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 
 import {defaultRootPath, getPath, TWebpackPaths} from "./path";
 import {getCssRules} from "./rules/css";
@@ -14,7 +13,6 @@ import {getModuleCssRules} from "./rules/cssModules";
 
 const TerserPlugin = require('terser-webpack-plugin');
 const SensitivePath = require('case-sensitive-paths-webpack-plugin');
-const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 
 console.log('MODE IS DEVELOPMENT -', IS_DEV)
 
@@ -46,7 +44,6 @@ export function getCommonConfig(paths: TWebpackPaths): Configuration {
         optimization: {
             minimize: !IS_DEV,
             minimizer: [
-                new CssMinimizerPlugin(),
                 new TerserPlugin({
                     parallel: true,
                     terserOptions: {
@@ -64,7 +61,6 @@ export function getCommonConfig(paths: TWebpackPaths): Configuration {
                 template: path.resolve(paths.root, `public/index.html`)
             }),
             ...(IS_DEV ? [
-                new WatchMissingNodeModulesPlugin(path.resolve ('node_modules')),
                 new webpack.HotModuleReplacementPlugin(),
                 new SensitivePath(),
             ]: []),

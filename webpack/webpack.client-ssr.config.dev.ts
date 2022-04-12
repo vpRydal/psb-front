@@ -1,12 +1,11 @@
 import merge from 'webpack-merge'
 import {Configuration} from "webpack";
-import * as path from "path";
+import { WebpackManifestPlugin } from "webpack-manifest-plugin";
 
 import {getCommonConfig} from "./webpack.client.config.common";
 import {defaultRootPath, getPath, TWebpackPaths} from "./path";
 
 const LoadablePlugin = require('@loadable/webpack-plugin')
-const WebpackManifestPlugin = require('webpack-manifest-plugin')
 
 const localPath = getPath(defaultRootPath);
 export function getClientSsrDevConfig(paths: TWebpackPaths): Configuration {
@@ -17,7 +16,7 @@ export function getClientSsrDevConfig(paths: TWebpackPaths): Configuration {
     },
       plugins: [
         new LoadablePlugin(),
-        new WebpackManifestPlugin()
+        new WebpackManifestPlugin({})
       ]
     }
   )}

@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import Store from "@store";
 import Routes, {ROUTES} from "@client/router";
 
-import "./styles";
+import "./styles/index.scss";
 
 const App = provider(
   Store
