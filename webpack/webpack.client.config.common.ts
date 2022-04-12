@@ -1,6 +1,7 @@
 import * as path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack, {Configuration} from 'webpack';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 
 import {defaultRootPath, getPath, TWebpackPaths} from "./path";
 import {getCssRules} from "./rules/css";
@@ -10,12 +11,10 @@ import {IS_DEV} from "./constants";
 import resolve from "./resolve";
 import commonPlugins from "./common-plugins";
 import {getModuleCssRules} from "./rules/cssModules";
-import * as PATH from "path";
 
 const TerserPlugin = require('terser-webpack-plugin');
 const SensitivePath = require('case-sensitive-paths-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 console.log('MODE IS DEVELOPMENT -', IS_DEV)
 
@@ -47,6 +46,7 @@ export function getCommonConfig(paths: TWebpackPaths): Configuration {
         optimization: {
             minimize: !IS_DEV,
             minimizer: [
+                new CssMinimizerPlugin(),
                 new TerserPlugin({
                     parallel: true,
                     terserOptions: {
@@ -56,7 +56,7 @@ export function getCommonConfig(paths: TWebpackPaths): Configuration {
                         },
                     },
                     extractComments: false,
-                })
+                }),
             ],
         },
         plugins: [

@@ -7,8 +7,6 @@ import {observer} from "mobx-react-lite";
 import Store from "@store";
 import Info from "../components/info";
 
-import '../styles/App.scss';
-
 export interface TParams {}
 export interface IProps extends RouteComponentProps<TParams>{}
 

@@ -6,7 +6,7 @@ import {observer} from "mobx-react-lite";
 
 import Store from "@store";
 
-import '../styles/App.scss';
+import Info from "@client/components/info";
 
 
 export interface TParams {}
@@ -32,6 +32,7 @@ const OtherPage: FC<IProps> = () => {
         >
           Learn React + {app.counter} + {app.counterV2}
         </a>
+        <Info/>
         <div>
           <button onClick={app.inc}>+1</button>
         </div>
