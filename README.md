@@ -5,7 +5,7 @@
 #### DEV
 * `prod:run:server` - старт сервера (с билдом)
 * `prod:launch:server` - старт бандл-сервера
-* `prod:build-ssr:server` - билд клиент для SSR
+* `prod:build:client-ssr` - билд клиент для SSR
 * `prod:build:server` - билд сервера
 * `prod:build:client` - билд клиента
 
