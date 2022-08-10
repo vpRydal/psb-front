@@ -1,19 +1,18 @@
-import React, {FC, memo} from 'react';
-import {useInstance} from 'react-ioc';
+import React, {FC} from 'react';
 import {useLocation, withRouter} from "react-router-dom";
 import {RouteComponentProps} from "react-router";
 import {observer} from "mobx-react-lite";
 
-import Store from "@store";
-
 import Info from "@client/components/info";
+import {useInjection} from "inversify-react";
+import AppStore from "@store/App";
 
 
 export interface TParams {}
 export interface IProps extends RouteComponentProps<TParams>{}
 
 const OtherPage: FC<IProps> = () => {
-  const { app } = useInstance(Store);
+  const app = useInjection(AppStore);
   const location = useLocation();
 
   return (
@@ -41,4 +40,4 @@ const OtherPage: FC<IProps> = () => {
   );
 }
 
-export default withRouter(memo(observer(OtherPage)));
+export default withRouter(observer(OtherPage));

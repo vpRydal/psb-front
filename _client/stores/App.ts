@@ -1,5 +1,7 @@
 import {action, computed, observable, makeObservable} from "mobx";
+import {injectable} from "inversify";
 
+@injectable()
 export default class AppStore {
     @observable
     counter = 0;

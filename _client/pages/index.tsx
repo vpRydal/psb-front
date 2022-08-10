@@ -1,18 +1,24 @@
-import React, {FC, memo} from 'react';
-import {useInstance} from 'react-ioc';
+import React, {FC, useMemo} from 'react';
 import {useLocation, withRouter} from "react-router-dom";
 import {RouteComponentProps} from "react-router";
 import {observer} from "mobx-react-lite";
 
-import Store from "@store";
-import Info from "../components/info";
+import {useInjection} from "inversify-react";
+import AppStore from "@store/App";
+import Test from "@client/pages/Test";
 
 export interface TParams {}
 export interface IProps extends RouteComponentProps<TParams>{}
 
 const IndexPage: FC<IProps> = () =>  {
-  const { app } = useInstance(Store);
   const location = useLocation();
+  const app = useInjection(AppStore);
+  const testService = useMemo(() => new Test(), []);
+  function gandleDo() {
+    testService.do().then(() => {
+      console.log(6)
+    })
+  }
 
   return (
     <div className="App">
@@ -30,13 +36,13 @@ const IndexPage: FC<IProps> = () =>  {
         >
           Learn React + {app.counter} + {app.counterV2}
         </a>
-        <Info/>
         <div>
           <button onClick={app.inc}>+1</button>
+          <button onClick={gandleDo}>Dooooo</button>
         </div>
       </header>
     </div>
   );
 }
 
-export default withRouter(memo(observer(IndexPage)));
+export default withRouter(observer(IndexPage));

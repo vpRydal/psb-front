@@ -8,6 +8,8 @@
         "legacy": true
       }
     ],
+    ["@babel/plugin-proposal-class-properties"],
+    "babel-plugin-parameter-decorator",
     [
       "module-resolver", // нужен для резолва алиасов на серве
       {
