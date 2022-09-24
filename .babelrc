@@ -21,7 +21,9 @@
           "@utils": "./_client/utils",
           "@data": "./_client/data",
           "@services": "./_client/services",
-          "@ui": "./_client/ui"
+          "@ui": "./_client/ui",
+          "@config": "./_client/config",
+          "@specs": "./_client/specs"
         }
       }
     ]

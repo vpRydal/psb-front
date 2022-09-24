@@ -11,6 +11,8 @@ export default {
     '@data': path.resolve(PATH.client, '/data'),
     '@services': path.resolve(PATH.client, '/services'),
     '@ui': path.resolve(PATH.client, '/ui'),
+    '@config': path.resolve(PATH.client, '/config'),
+    '@specs': path.resolve(PATH.client, '/specs'),
   },
   extensions: ['.ts', '.tsx', '.js', '.json', '.scss', '.png', '.jpg', '.gif', '.jpeg']
 }
