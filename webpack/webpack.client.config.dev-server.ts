@@ -16,8 +16,10 @@ const config: WebpackConfiguration & {
     publicPath: '/',
   },
   devServer: {
-    onBeforeSetupMiddleware(app) {
-      app.app?.use('/assets', express.static('public/assets'))
+    historyApiFallback: true,
+    setupMiddlewares(middlewares, devServer) {
+      devServer.app?.use('/assets', express.static('public/assets'))
+      return middlewares
     },
     port: 3000,
     hot: true
