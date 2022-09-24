@@ -14,8 +14,14 @@
       "module-resolver", // нужен для резолва алиасов на серве
       {
         "alias": {
-          "@store": "./_client/stores",
-          "@client": "./_client"
+          "@stores": "./_client/data/stores",
+          "@client": "./_client",
+          "@pages": "./_client/pages",
+          "@components": "./_client/components",
+          "@utils": "./_client/utils",
+          "@data": "./_client/data",
+          "@services": "./_client/services",
+          "@ui": "./_client/ui"
         }
       }
     ]

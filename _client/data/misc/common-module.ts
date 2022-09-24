@@ -1,5 +1,5 @@
 import {ContainerModule} from "inversify";
-import AppStore from "@store/App";
+import AppStore from "@stores/App";
 
 const appModule = new ContainerModule(
   (

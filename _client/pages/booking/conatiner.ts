@@ -1,5 +1,5 @@
-import container from "@store/misc/base-container";
-import bookingModule from "@client/components/booking/module";
+import container from "@data/misc/base-container";
+import bookingModule from "@components/booking/module";
 
 
 const homePageContainer = container.createChild()

@@ -1,10 +1,10 @@
 import {action, computed, makeObservable, observable} from "mobx";
 import {makePersistable} from "mobx-persist-store";
 
-import PassengerStore from "@store/passenger";
+import PassengerStore from "@stores/passenger";
 import {clone} from "lodash";
 import {injectable, inject} from "inversify";
-import AppStore from "@store/App";
+import AppStore from "@stores/App";
 
 @injectable()
 class BookingStore {

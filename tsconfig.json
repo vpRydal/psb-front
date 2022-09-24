@@ -26,8 +26,14 @@
     "paths": {
       "@client/*": ["*"],
       "@client": [""],
-      "@store": ["stores"],
-      "@store/*": ["stores/*"]
+      "@stores": ["data/stores"],
+      "@stores/*": ["data/stores/*"],
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@utils/*": ["utils/*"],
+      "@data/*": ["data/*"],
+      "@services/*": ["services/*"],
+      "@ui/*": ["ui/*"],
     }
   }
 }

@@ -1,5 +1,5 @@
 import {ContainerModule} from "inversify";
-import BookingStore from "@store/booking";
+import BookingStore from "@stores/booking";
 
 
 const bookingModule = new ContainerModule(

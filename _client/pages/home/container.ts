@@ -1,4 +1,4 @@
-import container from "@store/misc/base-container";
+import container from "@data/misc/base-container";
 
 
 const homePageContainer = container.createChild()

@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 
 import css from './Info.module.scss'
-import PassengerStore from "@store/passenger";
+import PassengerStore from "@stores/passenger";
 import {observer} from "mobx-react-lite";
 import {useInjection} from "inversify-react";
-import BookingStore from "@store/booking";
+import BookingStore from "@stores/booking";
 
 interface IProps {
 

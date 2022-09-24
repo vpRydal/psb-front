@@ -4,8 +4,8 @@ import {RouteComponentProps} from "react-router";
 import {observer} from "mobx-react-lite";
 import {Provider, useInjection} from "inversify-react";
 
-import Info from "@client/components/booking/passengers";
-import AppStore from "@store/App";
+import Info from "@components/booking/passengers";
+import AppStore from "@stores/App";
 import bookingPageContainer from "./conatiner";
 
 
