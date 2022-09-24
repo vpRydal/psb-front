@@ -58,7 +58,8 @@ export function getCommonConfig(paths: TWebpackPaths): Configuration {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                template: path.resolve(paths.root, `public/index.html`)
+                template: path.resolve(paths.root, `public/index.html`),
+                minify: !IS_DEV
             }),
             ...(IS_DEV ? [
                 new webpack.HotModuleReplacementPlugin(),

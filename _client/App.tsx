@@ -1,26 +1,25 @@
-import React from 'react';
-import {observer} from "mobx-react-lite";
+import React, {memo} from 'react';
 import {Link} from "react-router-dom";
 
 import Routes, {ROUTES} from "@client/router";
 
 import "./styles/index.scss";
 import {Provider} from "inversify-react";
-import appContainer from "@store/containers/app";
+import baseContainer from "@store/misc/base-container";
 
-const App = observer(() => {
+const App = () => {
   return (
-    <Provider container={appContainer}>
+    <Provider container={baseContainer}>
       <div>
         <div>
           <Link to={ROUTES.index}>На главную</Link>
-          <Link to={ROUTES.other}>на другую</Link>
+          <Link to={ROUTES.booking}>на другую</Link>
         </div>
         <Routes/>
       </div>
     </Provider>
   )
-});
+};
 
 
-export default App;
+export default memo(App);

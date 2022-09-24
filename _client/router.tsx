@@ -1,26 +1,20 @@
-import React from "react";
-import {Provider} from "inversify-react";
-import {interfaces} from "inversify";
+import React, {memo} from "react";
 import {Route, Switch, useLocation} from "react-router-dom";
 
 import loadable, {LoadableComponent} from "@loadable/component";
-import indexPageContainer from "@store/containers";
-import bookingPageContainer from "@store/containers/booking";
 
 
-const IndexPage = loadable(() => import('./pages/index'));
-const OtherPage = loadable(() => import('./pages/other-page'));
+const HomePage = loadable(() => import('./pages/home'));
+const BookingPage = loadable(() => import('./pages/booking'));
 
 export const ROUTES = {
   index: '/',
-  other: '/other-page'
+  booking: '/booking'
 } as const
 
-const renderPage = (Page: LoadableComponent<any>, container: interfaces.Container) => {
+const renderPage = (Page: LoadableComponent<any>) => {
   return (
-    <Provider container={container} standalone={true} key={container.id}>
-      <Page/>
-    </Provider>
+    <Page/>
   )
 };
 
@@ -29,10 +23,10 @@ const Routes = () => {
 
   return (
     <Switch location={location}>
-      <Route path={ROUTES.index} render={() => renderPage(IndexPage, indexPageContainer)} exact={true} />
-      <Route path={ROUTES.other} render={() => renderPage(OtherPage, bookingPageContainer)}/>
+      <Route path={ROUTES.booking} render={() => renderPage(BookingPage)}/>
+      <Route path={ROUTES.index} render={() => renderPage(HomePage)}  />
     </Switch>
   )
 }
 
-export default Routes
+export default memo(Routes)
