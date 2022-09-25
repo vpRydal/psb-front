@@ -24,7 +24,8 @@
           "@services": "./_client/services",
           "@ui": "./_client/ui",
           "@config": "./_client/config",
-          "@specs": "./_client/specs"
+          "@specs": "./_client/specs",
+          "@translations": "./_client/translations"
         }
       }
     ]
