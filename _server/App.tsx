@@ -1,5 +1,5 @@
-import IndexController from './controllers/Index';
-import OtherController from './controllers/Other';
+import OtherController from './controllers/Booking';
+import HomeController from './controllers/Home';
 import Server from './Server';
 
 const server = new Server({
@@ -8,7 +8,7 @@ const server = new Server({
 
 server.attachControllers([
   new OtherController(server),
-  new IndexController(server),
+  new HomeController(server),
 ]);
 server.attachAssets();
 

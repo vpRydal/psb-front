@@ -4,12 +4,12 @@ import Server from '../Server';
 import render from '../utils/render';
 import BaseController from './Base';
 
-export default class IndexController extends BaseController {
+export default class BookingController extends BaseController {
   prefix = '';
 
   router = express.Router();
 
-  chunkName = 'pages-index';
+  chunkName = 'pages-booking';
 
   constructor(server: Server) {
     super(server);
@@ -21,7 +21,7 @@ export default class IndexController extends BaseController {
   initRoutes(): void {
     const { router } = this;
 
-    router.get('/', this.indexAction);
+    router.get('/booking/*', this.indexAction);
   }
 
   indexAction(req: Request, res: Response) {

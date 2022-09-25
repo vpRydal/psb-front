@@ -1,3 +1,4 @@
+import canUseDOM from 'can-use-dom';
 import { inject, injectable } from 'inversify';
 import { clone } from 'lodash';
 import {
@@ -21,7 +22,7 @@ class BookingStore {
     makePersistable(this, {
       name: 'BookingStore',
       properties: ['passengers'],
-      storage: localStorage,
+      storage: canUseDOM ? localStorage : undefined,
     }).then((result) => {
       result.getPersistedStore().then(action((persistStore) => {
         this.passengers = persistStore?.passengers.map((passenger: { formData: any; }) => {
@@ -37,7 +38,6 @@ class BookingStore {
 
   @computed
   get info() {
-    console.log(this.appStore.counter);
     return this.passengers.map((passenger) => passenger.fullInfo);
   }
 

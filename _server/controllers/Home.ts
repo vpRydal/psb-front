@@ -4,12 +4,12 @@ import Server from '../Server';
 import render from '../utils/render';
 import BaseController from './Base';
 
-export default class OtherController extends BaseController {
+export default class HomeController extends BaseController {
   prefix = '';
 
   router = express.Router();
 
-  chunkName = 'pages-other-page';
+  chunkName = 'pages-home';
 
   constructor(server: Server) {
     super(server);
@@ -21,7 +21,7 @@ export default class OtherController extends BaseController {
   initRoutes(): void {
     const { router } = this;
 
-    router.get('/other-page', this.indexAction);
+    router.get('/', this.indexAction);
   }
 
   indexAction(req: Request, res: Response) {
