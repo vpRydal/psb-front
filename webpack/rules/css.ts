@@ -1,10 +1,9 @@
-import path from "path";
+import path from 'path';
 
-import {getPath, TWebpackPaths} from "../path";
-import {IS_DEV} from "../constants";
+import { IS_DEV } from '../constants';
+import { getPath, TWebpackPaths } from '../path';
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 
 export function getCssRules(paths: TWebpackPaths) {
   return {
@@ -12,30 +11,30 @@ export function getCssRules(paths: TWebpackPaths) {
     use: [
       ...(IS_DEV ? [
         {
-          loader: require.resolve('style-loader')
-        }
+          loader: require.resolve('style-loader'),
+        },
       ] : []),
       ...(!IS_DEV ? [
         {
-          loader: MiniCssExtractPlugin.loader
-        }
+          loader: MiniCssExtractPlugin.loader,
+        },
       ] : []),
       {
-        loader: 'css-loader'
+        loader: 'css-loader',
       },
       {
         loader: 'postcss-loader',
-        options: {sourceMap: !IS_DEV}
+        options: { sourceMap: !IS_DEV },
       },
       {
         loader: 'sass-loader',
         options: {
-          sourceMap: !IS_DEV
-        }
-      }
+          sourceMap: !IS_DEV,
+        },
+      },
     ],
-    exclude: /\.module\.(scss|css)$/
-  }
+    exclude: /\.module\.(scss|css)$/,
+  };
 }
 
-export default getCssRules(getPath(path.resolve(__dirname, '../')))
+export default getCssRules(getPath(path.resolve(__dirname, '../')));

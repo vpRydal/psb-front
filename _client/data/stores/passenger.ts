@@ -1,4 +1,4 @@
-import {computed, makeObservable, observable} from "mobx";
+import { computed, makeObservable, observable } from 'mobx';
 
 export default class PassengerStore {
   @observable.deep

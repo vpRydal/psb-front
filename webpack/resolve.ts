@@ -1,5 +1,6 @@
-import path from "path";
-import PATH from "./path";
+import path from 'path';
+
+import PATH from './path';
 
 export default {
   alias: {
@@ -14,5 +15,5 @@ export default {
     '@config': path.resolve(PATH.client, '/config'),
     '@specs': path.resolve(PATH.client, '/specs'),
   },
-  extensions: ['.ts', '.tsx', '.js', '.json', '.scss', '.png', '.jpg', '.gif', '.jpeg']
-}
+  extensions: ['.ts', '.tsx', '.js', '.json', '.scss', '.png', '.jpg', '.gif', '.jpeg'],
+};

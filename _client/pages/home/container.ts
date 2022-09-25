@@ -1,6 +1,5 @@
-import container from "@data/misc/base-container";
+import container from '@data/misc/base-container';
 
-
-const homePageContainer = container.createChild()
+const homePageContainer = container.createChild();
 
 export default homePageContainer;

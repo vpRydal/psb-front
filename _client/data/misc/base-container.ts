@@ -1,11 +1,9 @@
 import { Container } from 'inversify';
 
-import commonModule from "./common-module";
+import commonModule from './common-module';
 
+const appContainer = new Container();
 
-const appContainer = new Container()
-
-appContainer.load(commonModule)
-
+appContainer.load(commonModule);
 
 export default appContainer;

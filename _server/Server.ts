@@ -1,25 +1,27 @@
-import express, {Application, ErrorRequestHandler, RequestHandler} from "express";
-import webpack, {MultiCompiler} from "webpack";
-import compression from "compression";
-import WDM from "webpack-dev-middleware";
+import compression from 'compression';
+import express, { Application, ErrorRequestHandler, RequestHandler } from 'express';
+import webpack, { MultiCompiler } from 'webpack';
+import WDM from 'webpack-dev-middleware';
 
-
-import BaseClientFs from "./client-fs/Base";
-import ClientFsProd from "./client-fs/ClientFsProd";
-import ClientFsDev from "./client-fs/ClientFsDev";
-import {getPath} from "../webpack/path";
-import BaseController from "./controllers/Base";
-import {getClientSsrDevConfig} from "../webpack/webpack.client-ssr.config.dev";
-import {getClientAppComponentDevConfig} from '../webpack/webpack.server-client-app-component.config.dev';
-
+import { getPath } from '../webpack/path';
+import { getClientSsrDevConfig } from '../webpack/webpack.client-ssr.config.dev';
+import { getClientAppComponentDevConfig } from '../webpack/webpack.server-client-app-component.config.dev';
+import BaseClientFs from './client-fs/Base';
+import ClientFsDev from './client-fs/ClientFsDev';
+import ClientFsProd from './client-fs/ClientFsProd';
+import BaseController from './controllers/Base';
 
 const IS_DEV = process.env.NODE_ENV === 'development';
 
 export default class Server {
   readonly expressApp: Application
+
   readonly port: number
+
   readonly host: string
+
   readonly serverCompiler?: MultiCompiler
+
   readonly clientFs: BaseClientFs
 
   constructor({ controllers }: {
@@ -40,15 +42,15 @@ export default class Server {
 
       this.expressApp.use(
         WDM(compiler, {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           outputFileSystem: this.clientFs.fs,
-          serverSideRender: true
-        })
+          serverSideRender: true,
+        }),
       );
     } else {
       this.clientFs = new ClientFsProd();
     }
-
 
     this.init();
     if (controllers) {
@@ -70,7 +72,7 @@ export default class Server {
   private middlewares(middleWares: Array<RequestHandler | ErrorRequestHandler>): void {
     const { expressApp } = this;
 
-    middleWares.forEach(middleWare => {
+    middleWares.forEach((middleWare) => {
       expressApp.use(middleWare);
     });
   }
@@ -78,7 +80,7 @@ export default class Server {
   attachControllers(controllers: BaseController[]): void {
     const { expressApp } = this;
 
-    controllers.forEach(controller => {
+    controllers.forEach((controller) => {
       expressApp.use(controller.prefix, controller.router);
     });
   }
@@ -93,7 +95,7 @@ export default class Server {
     const { expressApp } = this;
 
     expressApp.set('view engine', 'twig');
-    expressApp.set('views', `_server/views`);
+    expressApp.set('views', '_server/views');
   }
 
   public start(callback: (app: Application) => void): void {
@@ -103,6 +105,4 @@ export default class Server {
       callback(this.expressApp);
     });
   }
-
 }
-

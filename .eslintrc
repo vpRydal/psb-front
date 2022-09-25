@@ -1,0 +1,92 @@
+{
+  "globals": {
+    "__DEV__": true,
+    "window": true,
+    "document": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+
+  },
+  "root": true,
+  "plugins": [
+    "simple-import-sort",
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "airbnb",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended"
+  ],
+  "rules": {
+    "simple-import-sort/exports": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "import/first": "error",
+    "sort-imports": "off",
+    "simple-import-sort/imports": "off",
+    "max-len": [2, { "code": 140 }],
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "groups": [
+          ["external", "builtin"], "internal", ["sibling", "parent"], "index"
+        ],
+        "pathGroups": [
+          { "pattern": "@*", "group": "internal" }
+        ],
+        "pathGroupsExcludedImportTypes": ["internal"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "jsx-a11y/control-has-associated-label": "off",
+    "jsx-a11y/anchor-has-content": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "no-return-assign": "warn",
+    "@typescript-eslint/no-var-requires": "warn",
+    "import/no-extraneous-dependencies": "warn",
+    "no-param-reassign": "warn",
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "@typescript-eslint/no-empty-interface": "off",
+    "react/function-component-definition": [2, {"namedComponents": "arrow-function", "unnamedComponents": "arrow-function"}],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "alias": {
+        "map": [
+          [ "@client", "./_client" ],
+          [ "@stores", "./_client/data/stores" ],
+          [ "@components", "./_client/components" ],
+          [ "@pages", "./_client/pages" ],
+          [ "@utils", "./_client/utils" ],
+          [ "@data", "./_client/data" ],
+          [ "@services", "./_client/services" ],
+          [ "@ui", "./_client/ui" ],
+          [ "@config", "./_client/config" ],
+          [ "@specs", "./_client/specs" ]
+        ],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}

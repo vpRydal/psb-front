@@ -1,5 +1,9 @@
-import {action, computed, observable, makeObservable} from "mobx";
-import {injectable} from "inversify";
+import { injectable } from 'inversify';
+import {
+  action, computed, makeObservable,
+  observable,
+} from 'mobx';
+import 'reflect-metadata';
 
 @injectable()
 export default class AppStore {
@@ -7,17 +11,16 @@ export default class AppStore {
     counter = 0;
 
     constructor() {
-        makeObservable(this)
+      makeObservable(this);
     }
 
     @computed
     get counterV2() {
-        return this.counter * 2;
+      return this.counter * 2;
     }
 
     @action.bound
     inc() {
-        this.counter++;
+      this.counter += 1;
     }
-
 }

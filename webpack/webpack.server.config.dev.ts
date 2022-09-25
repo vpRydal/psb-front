@@ -1,8 +1,8 @@
-import merge from "webpack-merge";
+import merge from 'webpack-merge';
 
-import webpackOptionServerCommon from "./webpack.server.config.common";
+import webpackOptionServerCommon from './webpack.server.config.common';
 
 export default merge(webpackOptionServerCommon, {
   plugins: [
-  ]
-})
+  ],
+});

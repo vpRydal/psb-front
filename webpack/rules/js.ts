@@ -1,22 +1,25 @@
-import {IS_DEV} from "../constants";
+import { IS_DEV } from '../constants';
 
 export default [
   {
     test: /\.(js|jsx)$/,
     use: [
       {
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
     ],
-    exclude: IS_DEV ? /node_modules/ : []
+    exclude: IS_DEV ? /node_modules/ : [],
   },
   {
     test: /\.(tsx|ts)$/,
     use: [
       {
-        loader: 'babel-loader'
-      }
+        loader: 'babel-loader',
+      },
+      {
+        loader: 'eslint-loader',
+      },
     ],
-    exclude: IS_DEV ? /node_modules/ : []
-  }
-]
+    exclude: IS_DEV ? /node_modules/ : [],
+  },
+];

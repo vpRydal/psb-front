@@ -1,18 +1,16 @@
-import merge from 'webpack-merge'
-import {Configuration} from "webpack";
+import { Configuration } from 'webpack';
+import merge from 'webpack-merge';
 
-import {getClientProdConfig} from "./webpack.client.config.prod";
-import {defaultRootPath, getPath, TWebpackPaths} from "./path";
-
+import { defaultRootPath, getPath, TWebpackPaths } from './path';
+import { getClientProdConfig } from './webpack.client.config.prod';
 
 export function getClientSsrProdConfig(paths: TWebpackPaths): Configuration {
   return merge(getClientProdConfig(paths), {
     output: {
       path: paths.buildClientSsr,
-      publicPath: paths.publicClientPathSsr
-    }
-  })
+      publicPath: paths.publicClientPathSsr,
+    },
+  });
 }
 
 export default getClientSsrProdConfig(getPath(defaultRootPath));
-

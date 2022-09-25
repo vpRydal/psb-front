@@ -1,13 +1,12 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import merge from 'webpack-merge';
 import express from 'express';
-import {Configuration as DevServerConfiguration} from "webpack-dev-server";
-import {Configuration as WebpackConfiguration } from "webpack";
-import path from "path";
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path';
+import { Configuration as WebpackConfiguration } from 'webpack';
+import { Configuration as DevServerConfiguration } from 'webpack-dev-server';
+import merge from 'webpack-merge';
 
+import PATH from './path';
 import common from './webpack.client.config.common';
-import PATH from "./path";
-
 
 const config: WebpackConfiguration & {
   devServer: DevServerConfiguration
@@ -18,17 +17,17 @@ const config: WebpackConfiguration & {
   devServer: {
     historyApiFallback: true,
     setupMiddlewares(middlewares, devServer) {
-      devServer.app?.use('/assets', express.static('public/assets'))
-      return middlewares
+      devServer.app?.use('/assets', express.static('public/assets'));
+      return middlewares;
     },
     port: 3000,
-    hot: true
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(PATH.root, `public/index.html`)
+      template: path.resolve(PATH.root, 'public/index.html'),
     }),
-  ]
+  ],
 };
 
 export default merge(common, config);

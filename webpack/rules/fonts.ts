@@ -4,7 +4,7 @@ export default {
     loader: 'file-loader',
     options: {
       name: '[name].[ext]',
-      outputPath: 'fonts/'
-    }
-  }]
-}
+      outputPath: 'fonts/',
+    },
+  }],
+};
