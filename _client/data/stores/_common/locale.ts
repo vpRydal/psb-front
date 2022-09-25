@@ -19,7 +19,7 @@ export default class LocaleStore {
   static readonly DEFAULT_LOCALES = [Locale.ru, Locale.en];
 
   @observable
-  private _locale: Locale;
+  _locale: Locale;
 
   @observable.shallow
   readonly locales: Locale[];
@@ -31,7 +31,7 @@ export default class LocaleStore {
     makeObservable(this);
     makePersistable(this, {
       name: 'LocaleStore',
-      properties: ['locales'],
+      properties: ['_locale'],
       storage: canUseDOM ? localStorage : undefined,
     });
   }
