@@ -29,16 +29,16 @@ const Info: FC<IProps> = () => {
             type="date"
             id="date"
             value={passenger.formData.birthDate}
-            onChange={(e) => passenger.formData.birthDate = e.target.value}
+            onChange={e => passenger.formData.birthDate = e.target.value}
           />
         </div>
         <div>
           <label htmlFor="">type</label>
-          <input type="text" value={passenger.formData.type} onChange={(e) => passenger.formData.type = e.target.value} />
+          <input type="text" value={passenger.formData.type} onChange={e => passenger.formData.type = e.target.value} />
         </div>
         <div>
           <label htmlFor="">name</label>
-          <input type="text" value={passenger.formData.name} onChange={(e) => passenger.formData.name = e.target.value} />
+          <input type="text" value={passenger.formData.name} onChange={e => passenger.formData.name = e.target.value} />
         </div>
       </form>
     );

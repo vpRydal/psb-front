@@ -5,9 +5,7 @@ import UiStore from '@stores/_common/ui';
 import AppStore from '@stores/App';
 
 const appModule = new ContainerModule(
-  (
-    bind,
-  ) => {
+  bind => {
     bind(AppStore).toSelf().inSingletonScope();
     bind(LocaleStore).toSelf().inSingletonScope();
     bind(UiStore).toSelf().inSingletonScope();

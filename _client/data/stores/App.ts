@@ -3,7 +3,6 @@ import {
   action, computed, makeObservable,
   observable,
 } from 'mobx';
-import 'reflect-metadata';
 
 @injectable()
 export default class AppStore {

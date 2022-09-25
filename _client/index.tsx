@@ -1,5 +1,3 @@
-import 'reflect-metadata';
-
 import { loadableReady } from '@loadable/component';
 import canUseDOM from 'can-use-dom';
 import { createBrowserHistory } from 'history';

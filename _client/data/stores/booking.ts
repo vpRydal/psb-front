@@ -23,8 +23,8 @@ class BookingStore {
       name: 'BookingStore',
       properties: ['passengers'],
       storage: canUseDOM ? localStorage : undefined,
-    }).then((result) => {
-      result.getPersistedStore().then(action((persistStore) => {
+    }).then(result => {
+      result.getPersistedStore().then(action(persistStore => {
         this.passengers = persistStore?.passengers.map((passenger: { formData: any; }) => {
           const model = new PassengerStore();
 
@@ -38,7 +38,7 @@ class BookingStore {
 
   @computed
   get info() {
-    return this.passengers.map((passenger) => passenger.fullInfo);
+    return this.passengers.map(passenger => passenger.fullInfo);
   }
 
   @action
