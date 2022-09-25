@@ -15,6 +15,7 @@ export default {
     '@config': path.resolve(PATH.client, '/config'),
     '@specs': path.resolve(PATH.client, '/specs'),
     '@translations': path.resolve(PATH.client, '/translations'),
+    '@style': path.resolve(PATH.client, '/style'),
   },
   extensions: ['.ts', '.tsx', '.js', '.json', '.scss', '.png', '.jpg', '.gif', '.jpeg'],
 };

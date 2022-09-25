@@ -5,8 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { RouteComponentProps } from 'react-router';
 
 import * as PageStyle from '@components/_common/page-style';
+import Intent from '@specs/ui/intent';
 import Locale from '@specs/ui/locale';
+import { Theme } from '@specs/ui/themes/base';
 import LocaleStore from '@stores/_common/locale';
+import UiStore from '@stores/_common/ui';
+import Button from '@ui/button';
 
 import homePageContainer from './container';
 
@@ -15,6 +19,7 @@ export type IProps = RouteComponentProps<TParams>
 
 const IndexPage: FC<IProps> = () => {
   const locale = useInjection(LocaleStore);
+  const ui = useInjection(UiStore);
   const { t } = useTranslation();
 
   return (
@@ -36,8 +41,10 @@ const IndexPage: FC<IProps> = () => {
             rel="noopener noreferrer"
           />
           <div>
-            <button type="button" onClick={() => locale.set(Locale.ru)}>RU</button>
-            <button type="button" onClick={() => locale.set(Locale.en)}>EN</button>
+            <Button onClick={() => locale.set(Locale.ru)}>RU</Button>
+            <Button onClick={() => locale.set(Locale.en)}>EN</Button>
+            <Button onClick={() => ui.themeName = Theme.DEFAULT} intent={Intent.SECONDARY}>Default theme</Button>
+            <Button onClick={() => ui.themeName = Theme.DARK} intent={Intent.SECONDARY}>Dark theme</Button>
           </div>
         </PageStyle.Header>
       </PageStyle.Page>
