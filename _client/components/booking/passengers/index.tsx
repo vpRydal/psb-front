@@ -5,11 +5,13 @@ import React, { FC } from 'react';
 import BookingStore from '@stores/booking';
 import PassengerStore from '@stores/passenger';
 
-import './Info.module.scss';
+import * as Style from './style';
 
 interface IProps {}
 const Info: FC<IProps> = () => {
   const booking = useInjection(BookingStore);
+
+  // HANDLERS
   function handleAdd() {
     booking.addPassenger();
   }
@@ -17,10 +19,10 @@ const Info: FC<IProps> = () => {
   function renderForm(passenger: PassengerStore, index: number) {
     return (
       <form>
-        <h3>
+        <Style.Title>
           passenger number №
           {index + 1}
-        </h3>
+        </Style.Title>
         <div>
           <label htmlFor="date">birthDate</label>
           <input
@@ -43,17 +45,17 @@ const Info: FC<IProps> = () => {
   }
 
   return (
-    <div>
-      <div style={{ marginBottom: 50 }}>
+    <Style.Wrapper>
+      <Style.Info>
         {booking.info.join(', ')}
-      </div>
+      </Style.Info>
       <div>
         <button onClick={handleAdd} type="button">
           Добавить
         </button>
       </div>
       {booking.passengers.map(renderForm)}
-    </div>
+    </Style.Wrapper>
   );
 };
 

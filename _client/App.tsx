@@ -6,6 +6,8 @@ import Routes from '@client/router';
 import baseContainer from '@data/misc/base-container';
 import RouterUtils from '@utils/router';
 
+import './styles/index.scss';
+
 const App = () => (
   <Provider container={baseContainer}>
     <div>

@@ -40,7 +40,9 @@
     "@loadable/component": "^5.14.1",
     "@loadable/server": "^5.15.1",
     "history": "^4.10.1",
-    "can-use-dom": "^0.1.0"
+    "can-use-dom": "^0.1.0",
+    "styled-components": "^5.3.5",
+    "normalize.css": "^8.0.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
@@ -61,6 +63,7 @@
     "@types/html-webpack-plugin": "^3.2.6",
     "@types/inversify": "^2.0.33",
     "@types/jest": "^26.0.24",
+    "@types/styled-components": "^5.1.26",
     "@types/loadable__component": "5.13.1",
     "@types/loadable__server": "5.12.3",
     "@types/lodash": "^4.14.179",
@@ -80,6 +83,7 @@
     "babel-loader": "^8.2.4",
     "babel-plugin-import": "^1.13.3",
     "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-styled-components": "^2.0.7",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "clean-webpack-plugin": "^4.0.0",
     "compression": "^1.7.4",

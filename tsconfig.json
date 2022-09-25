@@ -34,7 +34,8 @@
       "@data/*": ["data/*"],
       "@services/*": ["services/*"],
       "@ui/*": ["ui/*"],
-      "@config/*": ["config"],
+      "@config": ["config"],
+      "@config/*": ["config/*"],
       "@specs/*": ["specs/*"],
       "@specs": ["specs"]
     }

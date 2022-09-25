@@ -1,5 +1,6 @@
 {
   "plugins": [
+    "babel-plugin-styled-components",
     "@loadable/babel-plugin",
     "@babel/plugin-transform-runtime", // нужен для оптимизации импортом мелких фрагметов
     [

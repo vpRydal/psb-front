@@ -3,9 +3,11 @@ import { Request, Response } from 'express';
 import React, { FC } from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
+import { ServerStyleSheet } from 'styled-components';
 import { Stats } from 'webpack';
 
 import AppProd from '@client/App';
+import { set } from '@config';
 
 import BaseController from '../controllers/Base';
 
@@ -35,25 +37,31 @@ export default function render(req: Request, res: Response, viewName: string, co
     App = getAppComponent(clientAppComponentStats);
   }
 
+  set({ isServer: true });
+
   const clientExtractor = new ChunkExtractor({
     stats: controller.server.clientFs.getLoadableStatsFile(),
     entrypoints: ['main', controller.chunkName],
   });
 
+  const sheet = new ServerStyleSheet();
+  const html = renderToString(sheet.collectStyles((
+    <>
+      {clientExtractor.getLinkElements()}
+      {clientExtractor.getStyleElements()}
+      {clientExtractor.getScriptElements()}
+      <div id="root">
+        <ChunkExtractorManager extractor={clientExtractor}>
+          <StaticRouter location={req.path}>
+            <App />
+          </StaticRouter>
+        </ChunkExtractorManager>
+      </div>
+    </>
+  )));
+
   res.status(200).render(viewName, {
-    body: renderToString((
-      <>
-        {clientExtractor.getLinkElements()}
-        {clientExtractor.getStyleElements()}
-        {clientExtractor.getScriptElements()}
-        <div id="root">
-          <ChunkExtractorManager extractor={clientExtractor}>
-            <StaticRouter location={req.path}>
-              <App />
-            </StaticRouter>
-          </ChunkExtractorManager>
-        </div>
-      </>
-    )),
+    body: html,
+    styleTags: sheet.getStyleTags(),
   });
 }

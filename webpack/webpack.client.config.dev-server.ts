@@ -16,6 +16,12 @@ const config: WebpackConfiguration & {
   },
   devServer: {
     historyApiFallback: true,
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+      },
+    },
     setupMiddlewares(middlewares, devServer) {
       devServer.app?.use('/assets', express.static('public/assets'));
       return middlewares;

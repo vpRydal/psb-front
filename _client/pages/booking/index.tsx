@@ -4,6 +4,7 @@ import React, { FC } from 'react';
 import { RouteComponentProps } from 'react-router';
 import { useLocation, withRouter } from 'react-router-dom';
 
+import * as PageStyle from '@components/_common/page-style';
 import Info from '@components/booking/passengers';
 import AppStore from '@stores/App';
 
@@ -18,9 +19,9 @@ const Index: FC<IProps> = () => {
 
   return (
     <Provider container={bookingPageContainer} standalone>
-      <div className="App">
-        <header className="App-header">
-          <img src="/assets/images/logo192.png" className="App-logo" alt="logo" />
+      <PageStyle.Page>
+        <PageStyle.Header>
+          <PageStyle.Logo src="/assets/images/logo192.png" className="App-logo" alt="logo" />
           <h1>
             Its OTHER PAGE asdsd (
             {location.pathname}
@@ -33,8 +34,7 @@ const Index: FC<IProps> = () => {
             {' '}
             and save to reload.
           </p>
-          <a
-            className="App-link"
+          <PageStyle.Link
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
@@ -46,13 +46,13 @@ const Index: FC<IProps> = () => {
             +
             {' '}
             {app.counterV2}
-          </a>
+          </PageStyle.Link>
           <Info />
           <div>
             <button onClick={app.inc} type="button">+1</button>
           </div>
-        </header>
-      </div>
+        </PageStyle.Header>
+      </PageStyle.Page>
     </Provider>
   );
 };

@@ -3,6 +3,8 @@ import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import { RouteComponentProps } from 'react-router';
 
+import * as PageStyle from '@components/_common/page-style';
+
 import homePageContainer from './container';
 
 export interface TParams {}
@@ -10,9 +12,9 @@ export type IProps = RouteComponentProps<TParams>
 
 const IndexPage: FC<IProps> = () => (
   <Provider container={homePageContainer} standalone>
-    <div className="App">
-      <header className="App-header">
-        <img src="/assets/images/logo192.png" className="App-logo" alt="logo" />
+    <PageStyle.Page>
+      <PageStyle.Header>
+        <PageStyle.Logo src="/assets/images/logo192.png" alt="logo" />
         <p>
           Edit
           {' '}
@@ -20,15 +22,14 @@ const IndexPage: FC<IProps> = () => (
           {' '}
           and save to reload.
         </p>
-        <a
-          className="App-link"
+        <PageStyle.Link
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         />
         <div />
-      </header>
-    </div>
+      </PageStyle.Header>
+    </PageStyle.Page>
   </Provider>
 );
 
