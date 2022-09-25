@@ -1,5 +1,7 @@
+import canUseDOM from 'can-use-dom';
 import i18next from 'i18next';
 import { Provider, useInjection } from 'inversify-react';
+import { throttle } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import React, { FC, memo, useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
@@ -20,6 +22,16 @@ const InitStoresHoc: FC = observer(({ children }) => {
 
   useEffect(() => {
     locale.applyLocale();
+
+    const handleResize = throttle(() => ui.applySize(window.innerWidth), 200);
+
+    if (canUseDOM) {
+      window.addEventListener('resize', handleResize);
+    }
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
