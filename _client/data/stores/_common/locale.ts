@@ -1,6 +1,5 @@
 import canUseDOM from 'can-use-dom';
 import i18next from 'i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 import { injectable } from 'inversify';
 import {
   action, computed, makeObservable, observable,
@@ -9,8 +8,6 @@ import { makePersistable } from 'mobx-persist-store';
 import moment from 'moment';
 
 import Locale from '@specs/ui/locale';
-import en from '@translations/en/translation.json';
-import ru from '@translations/ru/translation.json';
 
 @injectable()
 export default class LocaleStore {
@@ -53,27 +50,6 @@ export default class LocaleStore {
 
   @action
   async applyLocale() {
-    await i18next
-      .use(LanguageDetector)
-      .init({
-        lng: this._locale,
-        returnEmptyString: false,
-        keySeparator: false,
-        nsSeparator: ':::',
-        debug: false,
-        fallbackLng: Locale.ru,
-        pluralSeparator: '____',
-
-        interpolation: { escapeValue: false }, // React already does escaping
-        resources: {
-          [Locale.ru]: {
-            translation: ru,
-          },
-          [Locale.en]: {
-            translation: en,
-          },
-        },
-      });
     // Автоматическое определение языка
     const localeDetected = i18next.language || window.localStorage.i18nextLng;
     try {

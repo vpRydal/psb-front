@@ -11,9 +11,7 @@ export const ROUTES = {
 } as const;
 
 const renderPage = (Page: LoadableComponent<any>) => (
-  <Suspense fallback={null}>
-    <Page />
-  </Suspense>
+  <Page />
 );
 
 const Routes = () => {

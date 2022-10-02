@@ -38,6 +38,7 @@
       "@config/*": ["config/*"],
       "@specs/*": ["specs/*"],
       "@translations/*": ["translations/*"],
+      "@translations": ["translations"],
       "@style/*": ["style/*"],
       "@specs": ["specs"]
     }

@@ -6,14 +6,15 @@ import { StaticRouter } from 'react-router-dom';
 import { ServerStyleSheet } from 'styled-components';
 import { Stats } from 'webpack';
 
-import AppProd from '@client/App';
+import AppProd, { Props } from '@client/App';
 import { set } from '@config';
+import i18next, { translatorPromise } from '@translations';
 
 import BaseController from '../controllers/Base';
 
 function getAppComponent(stats: Stats): FC {
   const { assets } = stats.compilation;
-  const assetIndex = Object.keys(assets).findIndex((assetName) => assetName.includes('.js'));
+  const assetIndex = Object.keys(assets).findIndex(assetName => assetName.includes('.js'));
   const { outputPath } = stats.compilation.compiler;
   const outputFs = stats.compilation.compiler.outputFileSystem;
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -28,7 +29,7 @@ function getAppComponent(stats: Stats): FC {
 }
 
 export default function render(req: Request, res: Response, viewName: string, controller: BaseController) {
-  let App: FC = AppProd;
+  let App: FC<Props> = AppProd;
 
   if (controller.server.serverCompiler) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -44,24 +45,26 @@ export default function render(req: Request, res: Response, viewName: string, co
     entrypoints: ['main', controller.chunkName],
   });
 
-  const sheet = new ServerStyleSheet();
-  const html = renderToString(sheet.collectStyles((
-    <>
-      {clientExtractor.getLinkElements()}
-      {clientExtractor.getStyleElements()}
-      {clientExtractor.getScriptElements()}
-      <div id="root">
-        <ChunkExtractorManager extractor={clientExtractor}>
-          <StaticRouter location={req.path}>
-            <App />
-          </StaticRouter>
-        </ChunkExtractorManager>
-      </div>
-    </>
-  )));
+  translatorPromise.then(() => {
+    const sheet = new ServerStyleSheet();
+    const html = renderToString(sheet.collectStyles((
+      <>
+        {clientExtractor.getLinkElements()}
+        {clientExtractor.getStyleElements()}
+        {clientExtractor.getScriptElements()}
+        <div id="root">
+          <ChunkExtractorManager extractor={clientExtractor}>
+            <StaticRouter location={req.path}>
+              <App i18n={i18next} />
+            </StaticRouter>
+          </ChunkExtractorManager>
+        </div>
+      </>
+    )));
 
-  res.status(200).render(viewName, {
-    body: html,
-    styleTags: sheet.getStyleTags(),
+    res.status(200).render(viewName, {
+      body: html,
+      styleTags: sheet.getStyleTags(),
+    });
   });
 }
