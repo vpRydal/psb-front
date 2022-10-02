@@ -5,7 +5,6 @@ import commonPlugins from './common-plugins';
 import { IS_DEV } from './constants';
 import { defaultRootPath, getPath, TWebpackPaths } from './path';
 import resolve from './resolve';
-import { getModuleCssRules } from './rules/cssModules';
 
 const localPaths = getPath(defaultRootPath);
 
@@ -27,13 +26,12 @@ export function getServerCommonConfig(paths: TWebpackPaths): Configuration {
     module: {
       rules: [
         { test: /(png|jpg|svg)/, loader: 'ignore-loader' },
-        { test: /\.(scss|css)/, loader: 'ignore-loader', exclude: /\.module\./ },
+        { test: /\.(scss|css)/, loader: 'ignore-loader' },
         {
           test: /\.(tsx|ts)$/,
           use: 'babel-loader',
           exclude: IS_DEV ? /node_modules/ : [],
         },
-        getModuleCssRules(localPaths, true),
       ],
     },
     plugins: [

@@ -5,16 +5,16 @@ import { getPath, TWebpackPaths } from '../path';
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-export function getCssRules(paths: TWebpackPaths) {
+export function getCssRules(paths: TWebpackPaths, isSsr?: boolean) {
   return {
     test: /\.(scss|css)$/,
     use: [
-      ...(IS_DEV ? [
+      ...((IS_DEV && !isSsr) ? [
         {
           loader: require.resolve('style-loader'),
         },
       ] : []),
-      ...(!IS_DEV ? [
+      ...(isSsr || !IS_DEV ? [
         {
           loader: MiniCssExtractPlugin.loader,
         },
