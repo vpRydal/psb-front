@@ -8,8 +8,8 @@ import * as PageStyle from '@components/_common/page-style';
 import Intent from '@specs/ui/intent';
 import Locale from '@specs/ui/locale';
 import { Theme } from '@specs/ui/themes/base';
-import LocaleStore from '@stores/_common/locale';
-import UiStore from '@stores/_common/ui';
+import LocaleStore from '@stores/_misc/locale';
+import UiStore from '@stores/_misc/ui';
 import Button from '@ui/button';
 
 import homePageContainer from './container';

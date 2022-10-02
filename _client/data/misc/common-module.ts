@@ -1,7 +1,7 @@
 import { ContainerModule } from 'inversify';
 
-import LocaleStore from '@stores/_common/locale';
-import UiStore from '@stores/_common/ui';
+import LocaleStore from '@stores/_misc/locale';
+import UiStore from '@stores/_misc/ui';
 import AppStore from '@stores/App';
 
 const appModule = new ContainerModule(

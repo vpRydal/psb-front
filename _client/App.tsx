@@ -13,8 +13,8 @@ import { ThemeProvider } from 'styled-components';
 
 import Routes from '@client/router';
 import baseContainer from '@data/misc/base-container';
-import LocaleStore from '@stores/_common/locale';
-import UiStore from '@stores/_common/ui';
+import LocaleStore from '@stores/_misc/locale';
+import UiStore from '@stores/_misc/ui';
 import RouterUtils from '@utils/router';
 
 import './styles/index.scss';

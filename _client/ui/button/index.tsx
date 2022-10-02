@@ -10,7 +10,7 @@ import Icon from '@icons';
 import RefreshIcons from '@icons/refresh.svg';
 import Size from '@specs/_common/size';
 import Intent from '@specs/ui/intent';
-import UiStore from '@stores/_common/ui';
+import UiStore from '@stores/_misc/ui';
 
 import * as Style from './style';
 
