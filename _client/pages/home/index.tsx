@@ -1,6 +1,6 @@
 import { Provider, useInjection } from 'inversify-react';
 import { observer } from 'mobx-react-lite';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RouteComponentProps } from 'react-router';
 
@@ -21,6 +21,7 @@ const IndexPage: FC<IProps> = () => {
   const locale = useInjection(LocaleStore);
   const ui = useInjection(UiStore);
   const { t } = useTranslation();
+  const [loading, setLoading] = useState(false);
 
   return (
     <Provider container={homePageContainer} standalone>
@@ -41,8 +42,9 @@ const IndexPage: FC<IProps> = () => {
             rel="noopener noreferrer"
           />
           <div>
-            <Button onClick={() => locale.set(Locale.ru)}>RU</Button>
+            <Button isLoading={loading} onClick={() => locale.set(Locale.ru)}>RU RU RU RU RU</Button>
             <Button onClick={() => locale.set(Locale.en)}>EN</Button>
+            <Button intent={Intent.DANGER} onClick={() => setLoading(!loading)}>Loading</Button>
             <Button onClick={() => ui.themeName = Theme.DEFAULT} intent={Intent.SECONDARY}>Default theme</Button>
             <Button onClick={() => ui.themeName = Theme.DARK} intent={Intent.SECONDARY}>Dark theme</Button>
           </div>

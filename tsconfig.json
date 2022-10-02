@@ -40,7 +40,9 @@
       "@translations/*": ["translations/*"],
       "@translations": ["translations"],
       "@style/*": ["style/*"],
-      "@specs": ["specs"]
+      "@specs": ["specs"],
+      "@icons/*": ["ui/_misc/icons/*"],
+      "@icons": ["ui/_misc/icons"]
     }
   }
 }

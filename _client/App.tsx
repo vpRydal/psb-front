@@ -43,14 +43,10 @@ const InitStoresHoc: FC<Props> = observer(({ children, i18n: i18nProp }) => {
     };
   }, []);
 
-  const ExtendedApp = () => (
+  return (
     <ThemeProvider theme={ui.theme}>
       {children}
     </ThemeProvider>
-  );
-
-  return (
-    <ExtendedApp />
   );
 });
 

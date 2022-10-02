@@ -1,4 +1,6 @@
-import Size from '@specs/_common/size';
+import { SizeMap } from '@client/styles/specs';
+import { ButtonTheme } from '@client/styles/themes/components/button';
+import { Dictionary } from '@specs/_common/dictionary';
 import Intent from '@specs/ui/intent';
 
 export enum Theme {
@@ -6,12 +8,28 @@ export enum Theme {
   DARK = 'DARK',
 }
 
-interface IBaseTheme {
+export type ThemeBasePart = {
   name: Theme,
   color: {
-    intents: { [key in Intent]: string }
+    intents: Dictionary<Intent, string>,
+    font: Dictionary<Intent.PRIMARY | Intent.SECONDARY, string>
   },
-  appSize: { [key in Size]: number }
+  appSize: SizeMap<number>,
+  fontSize: SizeMap,
+  iconSize: SizeMap,
+  spacing: SizeMap,
+  animationDuration: string
+  disableOpacity: number
+}
+
+export type ThemeComponentsPart = {
+  components: {
+    button: ButtonTheme
+  }
+}
+
+interface IBaseTheme extends ThemeBasePart, ThemeComponentsPart {
+  name: Theme
 }
 
 export default IBaseTheme;

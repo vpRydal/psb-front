@@ -26,7 +26,8 @@
           "@config": "./_client/config",
           "@specs": "./_client/specs",
           "@translations": "./_client/translations",
-          "@style": "./_client/style"
+          "@style": "./_client/style",
+          "@icons": "./_client/ui/_misc/icons"
         }
       }
     ]

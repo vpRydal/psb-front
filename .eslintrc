@@ -92,7 +92,8 @@
           [ "@config", "./_client/config" ],
           [ "@specs", "./_client/specs" ],
           [ "@style", "./_client/style" ],
-          [ "@translations", "./_client/translations" ]
+          [ "@translations", "./_client/translations" ],
+          [ "@icons", "./_client/ui/_misc/icons" ]
         ],
         "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
       }

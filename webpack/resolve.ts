@@ -16,6 +16,7 @@ export default {
     '@specs': path.resolve(PATH.client, '/specs'),
     '@translations': path.resolve(PATH.client, '/translations'),
     '@style': path.resolve(PATH.client, '/style'),
+    '@icons': path.resolve(PATH.client, '/ui/_misc/icons'),
   },
   extensions: ['.ts', '.tsx', '.js', '.json', '.scss', '.png', '.jpg', '.gif', '.jpeg'],
 };

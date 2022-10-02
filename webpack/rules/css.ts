@@ -24,7 +24,7 @@ export function getCssRules(paths: TWebpackPaths, isSsr?: boolean) {
       },
       {
         loader: 'postcss-loader',
-        options: { sourceMap: !IS_DEV },
+        options: { config: { path: path.join(paths.root, 'postcss.config.js') }, sourceMap: !IS_DEV },
       },
       {
         loader: 'sass-loader',

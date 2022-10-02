@@ -10,6 +10,7 @@ import { getCssRules } from './rules/css';
 import { getModuleCssRules } from './rules/cssModules';
 import fontsRule from './rules/fonts';
 import jsRule from './rules/js';
+import svg from './rules/svg';
 
 const SensitivePath = require('case-sensitive-paths-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -39,6 +40,7 @@ export function getCommonConfig(paths: TWebpackPaths): Configuration {
         getCssRules(paths),
         getModuleCssRules(paths),
         fontsRule,
+        svg,
       ],
     },
     optimization: {
