@@ -6,7 +6,10 @@ import { useLocation, withRouter } from 'react-router-dom';
 
 import * as PageStyle from '@components/_common/page-style';
 import Info from '@components/booking/passengers';
+import Locale from '@specs/ui/locale';
+import LocaleStore from '@stores/_misc/locale';
 import AppStore from '@stores/App';
+import Button from '@ui/button';
 
 import bookingPageContainer from './conatiner';
 
@@ -15,6 +18,7 @@ export interface IProps extends RouteComponentProps<TParams>{}
 
 const Index: FC<IProps> = () => {
   const app = useInjection(AppStore);
+  const locale = useInjection(LocaleStore);
   const location = useLocation();
 
   return (
@@ -27,6 +31,8 @@ const Index: FC<IProps> = () => {
             {location.pathname}
             )
           </h1>
+          <Button onClick={() => locale.set(Locale.ru)}>RU RU RU RU RU</Button>
+          <Button onClick={() => locale.set(Locale.en)}>EN</Button>
           <p>
             Edit
             {' '}

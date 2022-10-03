@@ -17,6 +17,8 @@ const Info: FC<IProps> = () => {
   }
 
   function renderForm(passenger: PassengerStore, index: number) {
+    const { name, type, birthDate } = passenger.form.fields;
+
     return (
       <form>
         <Style.Title>
@@ -28,18 +30,28 @@ const Info: FC<IProps> = () => {
           <input
             type="date"
             id="date"
-            value={passenger.formData.birthDate}
-            onChange={e => passenger.formData.birthDate = e.target.value}
+            value={birthDate.value}
+            onChange={e => birthDate.set(e.target.value)}
           />
         </div>
         <div>
           <label htmlFor="">type</label>
-          <input type="text" value={passenger.formData.type} onChange={e => passenger.formData.type = e.target.value} />
+          <input type="text" value={type.value} onChange={e => type.set(e.target.value)} />
         </div>
         <div>
           <label htmlFor="">name</label>
-          <input type="text" value={passenger.formData.name} onChange={e => passenger.formData.name = e.target.value} />
+          <input
+            type="text"
+            value={name.value}
+            onChange={e => {
+              name.set(e.target.value);
+              name.validate();
+            }}
+          />
         </div>
+        <button onClick={() => passenger.form.validate()} type="button">
+          Validate
+        </button>
       </form>
     );
   }

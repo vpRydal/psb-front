@@ -27,7 +27,8 @@
           "@specs": "./_client/specs",
           "@translations": "./_client/translations",
           "@style": "./_client/style",
-          "@icons": "./_client/ui/_misc/icons"
+          "@icons": "./_client/ui/_misc/icons",
+          "@hooks": "./_client/hooks"
         }
       }
     ]

@@ -17,6 +17,7 @@ export default {
     '@translations': path.resolve(PATH.client, '/translations'),
     '@style': path.resolve(PATH.client, '/style'),
     '@icons': path.resolve(PATH.client, '/ui/_misc/icons'),
+    '@hooks': path.resolve(PATH.client, '/hooks'),
   },
   extensions: ['.ts', '.tsx', '.js', '.json', '.scss', '.png', '.jpg', '.gif', '.jpeg'],
 };

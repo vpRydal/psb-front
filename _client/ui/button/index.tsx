@@ -1,6 +1,7 @@
 import { useInjection } from 'inversify-react';
+import { observer } from 'mobx-react-lite';
 import { stripUnit } from 'polished';
-import React, { ButtonHTMLAttributes, FC, memo } from 'react';
+import React, { ButtonHTMLAttributes, FC } from 'react';
 import {
   useChain, useSpring, useSpringRef, useTransition,
 } from 'react-spring';
@@ -11,6 +12,7 @@ import RefreshIcons from '@icons/refresh.svg';
 import Size from '@specs/_common/size';
 import Intent from '@specs/ui/intent';
 import UiStore from '@stores/_misc/ui';
+import Loader from '@ui/_misc/loader';
 
 import * as Style from './style';
 
@@ -58,7 +60,7 @@ const Button: FC<IButtonProps> = props => {
       {loaderOpacityTransition((styles, item) => item && (
         <>
           <Style.LoadingIconWrapper style={{ ...styles, ...loaderWithAnimationStyles }}>
-            <Icon Icon={RefreshIcons} size={size} />
+            <Loader size={size} />
           </Style.LoadingIconWrapper>
         </>
       ))}
@@ -74,4 +76,4 @@ Button.defaultProps = {
   isDisabled: false,
 };
 
-export default memo(Button);
+export default observer(Button);

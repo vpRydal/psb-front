@@ -1,22 +1,12 @@
 import { darken, lighten } from 'polished';
 import { animated } from 'react-spring';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { IntendedProps, SizedProps } from '@client/styles/specs';
 import Intent from '@specs/ui/intent';
 
-const rotateAnimation = keyframes`
-  from {
-    transform: rotate(-360deg);
-  }
-  to {
-    transform: rotate(0);
-  }
-`;
-
 export const LoadingIconWrapper = styled(animated.div)(() => css`
   display: inline-block;
-  animation: ${rotateAnimation} infinite 1.5s;
 `);
 
 export const ContentWrapper = styled.div(() => css`
