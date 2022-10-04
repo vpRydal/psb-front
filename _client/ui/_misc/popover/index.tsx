@@ -1,6 +1,6 @@
+import classNames from 'classnames';
 import { stripUnit } from 'polished';
 import React, {
-  CSSProperties,
   ElementType, FC, memo, ReactNode, useEffect, useRef, useState,
 } from 'react';
 import { createPortal } from 'react-dom';
@@ -14,6 +14,7 @@ import * as Styled from './style';
 
 export interface PopoverProps {
   children: ReactNode;
+  className?: string;
   Content: ElementType;
   placement?: Placement;
   showOnHover?: boolean;
@@ -22,13 +23,15 @@ export interface PopoverProps {
 }
 const Popover: FC<PopoverProps> = props => {
   const {
-    children, Content, placement, showOnHover, show: propsShow, showArrow,
+    children, Content, placement, showOnHover, show: propsShow, showArrow, className,
   } = props;
   const theme = useTheme();
   const targetWrapperRef = useRef<HTMLDivElement>(null);
   const contentWrapperRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<HTMLDivElement>(null);
-  const { styles, attributes } = usePopper(targetWrapperRef.current, contentWrapperRef.current, {
+  const {
+    styles, attributes, update,
+  } = usePopper(targetWrapperRef.current, contentWrapperRef.current, {
     placement,
     modifiers: [
       { name: 'offset', options: { offset: [0, (showArrow ? Number(stripUnit(theme.components.popover.arrowSize)) : 0)] } },
@@ -50,9 +53,37 @@ const Popover: FC<PopoverProps> = props => {
     config: { duration: 200 },
   }));
 
+  // HELPERS
+  function updatePopper() {
+    if (update) {
+      update();
+    }
+  }
+
+  // HANDLERS
+  function handleMouseEnter() {
+    setShow(true);
+  }
+
+  function handleMouseLeave() {
+    setShow(false);
+  }
+
+  // EFFECTS
   useEffect(() => {
     if (isShowed) {
-      showingStylesApi({ display: 'block', opacity: 1 });
+      showingStylesApi({
+        to: async next => {
+          await next({ display: 'block' });
+          await new Promise(resolve => {
+            setTimeout(() => {
+              updatePopper();
+              resolve({});
+            }, 10);
+          });
+          await next({ opacity: 1 });
+        },
+      });
     } else {
       showingStylesApi({
         to: async next => {
@@ -63,14 +94,7 @@ const Popover: FC<PopoverProps> = props => {
     }
   }, [isShowed]);
 
-  // HANDLERS
-  function handleMouseEnter() {
-    setShow(true);
-  }
-
-  function handleMouseLeave() {
-    setShow(false);
-  }
+  useEffect(updatePopper, [Content]);
 
   useEffect(() => {
     if (!targetWrapperRef.current) {
@@ -97,14 +121,14 @@ const Popover: FC<PopoverProps> = props => {
 
   return (
     <>
-      <Styled.TargetWrapper ref={targetWrapperRef}>
+      <Styled.TargetWrapper ref={targetWrapperRef} className={classNames(className, 'popover-target-wrapper')}>
         {children}
       </Styled.TargetWrapper>
       {createPortal(
         <Styled.ContentWrapper
-          show={isShowed}
+          className={classNames(className, 'popover-content-wrapper')}
           ref={contentWrapperRef}
-          style={{ ...styles.popper, ...showingStyles as unknown as CSSProperties }}
+          style={{ ...showingStyles, ...styles.popper }}
           {...attributes.popper}
         >
           <Content />

@@ -1,6 +1,6 @@
 import { ThemeBasePart } from '@specs/ui/themes/base';
 
-export type PopoverColorTheme = {
+export type PopoverTheme = {
   backgroundColor: string,
   arrowColor: string,
   arrowSize: string,
@@ -9,7 +9,7 @@ export type PopoverColorTheme = {
   boxShadow: string,
 }
 
-const popoverTheme = (theme: ThemeBasePart): PopoverColorTheme => ({
+const popoverTheme = (theme: ThemeBasePart): PopoverTheme => ({
   backgroundColor: '#ffffff',
   arrowColor: '#ffffff',
   arrowSize: '8px',

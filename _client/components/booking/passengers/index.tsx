@@ -4,6 +4,8 @@ import React, { FC } from 'react';
 
 import BookingStore from '@stores/booking';
 import PassengerStore from '@stores/passenger';
+import FormFieldContainer from '@ui/form-field-container';
+import { InputsGrid } from '@ui/inputs-grid';
 
 import * as Style from './style';
 
@@ -20,35 +22,34 @@ const Info: FC<IProps> = () => {
     const { name, type, birthDate } = passenger.form.fields;
 
     return (
-      <form>
+      <form style={{ maxWidth: 500, display: 'block', margin: '0 auto' }}>
         <Style.Title>
           passenger number №
           {index + 1}
         </Style.Title>
-        <div>
-          <label htmlFor="date">birthDate</label>
-          <input
-            type="date"
-            id="date"
-            value={birthDate.value}
-            onChange={e => birthDate.set(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="">type</label>
-          <input type="text" value={type.value} onChange={e => type.set(e.target.value)} />
-        </div>
-        <div>
-          <label htmlFor="">name</label>
-          <input
-            type="text"
-            value={name.value}
-            onChange={e => {
-              name.set(e.target.value);
-              name.validate();
-            }}
-          />
-        </div>
+        <InputsGrid colsDesktop={3}>
+          <FormFieldContainer field={birthDate} label="birthDate">
+            <input
+              type="date"
+              id="date"
+              value={birthDate.value}
+              onChange={e => birthDate.set(e.target.value)}
+            />
+          </FormFieldContainer>
+          <FormFieldContainer field={type} label="type">
+            <input type="text" value={type.value} onChange={e => type.set(e.target.value)} />
+          </FormFieldContainer>
+          <FormFieldContainer field={name} label="name">
+            <input
+              type="text"
+              value={name.value}
+              onChange={e => {
+                name.set(e.target.value);
+                name.validate();
+              }}
+            />
+          </FormFieldContainer>
+        </InputsGrid>
         <button onClick={() => passenger.form.validate()} type="button">
           Validate
         </button>

@@ -6,13 +6,12 @@ export const TargetWrapper = styled.div(() => ({
   display: 'inline',
 }));
 
-const arrowSize = '8px';
 export const Arrow = styled.span(({ theme }) => css`
 
   &, &:before {
     position: absolute;
-    width: ${arrowSize};
-    height: ${arrowSize};
+    width: ${theme.components.popover.arrowSize};
+    height: ${theme.components.popover.arrowSize};
     z-index: -1;
   }
 
@@ -23,26 +22,26 @@ export const Arrow = styled.span(({ theme }) => css`
   }
 `);
 
-export const ContentWrapper = styled(animated.div)<{ show: boolean }>(({ show, theme }) => css`
+export const ContentWrapper = styled(animated.div)(({ theme }) => css`
   max-width: 70%;
   background-color: ${theme.components.popover.backgroundColor};
   padding: ${theme.components.popover.padding};
   border-radius: ${theme.components.popover.borderRadius};
   box-shadow: ${theme.components.popover.boxShadow};
 
-    &[data-popper-placement^='top'] > ${Arrow} {
+    &[data-popper-placement^='top'] ${Arrow} {
       bottom: ${math(`-${theme.components.popover.arrowSize} / 2`)};
     }
 
-    &[data-popper-placement^='bottom']  > ${Arrow} {
+    &[data-popper-placement^='bottom'] ${Arrow} {
       top: ${math(`-${theme.components.popover.arrowSize} / 2`)};
     }
 
-    &[data-popper-placement^='left'] > ${Arrow} {
+    &[data-popper-placement^='left'] ${Arrow} {
       right: ${math(`-${theme.components.popover.arrowSize} / 2`)};
     }
 
-    &[data-popper-placement^='right'] > ${Arrow} {
+    &[data-popper-placement^='right'] ${Arrow} {
       left: ${math(`-${theme.components.popover.arrowSize} / 2`)};
     }
 `);

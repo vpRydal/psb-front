@@ -1,5 +1,6 @@
 import buttonTheme from '@client/styles/themes/components/button';
 import popoverTheme from '@client/styles/themes/components/popover';
+import tooltipTheme from '@client/styles/themes/components/tooltip';
 import Size from '@specs/_common/size';
 import Intent from '@specs/ui/intent';
 import IBaseTheme, { Theme, ThemeBasePart, ThemeComponentsPart } from '@specs/ui/themes/base';
@@ -55,6 +56,7 @@ const componentsThemePart: ThemeComponentsPart = {
   components: {
     button: buttonTheme(baseThemePart),
     popover: popoverTheme(baseThemePart),
+    tooltip: tooltipTheme(baseThemePart),
   },
 };
 

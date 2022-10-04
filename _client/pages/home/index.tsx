@@ -49,7 +49,7 @@ const IndexPage: FC<IProps> = () => {
                   asd asd asd asd xcv fgh dfghdfghrty fhg dfgh tityuityui hjk ghjk ghjkuyio
                 </div>
               )}
-              showOnHover
+              show
               showArrow
             >
               <Button isLoading={loading} onClick={() => locale.set(Locale.ru)}>RU RU RU RU RU</Button>
