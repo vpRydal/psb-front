@@ -1,7 +1,7 @@
-import isArray from "lodash/isArray";
-import {isFunction} from "lodash";
+import { isFunction } from 'lodash';
+import isArray from 'lodash/isArray';
 
-export enum TransformEvents {
+export enum TransformEvent {
   /** Вызывается перед валидацией */
   VALIDATE = 'validate',
   /** Вызывается в момент изменения значения */
@@ -10,49 +10,56 @@ export enum TransformEvents {
 /** По умолчанию применяется трансформация при валидации, использовать только её
  * Трансформация, при изменении сделана на крайний случай
  */
-export type TFieldValueTransformerStoreOptions <V extends any> = {
-  [key in TransformEvents]?: ((value: V) => V) | Array<(value: V) => V>
+export type FieldValueTransformerStoreOptions<V> = {
+  [key in TransformEvent]?: ((value: V) => V) | Array<(value: V) => V>
 } | ((value: V) => V) | Array<(value: V) => V>
 
-export default class FieldValueTransformerStore <V extends any> {
-  constructor(protected _transformers?: TFieldValueTransformerStoreOptions<V>) {
+export default class FieldValueTransformerStore <V> {
+  constructor(protected _transformers?: FieldValueTransformerStoreOptions<V>) {
   }
 
-  protected getTransformers(event: TransformEvents): ((value: V) => V) | Array<(value: V) => V> {
-    return ((isArray(this._transformers) || isFunction(this._transformers)) && event === TransformEvents.VALIDATE) ? this._transformers : this._transformers?.[event]
+  protected getTransformers(event: TransformEvent): ((value: V) => V) | Array<(value: V) => V> | undefined {
+    if ((isArray(this._transformers) || isFunction(this._transformers)) && event === TransformEvent.VALIDATE) {
+      return this._transformers;
+    }
+
+    if (!isFunction(this._transformers) && !isArray(this._transformers)) {
+      return this._transformers?.[event];
+    }
+    return undefined;
   }
 
-  protected hasTransformer(event: TransformEvents): boolean {
-    const fc = this.getTransformers(event)
+  protected hasTransformer(event: TransformEvent): boolean {
+    const fc = this.getTransformers(event);
 
-    return isArray(fc) ? fc.length > 0 : !!fc
+    return isArray(fc) ? fc.length > 0 : !!fc;
   }
 
   get hasValidateTransformer(): boolean {
-    return this.hasTransformer(TransformEvents.VALIDATE)
+    return this.hasTransformer(TransformEvent.VALIDATE);
   }
 
   get hasChangeTransformer(): boolean {
-    return this.hasTransformer(TransformEvents.CHANGE)
+    return this.hasTransformer(TransformEvent.CHANGE);
   }
 
-  protected makeTransform(event: TransformEvents, value: V): V {
-    const fc = this.getTransformers(event)
+  protected makeTransform(event: TransformEvent, value: V): V {
+    const fc = this.getTransformers(event);
 
     if (isArray(fc)) {
-      return fc.reduce((acc, _fc) => _fc(acc), value)
-    } else if (fc) {
-      return fc(value)
+      return fc.reduce((acc, _fc) => _fc(acc), value);
+    } if (fc) {
+      return fc(value);
     }
 
-    return value
+    return value;
   }
 
   makeTransformOnValidate(value: V): V {
-    return this.makeTransform(TransformEvents.VALIDATE, value)
+    return this.makeTransform(TransformEvent.VALIDATE, value);
   }
 
   makeTransformOnChange(value: V): V {
-    return this.makeTransform(TransformEvents.CHANGE, value)
+    return this.makeTransform(TransformEvent.CHANGE, value);
   }
 }

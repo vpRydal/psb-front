@@ -28,7 +28,7 @@ class BookingStore {
         this.passengers = persistStore?.passengers.map((passenger: { formData: any; }) => {
           const model = new PassengerStore();
 
-          model.formData = clone(passenger.formData);
+          console.log(passenger.formData);
 
           return model;
         });

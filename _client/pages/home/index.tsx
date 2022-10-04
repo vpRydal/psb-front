@@ -10,6 +10,7 @@ import Locale from '@specs/ui/locale';
 import { Theme } from '@specs/ui/themes/base';
 import LocaleStore from '@stores/_misc/locale';
 import UiStore from '@stores/_misc/ui';
+import Popover from '@ui/_misc/popover';
 import Button from '@ui/button';
 
 import homePageContainer from './container';
@@ -42,7 +43,17 @@ const IndexPage: FC<IProps> = () => {
             rel="noopener noreferrer"
           />
           <div>
-            <Button isLoading={loading} onClick={() => locale.set(Locale.ru)}>RU RU RU RU RU</Button>
+            <Popover
+              Content={() => (
+                <div>
+                  asd asd asd asd xcv fgh dfghdfghrty fhg dfgh tityuityui hjk ghjk ghjkuyio
+                </div>
+              )}
+              showOnHover
+              showArrow
+            >
+              <Button isLoading={loading} onClick={() => locale.set(Locale.ru)}>RU RU RU RU RU</Button>
+            </Popover>
             <Button onClick={() => locale.set(Locale.en)}>EN</Button>
             <Button intent={Intent.DANGER} onClick={() => setLoading(!loading)}>Loading</Button>
             <Button onClick={() => ui.themeName = Theme.DEFAULT} intent={Intent.SECONDARY}>Default theme</Button>

@@ -7,7 +7,7 @@ import Locale from '@specs/ui/locale';
 import LocaleStore from '@stores/_misc/locale';
 
 import { TValidatorRule, FieldValidatorStore } from './field-validator';
-import FieldValueTransformerStore, { TFieldValueTransformerStoreOptions } from './transformer';
+import FieldValueTransformerStore, { FieldValueTransformerStoreOptions } from './transformer';
 
 export class FieldStore<V> {
     readonly onValueChangeAfter?: (value: V) => void;
@@ -30,7 +30,7 @@ export class FieldStore<V> {
       public options?: {
           readonly onValueChangeAfter?: (value: V) => V;
           readonly onValueChangeBefore?: (value: V) => V;
-          readonly transform?: TFieldValueTransformerStoreOptions<V>;
+          readonly transform?: FieldValueTransformerStoreOptions<V>;
       },
     ) {
       this.data = { value };

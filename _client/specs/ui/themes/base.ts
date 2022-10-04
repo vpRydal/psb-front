@@ -1,5 +1,6 @@
 import { SizeMap } from '@client/styles/specs';
 import { ButtonTheme } from '@client/styles/themes/components/button';
+import { PopoverColorTheme } from '@client/styles/themes/components/popover';
 import { Dictionary } from '@specs/_common/dictionary';
 import Intent from '@specs/ui/intent';
 
@@ -25,6 +26,7 @@ export type ThemeBasePart = {
 export type ThemeComponentsPart = {
   components: {
     button: ButtonTheme
+    popover: PopoverColorTheme
   }
 }
 
