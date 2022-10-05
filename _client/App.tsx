@@ -34,6 +34,8 @@ const InitStoresHoc: FC<Props> = observer(({ children, i18n: i18nProp }) => {
 
     const handleResize = throttle(() => ui.applySize(window.innerWidth), 200);
 
+    handleResize();
+
     if (canUseDOM) {
       window.addEventListener('resize', handleResize);
     }
