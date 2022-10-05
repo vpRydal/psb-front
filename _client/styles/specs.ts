@@ -11,3 +11,5 @@ export interface IntendedProps {
 }
 
 export type SizeMap <T = string> = Dictionary<Size, T>
+
+export type IntentMap <T = string> = Dictionary<Intent, T>

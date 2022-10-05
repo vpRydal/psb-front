@@ -5,12 +5,11 @@ import React, { ButtonHTMLAttributes, FC } from 'react';
 import {
   useChain, useSpring, useSpringRef, useTransition,
 } from 'react-spring';
+import { useTheme } from 'styled-components';
 
 import { IntendedProps, SizedProps } from '@client/styles/specs';
-import Icon from '@icons';
-import RefreshIcons from '@icons/refresh.svg';
-import Size from '@specs/_common/size';
 import Intent from '@specs/ui/intent';
+import TextName from '@specs/ui/text-name';
 import UiStore from '@stores/_misc/ui';
 import Loader from '@ui/_misc/loader';
 
@@ -19,10 +18,17 @@ import * as Style from './style';
 export interface IButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'>, Partial<IntendedProps & SizedProps> {
   isLoading?: boolean;
   isDisabled?: boolean;
+  textName?: TextName;
 }
 const Button: FC<IButtonProps> = props => {
+  const theme = useTheme();
   const {
-    children, type = 'button', intent = Intent.PRIMARY, size = Size.SM, isLoading, isDisabled, ...rest
+    children, type = 'button', intent = Intent.PRIMARY,
+    isLoading = false,
+    isDisabled = false,
+    size = theme.components.button.defaultSize,
+    textName = TextName.BUTTON,
+    ...rest
   } = props;
   const ui = useInjection(UiStore);
 
@@ -47,13 +53,22 @@ const Button: FC<IButtonProps> = props => {
 
   useChain(animationQueue, isLoading ? [1, 0] : [0, 1.5], 200);
 
+  // RENDERERS
+  function renderChildren() {
+    return (
+      <Style.Text textName={textName}>
+        {children}
+      </Style.Text>
+    );
+  }
+
   return (
     <Style.Button
       type={type}
       intent={intent}
       size={size}
-      isLoading={isLoading!}
-      isDisabled={isDisabled!}
+      isLoading={isLoading}
+      isDisabled={isDisabled}
       disabled={isDisabled || isLoading}
       {...rest}
     >
@@ -65,15 +80,10 @@ const Button: FC<IButtonProps> = props => {
         </>
       ))}
       <Style.ContentWrapper>
-        {children}
+        {renderChildren()}
       </Style.ContentWrapper>
     </Style.Button>
   );
-};
-
-Button.defaultProps = {
-  isLoading: false,
-  isDisabled: false,
 };
 
 export default observer(Button);

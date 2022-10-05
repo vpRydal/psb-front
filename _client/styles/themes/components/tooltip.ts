@@ -1,13 +1,10 @@
-import { ThemeBasePart } from '@specs/ui/themes/base';
+import ComponentThemeFactory from '@specs/ui/themes/component-factory';
 
 export type TooltipTheme = {
   defaultBackgroundColor: string,
   defaultColor: string,
 }
 
-const tooltipTheme = (theme: ThemeBasePart): TooltipTheme => ({
-  defaultBackgroundColor: '#ffffff',
-  defaultColor: '#000000',
-});
+type TooltipThemeFactory = ComponentThemeFactory<TooltipTheme>
 
-export default tooltipTheme;
+export default TooltipThemeFactory;

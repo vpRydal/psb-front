@@ -1,4 +1,4 @@
-import { ThemeBasePart } from '@specs/ui/themes/base';
+import ComponentThemeFactory from '@specs/ui/themes/component-factory';
 
 export type PopoverTheme = {
   backgroundColor: string,
@@ -9,13 +9,6 @@ export type PopoverTheme = {
   boxShadow: string,
 }
 
-const popoverTheme = (theme: ThemeBasePart): PopoverTheme => ({
-  backgroundColor: '#ffffff',
-  arrowColor: '#ffffff',
-  arrowSize: '8px',
-  borderRadius: '5px',
-  padding: theme.spacing.sm,
-  boxShadow: '0 2px 6px 0 rgba(0, 0, 0, 0.12)',
-});
+type PopoverThemeFactory = ComponentThemeFactory<PopoverTheme>
 
-export default popoverTheme;
+export default PopoverThemeFactory;

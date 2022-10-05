@@ -7,7 +7,6 @@ export const TargetWrapper = styled.div(() => ({
 }));
 
 export const Arrow = styled.span(({ theme }) => css`
-
   &, &:before {
     position: absolute;
     width: ${theme.components.popover.arrowSize};
@@ -28,6 +27,7 @@ export const ContentWrapper = styled(animated.div)(({ theme }) => css`
   padding: ${theme.components.popover.padding};
   border-radius: ${theme.components.popover.borderRadius};
   box-shadow: ${theme.components.popover.boxShadow};
+  z-index: 1;
 
     &[data-popper-placement^='top'] ${Arrow} {
       bottom: ${math(`-${theme.components.popover.arrowSize} / 2`)};

@@ -11,6 +11,7 @@ import { Theme } from '@specs/ui/themes/base';
 import LocaleStore from '@stores/_misc/locale';
 import UiStore from '@stores/_misc/ui';
 import Popover from '@ui/_misc/popover';
+import Text from '@ui/_misc/text';
 import Button from '@ui/button';
 
 import homePageContainer from './container';
@@ -29,14 +30,14 @@ const IndexPage: FC<IProps> = () => {
       <PageStyle.Page>
         <PageStyle.Header>
           <PageStyle.Logo src="/assets/images/logo192.png" alt="logo" />
-          <p>
+          <Text>
             {t('Изменить')}
             {' '}
-            <code>src/App.tsx</code>
+            src/App.tsx
             {' '}
             {t('и сохрани дл изменения')}
             .
-          </p>
+          </Text>
           <PageStyle.Link
             href="https://reactjs.org"
             target="_blank"
@@ -49,7 +50,7 @@ const IndexPage: FC<IProps> = () => {
                   asd asd asd asd xcv fgh dfghdfghrty fhg dfgh tityuityui hjk ghjk ghjkuyio
                 </div>
               )}
-              show
+              showOnHover
               showArrow
             >
               <Button isLoading={loading} onClick={() => locale.set(Locale.ru)}>RU RU RU RU RU</Button>

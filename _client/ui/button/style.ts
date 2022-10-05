@@ -3,7 +3,7 @@ import { animated } from 'react-spring';
 import styled, { css } from 'styled-components';
 
 import { IntendedProps, SizedProps } from '@client/styles/specs';
-import Intent from '@specs/ui/intent';
+import DefaultText from '@ui/_misc/text';
 
 export const LoadingIconWrapper = styled(animated.div)(() => css`
   display: inline-block;
@@ -17,10 +17,17 @@ export const ContentWrapper = styled.div(() => css`
   flex: 1;
 `);
 
+export const Text = styled(DefaultText)(() => ({
+}));
+
 export const Button = styled.button<IntendedProps & SizedProps & { isLoading: boolean, isDisabled: boolean }>(({
   theme, intent, size, isLoading, isDisabled,
-}) => css`
-  background-color: ${theme.color.intents[intent]};
+}) => {
+  const bg = theme.components.button.background?.[intent];
+  const intentColor = theme.color.intents[intent];
+
+  return css`
+  background-color: ${bg?.default || intentColor};
   display: inline-flex;
   align-items: center;
   padding: ${theme.spacing.xs} ${theme.spacing.md};
@@ -34,14 +41,12 @@ export const Button = styled.button<IntendedProps & SizedProps & { isLoading: bo
   line-height: 1;
   cursor: pointer;
   transition: background-color ease-in ${theme.animationDuration};
-  color: ${theme.color.font[Intent.PRIMARY]};
-
+  border-radius: ${theme.components.button.borderRadius};
 
   ${isDisabled && css`
     cursor: default;
     opacity: ${theme.disableOpacity};
   `}
-
 
   ${isLoading && css`
     cursor: wait;
@@ -56,11 +61,12 @@ export const Button = styled.button<IntendedProps & SizedProps & { isLoading: bo
   
   ${!(isDisabled || isLoading) && css`
     &:hover {
-      background-color: ${lighten(0.06, theme.color.intents[intent])};
+      background-color: ${bg?.hover || lighten(0.06, intentColor)};
     }
 
     &:focus {
-      background-color: ${darken(0.06, theme.color.intents[intent])};
+      background-color: ${bg?.focus || darken(0.06, intentColor)};
     }
   `}
-`);
+`;
+});

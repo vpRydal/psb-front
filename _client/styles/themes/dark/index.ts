@@ -6,6 +6,7 @@ const darkTheme: IBaseTheme = {
   ...defaultTheme,
   name: Theme.DARK,
   color: {
+    ...defaultTheme.color,
     intents: {
       [Intent.PRIMARY]: '#16b29f',
       [Intent.SUCCESS]: '#16b29f',
