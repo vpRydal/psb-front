@@ -4,7 +4,7 @@ import TextName from '@specs/ui/text-name';
 
 const textTheme: TextThemeFactory = theme => ({
   [TextName.BUTTON]: {
-    fontName: theme.fontNames.Gilroy,
+    fontName: theme.fontNames.GilroyBold,
     weight: 600,
     uppercase: true,
     fontSize: '20px',
@@ -28,7 +28,7 @@ const textTheme: TextThemeFactory = theme => ({
     tagName: 'span',
   },
   [TextName.TITLE_H1]: {
-    fontName: theme.fontNames.Gilroy,
+    fontName: theme.fontNames.GilroyBold,
     weight: 600,
     color: theme.color.font.PRIMARY,
     uppercase: false,
@@ -36,7 +36,7 @@ const textTheme: TextThemeFactory = theme => ({
     tagName: 'h1',
   },
   [TextName.TITLE_H2]: {
-    fontName: theme.fontNames.Gilroy,
+    fontName: theme.fontNames.GilroyBold,
     weight: 600,
     uppercase: false,
     color: theme.color.font.PRIMARY,
@@ -44,7 +44,7 @@ const textTheme: TextThemeFactory = theme => ({
     tagName: 'h2',
   },
   [TextName.TITLE_H3]: {
-    fontName: theme.fontNames.Gilroy,
+    fontName: theme.fontNames.GilroyBold,
     weight: 600,
     uppercase: false,
     color: theme.color.font.PRIMARY,
@@ -52,7 +52,7 @@ const textTheme: TextThemeFactory = theme => ({
     tagName: 'h4',
   },
   [TextName.TITLE_H4]: {
-    fontName: theme.fontNames.Gilroy,
+    fontName: theme.fontNames.GilroyBold,
     weight: 600,
     uppercase: false,
     color: theme.color.font.PRIMARY,

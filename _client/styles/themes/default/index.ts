@@ -13,6 +13,7 @@ export const baseThemePart: ThemeBasePart = {
   shadow: '0px 4px 30px 0px #0000001A',
   fontNames: {
     Gilroy: 'Gilroy',
+    GilroyBold: 'GilroyBold',
   },
   color: {
     backgrounds: {
