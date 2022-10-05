@@ -1,13 +1,11 @@
 import { useInjection } from 'inversify-react';
 import { observer } from 'mobx-react-lite';
-import { stripUnit } from 'polished';
 import React, { ButtonHTMLAttributes, FC } from 'react';
-import {
-  useChain, useSpring, useSpringRef, useTransition,
-} from 'react-spring';
+import { useTransition } from 'react-spring';
 import { useTheme } from 'styled-components';
 
 import { IntendedProps, SizedProps } from '@client/styles/specs';
+import Size from '@specs/_common/size';
 import Intent from '@specs/ui/intent';
 import TextName from '@specs/ui/text-name';
 import UiStore from '@stores/_misc/ui';
@@ -30,28 +28,16 @@ const Button: FC<IButtonProps> = props => {
     textName = TextName.BUTTON,
     ...rest
   } = props;
-  const ui = useInjection(UiStore);
-
-  const loaderOpacityRef = useSpringRef();
-  const loaderWidthRef = useSpringRef();
-
-  const loaderWithAnimationStyles = useSpring({
-    ref: loaderWidthRef,
-    width: isLoading ? stripUnit(ui.theme.iconSize[size]) : 0,
-    marginRight: isLoading ? stripUnit(ui.theme.spacing.sm) : 0,
-  });
 
   const loaderOpacityTransition = useTransition(isLoading, {
-    ref: loaderOpacityRef,
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
     reverse: isLoading,
+    config: {
+      duration: 200,
+    },
   });
-
-  const animationQueue = [loaderOpacityRef, loaderWidthRef];
-
-  useChain(animationQueue, isLoading ? [1, 0] : [0, 1.5], 200);
 
   // RENDERERS
   function renderChildren() {
@@ -73,11 +59,9 @@ const Button: FC<IButtonProps> = props => {
       {...rest}
     >
       {loaderOpacityTransition((styles, item) => item && (
-        <>
-          <Style.LoadingIconWrapper style={{ ...styles, ...loaderWithAnimationStyles }}>
-            <Loader size={size} />
-          </Style.LoadingIconWrapper>
-        </>
+        <Style.LoadingIconWrapper style={{ ...styles }}>
+          <Loader size={theme.components.button.iconSize[size]} />
+        </Style.LoadingIconWrapper>
       ))}
       <Style.ContentWrapper>
         {renderChildren()}

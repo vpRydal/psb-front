@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 
+import { IntendedProps } from '@client/styles/specs';
 import DefaultIcon from '@icons';
 
 const rotateAnimation = keyframes`
@@ -11,6 +12,7 @@ const rotateAnimation = keyframes`
   }
 `;
 
-export const Icon = styled(DefaultIcon)(() => css`
+export const Icon = styled(DefaultIcon)<IntendedProps>(({ intent, theme }) => css`
   animation: ${rotateAnimation} infinite 1.5s;
+  color: ${theme.color.intents[intent]}
 `);

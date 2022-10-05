@@ -1,8 +1,5 @@
-import { darken, lighten } from 'polished';
-
 import ButtonThemeFactory from '@client/styles/themes/components/button';
 import Size from '@specs/_common/size';
-import Intent from '@specs/ui/intent';
 
 const buttonTheme: ButtonThemeFactory = theme => ({
   minWidth: {
@@ -26,12 +23,12 @@ const buttonTheme: ButtonThemeFactory = theme => ({
     [Size.LG]: '73px',
     [Size.XL]: '73px',
   },
-  fontSize: {
-    [Size.XS]: theme.fontSize.xs,
-    [Size.SM]: theme.fontSize.sm,
-    [Size.MD]: theme.fontSize.md,
-    [Size.LG]: theme.fontSize.lg,
-    [Size.XL]: theme.fontSize.xl,
+  iconSize: {
+    [Size.XS]: Size.XL,
+    [Size.SM]: Size.XL,
+    [Size.MD]: Size.XL,
+    [Size.LG]: Size.XL,
+    [Size.XL]: Size.XL,
   },
   defaultSize: Size.MD,
   borderRadius: '5px',

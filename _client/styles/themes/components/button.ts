@@ -8,8 +8,8 @@ export type ButtonTheme = {
   minHeight: SizeMap;
   minWidth: SizeMap;
   padding: SizeMap;
-  fontSize: SizeMap;
   defaultSize: Size;
+  iconSize: Dictionary<Size, Size>;
   background?: Dictionary<Intent, Dictionary<'default' | 'hover' | 'focus', string>>;
   borderRadius: string;
 }
