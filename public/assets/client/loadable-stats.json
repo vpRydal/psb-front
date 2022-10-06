@@ -1,0 +1,301 @@
+{
+  "name": "Clinet",
+  "hash": "52981c30bac24ebe9d34",
+  "publicPath": "/assets/client/",
+  "outputPath": "/home/rydal/Projects/rtp-ssr/public/assets/client",
+  "assetsByChunkName": {
+    "main": [
+      "js/main.52981c30bac24ebe9d34.js",
+      "css/main.782c6bf8.css"
+    ],
+    "pages-home": [
+      "js/pages-home.52981c30bac24ebe9d34.js"
+    ],
+    "pages-booking": [
+      "js/pages-booking.52981c30bac24ebe9d34.js"
+    ]
+  },
+  "assets": [
+    {
+      "type": "asset",
+      "name": "js/main.52981c30bac24ebe9d34.js",
+      "size": 792179,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "fullhash": "52981c30bac24ebe9d34",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "js/main.52981c30bac24ebe9d34.js.map"
+        }
+      },
+      "chunkNames": [
+        "main"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        179
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "js/229.52981c30bac24ebe9d34.js",
+      "size": 86324,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "fullhash": "52981c30bac24ebe9d34",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "js/229.52981c30bac24ebe9d34.js.map"
+        }
+      },
+      "chunkNames": [],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        229
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "js/pages-booking.52981c30bac24ebe9d34.js",
+      "size": 21041,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "fullhash": "52981c30bac24ebe9d34",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "js/pages-booking.52981c30bac24ebe9d34.js.map"
+        }
+      },
+      "chunkNames": [
+        "pages-booking"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        609
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "js/946.52981c30bac24ebe9d34.js",
+      "size": 12124,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "fullhash": "52981c30bac24ebe9d34",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "js/946.52981c30bac24ebe9d34.js.map"
+        }
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        946
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "js/pages-home.52981c30bac24ebe9d34.js",
+      "size": 7812,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "fullhash": "52981c30bac24ebe9d34",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "js/pages-home.52981c30bac24ebe9d34.js.map"
+        }
+      },
+      "chunkNames": [
+        "pages-home"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        676
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "css/main.782c6bf8.css",
+      "size": 2287,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "contenthash": "782c6bf8"
+      },
+      "chunkNames": [
+        "main"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [
+        179
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "index.html",
+      "size": 670,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {},
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    }
+  ],
+  "namedChunkGroups": {
+    "main": {
+      "name": "main",
+      "chunks": [
+        179
+      ],
+      "assets": [
+        {
+          "name": "js/main.52981c30bac24ebe9d34.js"
+        },
+        {
+          "name": "css/main.782c6bf8.css"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 1,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "pages-home": {
+      "name": "pages-home",
+      "chunks": [
+        229,
+        946,
+        676
+      ],
+      "assets": [
+        {
+          "name": "js/229.52981c30bac24ebe9d34.js"
+        },
+        {
+          "name": "js/946.52981c30bac24ebe9d34.js"
+        },
+        {
+          "name": "js/pages-home.52981c30bac24ebe9d34.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 3,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "pages-booking": {
+      "name": "pages-booking",
+      "chunks": [
+        229,
+        946,
+        609
+      ],
+      "assets": [
+        {
+          "name": "js/229.52981c30bac24ebe9d34.js"
+        },
+        {
+          "name": "js/946.52981c30bac24ebe9d34.js"
+        },
+        {
+          "name": "js/pages-booking.52981c30bac24ebe9d34.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 3,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "generator": "loadable-components",
+  "chunks": [
+    {
+      "id": 179,
+      "files": [
+        "js/main.52981c30bac24ebe9d34.js",
+        "css/main.782c6bf8.css"
+      ]
+    },
+    {
+      "id": 676,
+      "files": [
+        "js/pages-home.52981c30bac24ebe9d34.js"
+      ]
+    },
+    {
+      "id": 609,
+      "files": [
+        "js/pages-booking.52981c30bac24ebe9d34.js"
+      ]
+    },
+    {
+      "id": 229,
+      "files": [
+        "js/229.52981c30bac24ebe9d34.js"
+      ]
+    },
+    {
+      "id": 946,
+      "files": [
+        "js/946.52981c30bac24ebe9d34.js"
+      ]
+    }
+  ]
+}

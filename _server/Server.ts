@@ -29,8 +29,8 @@ export default class Server {
     controllers?: BaseController[];
   }) {
     this.expressApp = express();
-    this.port = Number(process.env.PORT) || 3001;
-    this.host = process.env.HOST || '127.0.01';
+    this.port = 8080;
+    this.host = process.env.HOST || '127.0.0.1';
 
     if (IS_DEV) {
       const paths = getPath('./');
@@ -72,7 +72,7 @@ export default class Server {
   private middlewares(middleWares: Array<RequestHandler | ErrorRequestHandler>): void {
     const { expressApp } = this;
 
-    middleWares.forEach((middleWare) => {
+    middleWares.forEach(middleWare => {
       expressApp.use(middleWare);
     });
   }
@@ -80,7 +80,7 @@ export default class Server {
   attachControllers(controllers: BaseController[]): void {
     const { expressApp } = this;
 
-    controllers.forEach((controller) => {
+    controllers.forEach(controller => {
       expressApp.use(controller.prefix, controller.router);
     });
   }

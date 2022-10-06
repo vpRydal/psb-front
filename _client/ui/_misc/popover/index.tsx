@@ -1,3 +1,4 @@
+import canUseDOM from 'can-use-dom';
 import classNames from 'classnames';
 import { stripUnit } from 'polished';
 import React, {
@@ -118,6 +119,10 @@ const Popover: FC<PopoverProps> = props => {
       targetWrapperRef.current.removeEventListener('mouseleave', handleMouseLeave, false);
     };
   }, [showOnHover]);
+
+  if (!canUseDOM) {
+    return null;
+  }
 
   return (
     <>

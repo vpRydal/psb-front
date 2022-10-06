@@ -43,7 +43,7 @@
       "@specs": ["specs"],
       "@icons/*": ["ui/_misc/icons/*"],
       "@icons": ["ui/_misc/icons"],
-      "@hooks/*": ["hooks/*"],
+      "@hooks/*": ["hooks/*"]
     }
   }
 }
