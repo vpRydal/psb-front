@@ -9,6 +9,8 @@
 /coverage
 
 # production
+/build
+/public/assets/client/
 
 # misc
 .DS_Store

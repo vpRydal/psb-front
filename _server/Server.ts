@@ -29,7 +29,8 @@ export default class Server {
     controllers?: BaseController[];
   }) {
     this.expressApp = express();
-    this.port = 8080;
+    console.log(process.env);
+    this.port = Number(process.env.PORT) || 3001;
     this.host = process.env.HOST || '127.0.0.1';
 
     if (IS_DEV) {

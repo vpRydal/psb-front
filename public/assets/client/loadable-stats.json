@@ -1,35 +1,35 @@
 {
   "name": "Clinet",
-  "hash": "52981c30bac24ebe9d34",
+  "hash": "100230ee4d5aa984160f",
   "publicPath": "/assets/client/",
   "outputPath": "/home/rydal/Projects/rtp-ssr/public/assets/client",
   "assetsByChunkName": {
     "main": [
-      "js/main.52981c30bac24ebe9d34.js",
+      "js/main.100230ee4d5aa984160f.js",
       "css/main.782c6bf8.css"
     ],
     "pages-home": [
-      "js/pages-home.52981c30bac24ebe9d34.js"
+      "js/pages-home.100230ee4d5aa984160f.js"
     ],
     "pages-booking": [
-      "js/pages-booking.52981c30bac24ebe9d34.js"
+      "js/pages-booking.100230ee4d5aa984160f.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "js/main.52981c30bac24ebe9d34.js",
-      "size": 792179,
+      "name": "js/main.100230ee4d5aa984160f.js",
+      "size": 792059,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "52981c30bac24ebe9d34",
+        "fullhash": "100230ee4d5aa984160f",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/main.52981c30bac24ebe9d34.js.map"
+          "sourceMap": "js/main.100230ee4d5aa984160f.js.map"
         }
       },
       "chunkNames": [
@@ -46,18 +46,18 @@
     },
     {
       "type": "asset",
-      "name": "js/229.52981c30bac24ebe9d34.js",
+      "name": "js/229.100230ee4d5aa984160f.js",
       "size": 86324,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "52981c30bac24ebe9d34",
+        "fullhash": "100230ee4d5aa984160f",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/229.52981c30bac24ebe9d34.js.map"
+          "sourceMap": "js/229.100230ee4d5aa984160f.js.map"
         }
       },
       "chunkNames": [],
@@ -74,18 +74,18 @@
     },
     {
       "type": "asset",
-      "name": "js/pages-booking.52981c30bac24ebe9d34.js",
+      "name": "js/pages-booking.100230ee4d5aa984160f.js",
       "size": 21041,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "52981c30bac24ebe9d34",
+        "fullhash": "100230ee4d5aa984160f",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/pages-booking.52981c30bac24ebe9d34.js.map"
+          "sourceMap": "js/pages-booking.100230ee4d5aa984160f.js.map"
         }
       },
       "chunkNames": [
@@ -102,18 +102,18 @@
     },
     {
       "type": "asset",
-      "name": "js/946.52981c30bac24ebe9d34.js",
+      "name": "js/946.100230ee4d5aa984160f.js",
       "size": 12124,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "52981c30bac24ebe9d34",
+        "fullhash": "100230ee4d5aa984160f",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/946.52981c30bac24ebe9d34.js.map"
+          "sourceMap": "js/946.100230ee4d5aa984160f.js.map"
         }
       },
       "chunkNames": [],
@@ -128,18 +128,18 @@
     },
     {
       "type": "asset",
-      "name": "js/pages-home.52981c30bac24ebe9d34.js",
+      "name": "js/pages-home.100230ee4d5aa984160f.js",
       "size": 7812,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "52981c30bac24ebe9d34",
+        "fullhash": "100230ee4d5aa984160f",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/pages-home.52981c30bac24ebe9d34.js.map"
+          "sourceMap": "js/pages-home.100230ee4d5aa984160f.js.map"
         }
       },
       "chunkNames": [
@@ -200,7 +200,7 @@
       ],
       "assets": [
         {
-          "name": "js/main.52981c30bac24ebe9d34.js"
+          "name": "js/main.100230ee4d5aa984160f.js"
         },
         {
           "name": "css/main.782c6bf8.css"
@@ -222,13 +222,13 @@
       ],
       "assets": [
         {
-          "name": "js/229.52981c30bac24ebe9d34.js"
+          "name": "js/229.100230ee4d5aa984160f.js"
         },
         {
-          "name": "js/946.52981c30bac24ebe9d34.js"
+          "name": "js/946.100230ee4d5aa984160f.js"
         },
         {
-          "name": "js/pages-home.52981c30bac24ebe9d34.js"
+          "name": "js/pages-home.100230ee4d5aa984160f.js"
         }
       ],
       "filteredAssets": 0,
@@ -247,13 +247,13 @@
       ],
       "assets": [
         {
-          "name": "js/229.52981c30bac24ebe9d34.js"
+          "name": "js/229.100230ee4d5aa984160f.js"
         },
         {
-          "name": "js/946.52981c30bac24ebe9d34.js"
+          "name": "js/946.100230ee4d5aa984160f.js"
         },
         {
-          "name": "js/pages-booking.52981c30bac24ebe9d34.js"
+          "name": "js/pages-booking.100230ee4d5aa984160f.js"
         }
       ],
       "filteredAssets": 0,
@@ -269,32 +269,32 @@
     {
       "id": 179,
       "files": [
-        "js/main.52981c30bac24ebe9d34.js",
+        "js/main.100230ee4d5aa984160f.js",
         "css/main.782c6bf8.css"
       ]
     },
     {
       "id": 676,
       "files": [
-        "js/pages-home.52981c30bac24ebe9d34.js"
+        "js/pages-home.100230ee4d5aa984160f.js"
       ]
     },
     {
       "id": 609,
       "files": [
-        "js/pages-booking.52981c30bac24ebe9d34.js"
+        "js/pages-booking.100230ee4d5aa984160f.js"
       ]
     },
     {
       "id": 229,
       "files": [
-        "js/229.52981c30bac24ebe9d34.js"
+        "js/229.100230ee4d5aa984160f.js"
       ]
     },
     {
       "id": 946,
       "files": [
-        "js/946.52981c30bac24ebe9d34.js"
+        "js/946.100230ee4d5aa984160f.js"
       ]
     }
   ]

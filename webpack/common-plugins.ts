@@ -21,13 +21,6 @@ export default [
   new FriendlyErrorsPlugin({
     clearConsole: true,
   }),
-  new webpack.DefinePlugin({
-    'process.env': {
-      DEBUG: JSON.stringify(IS_DEV),
-      BROWSER: JSON.stringify(true),
-    },
-    isProduction: JSON.stringify(!IS_DEV),
-  }),
   new ForkTsCheckerWebpackPlugin({
     async: IS_DEV,
   }),

@@ -4,9 +4,10 @@
   "scripts": {
     "prod:build:client": "cross-env NODE_ENV=production webpack --config webpack/webpack.client.config.prod.ts",
     "prod:build:client-ssr": "cross-env NODE_ENV=production webpack --config webpack/webpack.client-ssr.config.prod.ts",
-    "prod:build:server": "cross-env PORT=8080 NODE_ENV=production webpack --config webpack/webpack.server.config.common.ts",
+    "prod:build:server": "cross-env NODE_ENV=production webpack --config webpack/webpack.server.config.common.ts",
+    "prod:build": "cross-env PORT=8080 HOST=127.0.0.1 run-s prod:build:client-ssr prod:build:server",
     "prod:launch:server": "node ./build/server/index.js",
-    "prod:run:server": "run-s prod:build:client-ssr prod:build:server prod:launch:server",
+    "prod:run:server": "cross-env PORT=8080 HOST=127.0.0.1 run-s prod:build:client-ssr prod:build:server prod:launch:server",
     "dev:build:server": "cross-env NODE_ENV=development webpack --config webpack/webpack.server.config.common.ts",
     "dev:build:client": "cross-env NODE_ENV=development webpack --config webpack/webpack.client.config.dev.ts",
     "dev:run:client": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.client.config.dev-server.ts",
