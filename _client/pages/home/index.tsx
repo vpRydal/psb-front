@@ -14,6 +14,7 @@ import Popover from '@ui/_misc/popover';
 import Text from '@ui/_misc/text';
 import Button from '@ui/button';
 import Container from '@ui/container';
+import Switch from '@ui/switch';
 
 import homePageContainer from './container';
 
@@ -62,6 +63,7 @@ const IndexPage: FC<IProps> = () => {
               <Button onClick={() => ui.themeName = Theme.DEFAULT} intent={Intent.SECONDARY}>Default theme</Button>
               <Button onClick={() => ui.themeName = Theme.DARK} intent={Intent.SECONDARY}>Dark theme</Button>
             </div>
+            <Switch />
           </PageStyle.Header>
         </PageStyle.Page>
       </Container>
