@@ -31,6 +31,7 @@ const IndexPage: FC<IProps> = () => {
     <Provider container={homePageContainer} standalone>
       <Container>
         <PageStyle.Page>
+          <h2>Проверка работы деплоя</h2>
           <PageStyle.Header>
             <PageStyle.Logo src="/assets/images/logo192.png" alt="logo" />
             <Text>
