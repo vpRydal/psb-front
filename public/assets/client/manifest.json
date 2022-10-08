@@ -1,15 +1,17 @@
 {
-  "main.js": "/assets/client/js/main.d75c95b8cb504f5b5e09.js",
+  "main.js": "/assets/client/js/main.8bdd4ea7c02856788fff.js",
   "main.css": "/assets/client/css/main.782c6bf8.css",
-  "pages-home.js": "/assets/client/js/pages-home.d75c95b8cb504f5b5e09.js",
-  "pages-booking.js": "/assets/client/js/pages-booking.d75c95b8cb504f5b5e09.js",
-  "js/229.js": "/assets/client/js/229.d75c95b8cb504f5b5e09.js",
-  "js/946.js": "/assets/client/js/946.d75c95b8cb504f5b5e09.js",
+  "pages-home.js": "/assets/client/js/pages-home.8bdd4ea7c02856788fff.js",
+  "pages-booking.js": "/assets/client/js/pages-booking.8bdd4ea7c02856788fff.js",
+  "js/229.js": "/assets/client/js/229.8bdd4ea7c02856788fff.js",
+  "js/640.js": "/assets/client/js/640.8bdd4ea7c02856788fff.js",
+  "js/946.js": "/assets/client/js/946.8bdd4ea7c02856788fff.js",
   "loadable-stats.json": "/assets/client/loadable-stats.json",
   "index.html": "/assets/client/index.html",
-  "main.js.map": "/assets/client/js/main.d75c95b8cb504f5b5e09.js.map",
-  "pages-home.js.map": "/assets/client/js/pages-home.d75c95b8cb504f5b5e09.js.map",
-  "pages-booking.js.map": "/assets/client/js/pages-booking.d75c95b8cb504f5b5e09.js.map",
-  "229.js.map": "/assets/client/js/229.d75c95b8cb504f5b5e09.js.map",
-  "946.js.map": "/assets/client/js/946.d75c95b8cb504f5b5e09.js.map"
+  "main.js.map": "/assets/client/js/main.8bdd4ea7c02856788fff.js.map",
+  "pages-home.js.map": "/assets/client/js/pages-home.8bdd4ea7c02856788fff.js.map",
+  "pages-booking.js.map": "/assets/client/js/pages-booking.8bdd4ea7c02856788fff.js.map",
+  "229.js.map": "/assets/client/js/229.8bdd4ea7c02856788fff.js.map",
+  "640.js.map": "/assets/client/js/640.8bdd4ea7c02856788fff.js.map",
+  "946.js.map": "/assets/client/js/946.8bdd4ea7c02856788fff.js.map"
 }

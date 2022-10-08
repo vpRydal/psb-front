@@ -1,10 +1,11 @@
 import { Provider, useInjection } from 'inversify-react';
 import { observer } from 'mobx-react-lite';
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RouteComponentProps } from 'react-router';
 
 import * as PageStyle from '@components/_common/page-style';
+import fetchTest from '@requests/fetch-test';
 import Intent from '@specs/ui/intent';
 import Locale from '@specs/ui/locale';
 import { Theme } from '@specs/ui/themes/base';
@@ -27,11 +28,14 @@ const IndexPage: FC<IProps> = () => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    fetchTest();
+  }, []);
+
   return (
     <Provider container={homePageContainer} standalone>
       <Container>
         <PageStyle.Page>
-          <h2>Проверка работы деплоя</h2>
           <PageStyle.Header>
             <PageStyle.Logo src="/assets/images/logo192.png" alt="logo" />
             <Text>

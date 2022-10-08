@@ -28,7 +28,9 @@
           "@translations": "./_client/translations",
           "@style": "./_client/style",
           "@icons": "./_client/ui/_misc/icons",
-          "@hooks": "./_client/hooks"
+          "@hooks": "./_client/hooks",
+          "@api": "./_client/api",
+          "@requests": "./_client/api/requests"
         }
       }
     ]

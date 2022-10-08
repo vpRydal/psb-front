@@ -7,7 +7,6 @@ import { ServerStyleSheet } from 'styled-components';
 import { Stats } from 'webpack';
 
 import AppProd, { Props } from '@client/App';
-import { set } from '@config';
 import i18next, { translatorPromise } from '@translations';
 
 import BaseController from '../controllers/Base';
@@ -37,8 +36,6 @@ export default function render(req: Request, res: Response, viewName: string, co
     const clientAppComponentStats: Stats = res.locals.webpack.devMiddleware.stats.stats[1];
     App = getAppComponent(clientAppComponentStats);
   }
-
-  set({ isServer: true });
 
   const clientExtractor = new ChunkExtractor({
     stats: controller.server.clientFs.getLoadableStatsFile(),

@@ -18,6 +18,8 @@ export default {
     '@style': path.resolve(PATH.client, '/style'),
     '@icons': path.resolve(PATH.client, '/ui/_misc/icons'),
     '@hooks': path.resolve(PATH.client, '/hooks'),
+    '@api': path.resolve(PATH.client, '/api'),
+    '@requests': path.resolve(PATH.client, '/api/requests'),
   },
   extensions: ['.ts', '.tsx', '.js', '.json', '.scss', '.png', '.jpg', '.gif', '.jpeg'],
 };

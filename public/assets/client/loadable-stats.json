@@ -1,35 +1,35 @@
 {
   "name": "Clinet",
-  "hash": "d75c95b8cb504f5b5e09",
+  "hash": "8bdd4ea7c02856788fff",
   "publicPath": "/assets/client/",
-  "outputPath": "/home/rydal/Projects/rtp-ssr/public/assets/client",
+  "outputPath": "/home/rydal/Projects/hakaton/front/public/assets/client",
   "assetsByChunkName": {
     "main": [
-      "js/main.d75c95b8cb504f5b5e09.js",
+      "js/main.8bdd4ea7c02856788fff.js",
       "css/main.782c6bf8.css"
     ],
     "pages-home": [
-      "js/pages-home.d75c95b8cb504f5b5e09.js"
+      "js/pages-home.8bdd4ea7c02856788fff.js"
     ],
     "pages-booking": [
-      "js/pages-booking.d75c95b8cb504f5b5e09.js"
+      "js/pages-booking.8bdd4ea7c02856788fff.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "js/main.d75c95b8cb504f5b5e09.js",
-      "size": 792059,
+      "name": "js/main.8bdd4ea7c02856788fff.js",
+      "size": 789294,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "d75c95b8cb504f5b5e09",
+        "fullhash": "8bdd4ea7c02856788fff",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/main.d75c95b8cb504f5b5e09.js.map"
+          "sourceMap": "js/main.8bdd4ea7c02856788fff.js.map"
         }
       },
       "chunkNames": [
@@ -46,18 +46,18 @@
     },
     {
       "type": "asset",
-      "name": "js/229.d75c95b8cb504f5b5e09.js",
-      "size": 86324,
+      "name": "js/229.8bdd4ea7c02856788fff.js",
+      "size": 86327,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "d75c95b8cb504f5b5e09",
+        "fullhash": "8bdd4ea7c02856788fff",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/229.d75c95b8cb504f5b5e09.js.map"
+          "sourceMap": "js/229.8bdd4ea7c02856788fff.js.map"
         }
       },
       "chunkNames": [],
@@ -74,18 +74,46 @@
     },
     {
       "type": "asset",
-      "name": "js/pages-booking.d75c95b8cb504f5b5e09.js",
+      "name": "js/640.8bdd4ea7c02856788fff.js",
+      "size": 29541,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "fullhash": "8bdd4ea7c02856788fff",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "js/640.8bdd4ea7c02856788fff.js.map"
+        }
+      },
+      "chunkNames": [],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        640
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "js/pages-booking.8bdd4ea7c02856788fff.js",
       "size": 21041,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "d75c95b8cb504f5b5e09",
+        "fullhash": "8bdd4ea7c02856788fff",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/pages-booking.d75c95b8cb504f5b5e09.js.map"
+          "sourceMap": "js/pages-booking.8bdd4ea7c02856788fff.js.map"
         }
       },
       "chunkNames": [
@@ -102,18 +130,18 @@
     },
     {
       "type": "asset",
-      "name": "js/946.d75c95b8cb504f5b5e09.js",
+      "name": "js/946.8bdd4ea7c02856788fff.js",
       "size": 12124,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "d75c95b8cb504f5b5e09",
+        "fullhash": "8bdd4ea7c02856788fff",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/946.d75c95b8cb504f5b5e09.js.map"
+          "sourceMap": "js/946.8bdd4ea7c02856788fff.js.map"
         }
       },
       "chunkNames": [],
@@ -128,18 +156,18 @@
     },
     {
       "type": "asset",
-      "name": "js/pages-home.d75c95b8cb504f5b5e09.js",
-      "size": 7886,
+      "name": "js/pages-home.8bdd4ea7c02856788fff.js",
+      "size": 4087,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "d75c95b8cb504f5b5e09",
+        "fullhash": "8bdd4ea7c02856788fff",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/pages-home.d75c95b8cb504f5b5e09.js.map"
+          "sourceMap": "js/pages-home.8bdd4ea7c02856788fff.js.map"
         }
       },
       "chunkNames": [
@@ -200,7 +228,7 @@
       ],
       "assets": [
         {
-          "name": "js/main.d75c95b8cb504f5b5e09.js"
+          "name": "js/main.8bdd4ea7c02856788fff.js"
         },
         {
           "name": "css/main.782c6bf8.css"
@@ -217,23 +245,27 @@
       "name": "pages-home",
       "chunks": [
         229,
+        640,
         946,
         676
       ],
       "assets": [
         {
-          "name": "js/229.d75c95b8cb504f5b5e09.js"
+          "name": "js/229.8bdd4ea7c02856788fff.js"
         },
         {
-          "name": "js/946.d75c95b8cb504f5b5e09.js"
+          "name": "js/640.8bdd4ea7c02856788fff.js"
         },
         {
-          "name": "js/pages-home.d75c95b8cb504f5b5e09.js"
+          "name": "js/946.8bdd4ea7c02856788fff.js"
+        },
+        {
+          "name": "js/pages-home.8bdd4ea7c02856788fff.js"
         }
       ],
       "filteredAssets": 0,
       "assetsSize": null,
-      "filteredAuxiliaryAssets": 3,
+      "filteredAuxiliaryAssets": 4,
       "auxiliaryAssetsSize": null,
       "children": {},
       "childAssets": {}
@@ -247,13 +279,13 @@
       ],
       "assets": [
         {
-          "name": "js/229.d75c95b8cb504f5b5e09.js"
+          "name": "js/229.8bdd4ea7c02856788fff.js"
         },
         {
-          "name": "js/946.d75c95b8cb504f5b5e09.js"
+          "name": "js/946.8bdd4ea7c02856788fff.js"
         },
         {
-          "name": "js/pages-booking.d75c95b8cb504f5b5e09.js"
+          "name": "js/pages-booking.8bdd4ea7c02856788fff.js"
         }
       ],
       "filteredAssets": 0,
@@ -269,32 +301,38 @@
     {
       "id": 179,
       "files": [
-        "js/main.d75c95b8cb504f5b5e09.js",
+        "js/main.8bdd4ea7c02856788fff.js",
         "css/main.782c6bf8.css"
       ]
     },
     {
       "id": 676,
       "files": [
-        "js/pages-home.d75c95b8cb504f5b5e09.js"
+        "js/pages-home.8bdd4ea7c02856788fff.js"
       ]
     },
     {
       "id": 609,
       "files": [
-        "js/pages-booking.d75c95b8cb504f5b5e09.js"
+        "js/pages-booking.8bdd4ea7c02856788fff.js"
       ]
     },
     {
       "id": 229,
       "files": [
-        "js/229.d75c95b8cb504f5b5e09.js"
+        "js/229.8bdd4ea7c02856788fff.js"
+      ]
+    },
+    {
+      "id": 640,
+      "files": [
+        "js/640.8bdd4ea7c02856788fff.js"
       ]
     },
     {
       "id": 946,
       "files": [
-        "js/946.d75c95b8cb504f5b5e09.js"
+        "js/946.8bdd4ea7c02856788fff.js"
       ]
     }
   ]
