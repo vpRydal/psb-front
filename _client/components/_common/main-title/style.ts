@@ -1,27 +1,12 @@
 import { math } from 'polished';
 import styled from 'styled-components';
 
+import { styleOnTablet } from '@client/styles/_mixins/conditions';
 import { styleNotLastChild } from '@client/styles/_mixins/last-child';
+import { SizedProps } from '@client/styles/specs';
 import Icon from '@icons';
 import Text from '@ui/_misc/text';
 
-export const Wrapper = styled.div(({ theme }) => ({
-  display: 'flex',
-  width: '100%',
-  alignItems: 'center',
-  ...styleNotLastChild({
-    marginBottom: math(`${theme.spacing.lg} * 2 + 5`),
-  }),
-}));
-export const Title = styled(Text)(() => ({
-  lineHeight: '50px',
-}));
-export const Logo = styled(Icon)(() => ({
-  fontSize: '159px',
-  width: '159px',
-  height: '49px',
-  transform: 'translateY(-4px)',
-}));
 export const Divider = styled.span(({ theme }) => ({
   display: 'block',
   width: 5,
@@ -29,4 +14,30 @@ export const Divider = styled.span(({ theme }) => ({
   background: '#fff',
   marginLeft: math(`${theme.spacing.lg} * 2`),
   marginRight: theme.spacing.xl,
+}));
+
+export const Wrapper = styled.div<SizedProps>(({ theme, size }) => ({
+  display: 'flex',
+  width: '100%',
+  alignItems: 'center',
+  ...styleNotLastChild({
+    marginBottom: math(`${theme.spacing.lg} * 2 + 5`),
+  }),
+  ...styleOnTablet(size, {
+    flexDirection: 'column',
+    [Divider]: {
+      display: 'none',
+    },
+  }),
+}));
+
+export const Title = styled(Text)(() => ({
+  lineHeight: '50px',
+}));
+
+export const Logo = styled(Icon)(() => ({
+  fontSize: '159px',
+  width: '159px',
+  height: '49px',
+  transform: 'translateY(-4px)',
 }));

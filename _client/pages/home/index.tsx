@@ -18,7 +18,7 @@ import Input from '@ui/form/input';
 
 import homePageContainer from './container';
 import * as Style from './style';
-import { BgLines } from './style';
+import { AppContainer, BgLines } from './style';
 
 export interface TParams {}
 export type IProps = RouteComponentProps<TParams>
@@ -38,7 +38,7 @@ const IndexPage: FC<IProps> = () => {
   return (
     <Provider container={homePageContainer} standalone>
       <Style.Head>
-        <Container>
+        <Style.AppContainer>
           <MainTitle />
           <Style.RobotMessage title="Здравствуйте!" activeAnge={Placement.LEFT_END}>
             Хотите узнать больше о наших кредитных продуктах?
@@ -53,8 +53,10 @@ const IndexPage: FC<IProps> = () => {
               </Style.VariantMessage>
             ))}
           </Style.MessagesWrapper>
-        </Container>
-        <Style.BgLines />
+        </Style.AppContainer>
+        {ui.isDesktop && (
+          <Style.BgLines />
+        )}
       </Style.Head>
     </Provider>
   );

@@ -16,7 +16,7 @@ const Icon: FC<IconProps> = props => {
 
   return (
     <IconWrapper size={size!} className={className}>
-      {Object.keys(IconProp).length && (
+      {!!Object.keys(IconProp).length && (
         <IconProp {...rest} />
       )}
     </IconWrapper>

@@ -1,12 +1,18 @@
 import { math } from 'polished';
 import styled from 'styled-components';
 
+import Container from '@ui/container';
 import Message from '@ui/message';
 
 export const Head = styled.div(({ theme }) => ({
   position: 'relative',
   background: 'linear-gradient(90deg, #2B2C84 0%, #8D41BB 100%)',
   padding: `${math(`${theme.spacing.lg} * 5`)} 0`,
+}));
+
+export const AppContainer = styled(Container)(({ theme }) => ({
+  position: 'relative',
+  zIndex: 1,
 }));
 
 export const BgLines = styled.div(({ theme }) => ({
@@ -17,6 +23,7 @@ export const BgLines = styled.div(({ theme }) => ({
   top: 0,
   height: '100%',
   width: '500px',
+  zIndex: 0,
 }));
 
 export const RobotMessage = styled(Message)(({ theme }) => ({
