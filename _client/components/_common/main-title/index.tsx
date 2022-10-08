@@ -20,7 +20,9 @@ const MainTitle: FC<MainTitleProps> = props => {
       <Style.Logo Icon={PsbLogo} />
       <Style.Divider />
       <Style.Title textName={TextName.TITLE_H1} intent={Intent.SECONDARY}>
-        КРЕДИТНЫЙ ПОМОЩНИК ПСБШКА
+        КРЕДИТНЫЙ ПОМОЩНИК
+        {' '}
+        <b>ПСБШКА</b>
       </Style.Title>
     </Style.Wrapper>
   );

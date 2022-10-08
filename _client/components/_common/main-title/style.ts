@@ -25,14 +25,16 @@ export const Wrapper = styled.div<SizedProps>(({ theme, size }) => ({
   }),
   ...styleOnTablet(size, {
     flexDirection: 'column',
+    textAlign: 'center',
     [Divider]: {
       display: 'none',
     },
   }),
 }));
 
-export const Title = styled(Text)(() => ({
+export const Title = styled(Text)(({ theme }) => ({
   lineHeight: '50px',
+  fontWeight: 400,
 }));
 
 export const Logo = styled(Icon)(() => ({

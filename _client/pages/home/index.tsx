@@ -33,7 +33,7 @@ const IndexPage: FC<IProps> = () => {
     fetchTest();
   }, []);
 
-  const texts = ['Кредитных картах', 'Кредитах', 'Ипотеке', 'Рефинансировании'];
+  const texts = ['Физическим лицом', 'Владельцем малого бизнеса'];
 
   return (
     <Provider container={homePageContainer} standalone>
@@ -42,6 +42,13 @@ const IndexPage: FC<IProps> = () => {
           <MainTitle />
           <Style.RobotMessage title="Здравствуйте!" activeAnge={Placement.LEFT_END}>
             Хотите узнать больше о наших кредитных продуктах?
+            <br />
+            <br />
+            Если тебе больше
+            {' '}
+            <b>21</b>
+            {' '}
+            года, давай определимся:
           </Style.RobotMessage>
           <Style.InputWrapper>
             <Input LeftContent={() => <Icon Icon={SearchIcon} />} value="" placeholder="Я хочу узнать о..." />
