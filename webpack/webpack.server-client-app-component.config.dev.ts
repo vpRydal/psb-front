@@ -19,7 +19,6 @@ export function getClientAppComponentDevConfig(paths: TWebpackPaths): Configurat
       rules: [
         getCssRules(paths, true),
         getModuleCssRules(paths, true),
-        svg,
       ],
     },
   });

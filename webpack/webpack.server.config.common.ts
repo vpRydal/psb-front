@@ -5,6 +5,7 @@ import commonPlugins from './common-plugins';
 import { IS_DEV } from './constants';
 import { defaultRootPath, getPath, TWebpackPaths } from './path';
 import resolve from './resolve';
+import svg from './rules/svg';
 
 const localPaths = getPath(defaultRootPath);
 
@@ -32,6 +33,7 @@ export function getServerCommonConfig(paths: TWebpackPaths): Configuration {
           use: 'babel-loader',
           exclude: IS_DEV ? /node_modules/ : [],
         },
+        svg,
       ],
     },
     plugins: [
