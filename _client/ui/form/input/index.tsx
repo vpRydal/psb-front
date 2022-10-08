@@ -43,6 +43,8 @@ const Input: FC<InputProps> = props => {
     const wrapperWidth = wrapperRef.current?.clientHeight || 0;
     const placeholderWidth = placeholderRef.current?.clientHeight || 0;
 
+    console.log(wrapperWidth, placeholderWidth);
+
     if (!placeholder) {
       return;
     }
@@ -51,7 +53,7 @@ const Input: FC<InputProps> = props => {
       placeholderStylesApi({
         to: async nexet => {
           await nexet({ position: 'relative' });
-          await nexet({ top: (wrapperWidth / 2) - placeholderWidth });
+          await nexet({ top: wrapperWidth - placeholderWidth });
         },
       });
     } else {

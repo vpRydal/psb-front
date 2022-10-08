@@ -1,6 +1,7 @@
 import { animated } from 'react-spring';
 import styled from 'styled-components';
 
+import Intent from '@specs/ui/intent';
 import TextName from '@specs/ui/text-name';
 import Text from '@ui/_misc/text';
 import { InputState } from '@ui/form/input/specs';
@@ -25,10 +26,14 @@ export const Wrapper = styled.div<InputState>(({ theme }) => {
     display: 'flex',
     cursor: 'text',
     height: maxHeight,
+    backgroundColor: theme.color.backgrounds[Intent.PRIMARY],
   };
 });
 
-export const AdditionalContentWrapper = styled.div(() => ({
+export const AdditionalContentWrapper = styled.div(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  marginRight: theme.spacing.lg,
 }));
 
 export const ValueWrapper = styled.div<any>(() => ({

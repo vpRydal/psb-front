@@ -1,35 +1,32 @@
 {
   "name": "Clinet",
-  "hash": "8bdd4ea7c02856788fff",
+  "hash": "cdad2ccf9832a7f1900a",
   "publicPath": "/assets/client/",
   "outputPath": "/home/rydal/Projects/hakaton/front/public/assets/client",
   "assetsByChunkName": {
     "main": [
-      "js/main.8bdd4ea7c02856788fff.js",
+      "js/main.cdad2ccf9832a7f1900a.js",
       "css/main.782c6bf8.css"
     ],
     "pages-home": [
-      "js/pages-home.8bdd4ea7c02856788fff.js"
-    ],
-    "pages-booking": [
-      "js/pages-booking.8bdd4ea7c02856788fff.js"
+      "js/pages-home.cdad2ccf9832a7f1900a.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "js/main.8bdd4ea7c02856788fff.js",
-      "size": 789294,
+      "name": "js/main.cdad2ccf9832a7f1900a.js",
+      "size": 787889,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "8bdd4ea7c02856788fff",
+        "fullhash": "cdad2ccf9832a7f1900a",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/main.8bdd4ea7c02856788fff.js.map"
+          "sourceMap": "js/main.cdad2ccf9832a7f1900a.js.map"
         }
       },
       "chunkNames": [
@@ -46,18 +43,18 @@
     },
     {
       "type": "asset",
-      "name": "js/229.8bdd4ea7c02856788fff.js",
-      "size": 86327,
+      "name": "js/527.cdad2ccf9832a7f1900a.js",
+      "size": 76189,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "8bdd4ea7c02856788fff",
+        "fullhash": "cdad2ccf9832a7f1900a",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/229.8bdd4ea7c02856788fff.js.map"
+          "sourceMap": "js/527.cdad2ccf9832a7f1900a.js.map"
         }
       },
       "chunkNames": [],
@@ -68,106 +65,24 @@
       "auxiliaryChunkIdHints": [],
       "filteredRelated": 1,
       "chunks": [
-        229
+        527
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "js/640.8bdd4ea7c02856788fff.js",
-      "size": 29541,
+      "name": "js/pages-home.cdad2ccf9832a7f1900a.js",
+      "size": 33386,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "8bdd4ea7c02856788fff",
+        "fullhash": "cdad2ccf9832a7f1900a",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/640.8bdd4ea7c02856788fff.js.map"
-        }
-      },
-      "chunkNames": [],
-      "chunkIdHints": [
-        "vendors"
-      ],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "filteredRelated": 1,
-      "chunks": [
-        640
-      ],
-      "auxiliaryChunks": []
-    },
-    {
-      "type": "asset",
-      "name": "js/pages-booking.8bdd4ea7c02856788fff.js",
-      "size": 21041,
-      "emitted": false,
-      "comparedForEmit": false,
-      "cached": true,
-      "info": {
-        "immutable": true,
-        "fullhash": "8bdd4ea7c02856788fff",
-        "javascriptModule": false,
-        "minimized": true,
-        "related": {
-          "sourceMap": "js/pages-booking.8bdd4ea7c02856788fff.js.map"
-        }
-      },
-      "chunkNames": [
-        "pages-booking"
-      ],
-      "chunkIdHints": [],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "filteredRelated": 1,
-      "chunks": [
-        609
-      ],
-      "auxiliaryChunks": []
-    },
-    {
-      "type": "asset",
-      "name": "js/946.8bdd4ea7c02856788fff.js",
-      "size": 12124,
-      "emitted": false,
-      "comparedForEmit": false,
-      "cached": true,
-      "info": {
-        "immutable": true,
-        "fullhash": "8bdd4ea7c02856788fff",
-        "javascriptModule": false,
-        "minimized": true,
-        "related": {
-          "sourceMap": "js/946.8bdd4ea7c02856788fff.js.map"
-        }
-      },
-      "chunkNames": [],
-      "chunkIdHints": [],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "filteredRelated": 1,
-      "chunks": [
-        946
-      ],
-      "auxiliaryChunks": []
-    },
-    {
-      "type": "asset",
-      "name": "js/pages-home.8bdd4ea7c02856788fff.js",
-      "size": 4087,
-      "emitted": false,
-      "comparedForEmit": false,
-      "cached": true,
-      "info": {
-        "immutable": true,
-        "fullhash": "8bdd4ea7c02856788fff",
-        "javascriptModule": false,
-        "minimized": true,
-        "related": {
-          "sourceMap": "js/pages-home.8bdd4ea7c02856788fff.js.map"
+          "sourceMap": "js/pages-home.cdad2ccf9832a7f1900a.js.map"
         }
       },
       "chunkNames": [
@@ -228,7 +143,7 @@
       ],
       "assets": [
         {
-          "name": "js/main.8bdd4ea7c02856788fff.js"
+          "name": "js/main.cdad2ccf9832a7f1900a.js"
         },
         {
           "name": "css/main.782c6bf8.css"
@@ -244,53 +159,20 @@
     "pages-home": {
       "name": "pages-home",
       "chunks": [
-        229,
-        640,
-        946,
+        527,
         676
       ],
       "assets": [
         {
-          "name": "js/229.8bdd4ea7c02856788fff.js"
+          "name": "js/527.cdad2ccf9832a7f1900a.js"
         },
         {
-          "name": "js/640.8bdd4ea7c02856788fff.js"
-        },
-        {
-          "name": "js/946.8bdd4ea7c02856788fff.js"
-        },
-        {
-          "name": "js/pages-home.8bdd4ea7c02856788fff.js"
+          "name": "js/pages-home.cdad2ccf9832a7f1900a.js"
         }
       ],
       "filteredAssets": 0,
       "assetsSize": null,
-      "filteredAuxiliaryAssets": 4,
-      "auxiliaryAssetsSize": null,
-      "children": {},
-      "childAssets": {}
-    },
-    "pages-booking": {
-      "name": "pages-booking",
-      "chunks": [
-        229,
-        946,
-        609
-      ],
-      "assets": [
-        {
-          "name": "js/229.8bdd4ea7c02856788fff.js"
-        },
-        {
-          "name": "js/946.8bdd4ea7c02856788fff.js"
-        },
-        {
-          "name": "js/pages-booking.8bdd4ea7c02856788fff.js"
-        }
-      ],
-      "filteredAssets": 0,
-      "assetsSize": null,
-      "filteredAuxiliaryAssets": 3,
+      "filteredAuxiliaryAssets": 2,
       "auxiliaryAssetsSize": null,
       "children": {},
       "childAssets": {}
@@ -301,38 +183,20 @@
     {
       "id": 179,
       "files": [
-        "js/main.8bdd4ea7c02856788fff.js",
+        "js/main.cdad2ccf9832a7f1900a.js",
         "css/main.782c6bf8.css"
       ]
     },
     {
       "id": 676,
       "files": [
-        "js/pages-home.8bdd4ea7c02856788fff.js"
+        "js/pages-home.cdad2ccf9832a7f1900a.js"
       ]
     },
     {
-      "id": 609,
+      "id": 527,
       "files": [
-        "js/pages-booking.8bdd4ea7c02856788fff.js"
-      ]
-    },
-    {
-      "id": 229,
-      "files": [
-        "js/229.8bdd4ea7c02856788fff.js"
-      ]
-    },
-    {
-      "id": 640,
-      "files": [
-        "js/640.8bdd4ea7c02856788fff.js"
-      ]
-    },
-    {
-      "id": 946,
-      "files": [
-        "js/946.8bdd4ea7c02856788fff.js"
+        "js/527.cdad2ccf9832a7f1900a.js"
       ]
     }
   ]

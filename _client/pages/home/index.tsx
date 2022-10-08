@@ -5,22 +5,20 @@ import { useTranslation } from 'react-i18next';
 import { RouteComponentProps } from 'react-router';
 
 import MainTitle from '@components/_common/main-title';
-import * as PageStyle from '@components/_common/page-style';
+import Icon from '@icons';
+import SearchIcon from '@icons/search.svg';
 import fetchTest from '@requests/fetch-test';
+import Size from '@specs/_common/size';
 import Intent from '@specs/ui/intent';
-import Locale from '@specs/ui/locale';
-import { Theme } from '@specs/ui/themes/base';
+import { Placement } from '@specs/ui/placement';
 import LocaleStore from '@stores/_misc/locale';
 import UiStore from '@stores/_misc/ui';
-import Popover from '@ui/_misc/popover';
-import Text from '@ui/_misc/text';
-import Button from '@ui/button';
 import Container from '@ui/container';
 import Input from '@ui/form/input';
-import Message from '@ui/message';
 
 import homePageContainer from './container';
 import * as Style from './style';
+import { BgLines } from './style';
 
 export interface TParams {}
 export type IProps = RouteComponentProps<TParams>
@@ -35,15 +33,28 @@ const IndexPage: FC<IProps> = () => {
     fetchTest();
   }, []);
 
+  const texts = ['Кредитных картах', 'Кредитах', 'Ипотеке', 'Рефинансировании'];
+
   return (
     <Provider container={homePageContainer} standalone>
       <Style.Head>
         <Container>
           <MainTitle />
-          <Message title="Здравствуйте!">
+          <Style.RobotMessage title="Здравствуйте!" activeAnge={Placement.LEFT_END}>
             Хотите узнать больше о наших кредитных продуктах?
-          </Message>
+          </Style.RobotMessage>
+          <Style.InputWrapper>
+            <Input LeftContent={() => <Icon Icon={SearchIcon} />} value="" placeholder="Я хочу узнать о..." />
+          </Style.InputWrapper>
+          <Style.MessagesWrapper>
+            {texts.map(text => (
+              <Style.VariantMessage intent={Intent.PRIMARY} size={Size.SM}>
+                {text}
+              </Style.VariantMessage>
+            ))}
+          </Style.MessagesWrapper>
         </Container>
+        <Style.BgLines />
       </Style.Head>
     </Provider>
   );
