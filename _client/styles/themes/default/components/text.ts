@@ -59,6 +59,22 @@ const textTheme: TextThemeFactory = theme => ({
     fontSize: '48px',
     tagName: 'h4',
   },
+  [TextName.INPUT]: {
+    fontName: theme.fontNames.Gilroy,
+    weight: 400,
+    uppercase: false,
+    color: theme.color.font.PRIMARY,
+    fontSize: '27px',
+    tagName: 'span',
+  },
+  [TextName.INPUT_LABEL]: {
+    fontName: theme.fontNames.Gilroy,
+    weight: 400,
+    uppercase: false,
+    color: theme.color.font.INFO,
+    fontSize: '24px',
+    tagName: 'span',
+  },
 });
 
 export default textTheme;

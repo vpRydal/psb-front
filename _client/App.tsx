@@ -8,14 +8,12 @@ import React, {
   FC, memo, useEffect,
 } from 'react';
 import { useSSR } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import Routes from '@client/router';
 import baseContainer from '@data/misc/base-container';
 import LocaleStore from '@stores/_misc/locale';
 import UiStore from '@stores/_misc/ui';
-import RouterUtils from '@utils/router';
 
 import './styles/index.scss';
 
@@ -58,13 +56,7 @@ const App: FC<Props> = props => {
   return (
     <Provider container={baseContainer}>
       <InitStoresHoc i18n={i18n}>
-        <div>
-          <div>
-            <Link to={RouterUtils.getHome()}>На главную</Link>
-            <Link to={RouterUtils.getBooking({ id: 1 })}>на бронь</Link>
-          </div>
-          <Routes />
-        </div>
+        <Routes />
       </InitStoresHoc>
     </Provider>
   );

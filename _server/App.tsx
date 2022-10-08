@@ -1,4 +1,3 @@
-import OtherController from './controllers/Booking';
 import HomeController from './controllers/Home';
 import Server from './Server';
 
@@ -7,7 +6,6 @@ const server = new Server({
 });
 
 server.attachControllers([
-  new OtherController(server),
   new HomeController(server),
 ]);
 server.attachAssets();

@@ -1,4 +1,5 @@
 import buttonTheme from '@client/styles/themes/default/components/button';
+import inputTheme from '@client/styles/themes/default/components/input';
 import popoverTheme from '@client/styles/themes/default/components/popover';
 import textTheme from '@client/styles/themes/default/components/text';
 import tooltipTheme from '@client/styles/themes/default/components/tooltip';
@@ -69,6 +70,7 @@ const componentsThemePart: ThemeComponentsPart = {
     popover: popoverTheme(baseThemePart),
     tooltip: tooltipTheme(baseThemePart),
     text: textTheme(baseThemePart),
+    input: inputTheme(baseThemePart),
   },
 };
 

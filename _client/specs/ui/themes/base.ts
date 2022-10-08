@@ -1,5 +1,6 @@
 import { SizeMap } from '@client/styles/specs';
 import { ButtonTheme } from '@client/styles/themes/components/button';
+import { InputTheme } from '@client/styles/themes/components/input';
 import { PopoverTheme } from '@client/styles/themes/components/popover';
 import { TextTheme } from '@client/styles/themes/components/text';
 import { TooltipTheme } from '@client/styles/themes/components/tooltip';
@@ -37,6 +38,7 @@ export type ThemeComponentsPart = {
     popover: PopoverTheme;
     tooltip: TooltipTheme;
     text: TextTheme;
+    input: InputTheme;
   }
 }
 
