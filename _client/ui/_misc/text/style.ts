@@ -7,7 +7,7 @@ export const Text = styled.span<{ textName: TextName; uppercase: boolean } & Int
   textName, theme, uppercase, intent: intentProp,
 }) => {
   const {
-    fontSize, weight, intent, color, fontName,
+    fontSize, weight, intent, color, fontName, marginBottom,
   } = theme.components.text[textName];
 
   return {
@@ -16,5 +16,7 @@ export const Text = styled.span<{ textName: TextName; uppercase: boolean } & Int
     fontWeight: weight,
     textTransform: uppercase ? 'uppercase' : 'unset',
     color: intent?.[intentProp] || color,
+    margin: 0,
+    marginBottom,
   };
 });

@@ -7,6 +7,8 @@ enum TextName {
   TITLE_H4 = 'TITLE_H4',
   INPUT = 'INPUT',
   INPUT_LABEL = 'INPUT_LABEL',
+  MESSAGE_TEXT = 'MESSAGE_TEXT',
+  MESSAGE_TITLE = 'MESSAGE_TITLE',
 }
 
 export default TextName;

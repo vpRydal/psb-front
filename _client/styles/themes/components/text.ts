@@ -10,6 +10,7 @@ export type Text = {
   fontName: string;
   fontSize: string;
   uppercase: boolean;
+  marginBottom?: string;
   color: string;
   tagName: keyof HTMLElementTagNameMap;
   intent?: IntentMap;

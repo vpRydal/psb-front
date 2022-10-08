@@ -36,10 +36,10 @@ export const baseThemePart: ThemeBasePart = {
     },
   },
   appSize: {
-    [Size.XS]: 544,
-    [Size.SM]: 768,
-    [Size.MD]: 992,
-    [Size.LG]: 1174,
+    [Size.XS]: 550,
+    [Size.SM]: 750,
+    [Size.MD]: 950,
+    [Size.LG]: 1000,
     [Size.XL]: Number.POSITIVE_INFINITY,
   },
   fontSize: {
