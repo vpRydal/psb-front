@@ -1,6 +1,7 @@
-import { math } from 'polished';
+import { darken, math } from 'polished';
 import styled, { CSSProperties } from 'styled-components';
 
+import { styleIf } from '@client/styles/_mixins/conditions';
 import { IntendedProps, SizedProps } from '@client/styles/specs';
 import Size from '@specs/_common/size';
 import Intent from '@specs/ui/intent';
@@ -17,8 +18,12 @@ function mapAngle(angle?: Placement): CSSProperties {
   return borderRagius;
 }
 
-export const Wrapper = styled.div<SizedProps & Partial<IntendedProps> & { activeAnge?: Placement }>(({
-  theme, size, intent, activeAnge,
+export const Wrapper = styled.div<SizedProps & Partial<IntendedProps> & {
+  activeAnge?: Placement,
+  isClickable: boolean,
+  isSelected: boolean
+}>(({
+  theme, size, intent, activeAnge, isClickable, isSelected,
 }) => ({
   backgroundColor: intent ? theme.color.intents[intent] : theme.color.backgrounds[Intent.SECONDARY],
   padding: {
@@ -29,4 +34,11 @@ export const Wrapper = styled.div<SizedProps & Partial<IntendedProps> & { active
     [Size.XL]: `${theme.spacing.md} ${theme.spacing.lg}`,
   }[size],
   ...mapAngle(activeAnge),
+  ...styleIf(isClickable, {
+    cursor: 'pointer',
+  }),
+  ...styleIf(isSelected, {
+    cursor: 'not-allowed',
+    backgroundColor: darken(0.2, intent ? theme.color.intents[intent] : theme.color.backgrounds[Intent.SECONDARY]),
+  }),
 }));

@@ -26,6 +26,7 @@
     "import/first": "error",
     "sort-imports": "off",
     "simple-import-sort/imports": "off",
+    "class-methods-use-this": "off",
     "max-len": [2, { "code": 140 }],
     "import/order": [
       "error",

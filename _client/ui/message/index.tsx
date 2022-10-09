@@ -13,15 +13,31 @@ export interface MessageProps extends Partial<IntendedProps>, Partial<SizedProps
   className?: string;
   title?: ReactNode;
   children?: ReactNode;
-  activeAnge?: Placement
+  activeAnge?: Placement;
+  onClick?: () => void;
+  isSelected?: boolean;
 }
 const Message: FC<MessageProps> = props => {
   const {
-    className, intent, title, children, size = Size.MD, activeAnge = Placement.LEFT_START,
+    className, intent, title, children, size = Size.MD, activeAnge = Placement.LEFT_START, onClick, isSelected = false,
   } = props;
 
+  function handleClick() {
+    if (!isSelected && onClick) {
+      onClick();
+    }
+  }
+
   return (
-    <Style.Wrapper className={className} intent={intent} size={size} activeAnge={activeAnge}>
+    <Style.Wrapper
+      className={className}
+      intent={intent}
+      isSelected={isSelected}
+      size={size}
+      activeAnge={activeAnge}
+      onClick={handleClick}
+      isClickable={!!onClick}
+    >
       {title && (<Text textName={TextName.MESSAGE_TITLE} intent={intent || Intent.SECONDARY}>{title}</Text>) }
       {children && (<Text textName={TextName.MESSAGE_TEXT} intent={intent || Intent.SECONDARY}>{children}</Text>) }
     </Style.Wrapper>

@@ -49,7 +49,7 @@ export default class UiStore {
 
   @computed
   get isTablet() {
-    return [Size.MD].includes(this._size);
+    return this.isMobile || [Size.MD].includes(this._size);
   }
 
   @computed
