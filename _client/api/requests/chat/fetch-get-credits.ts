@@ -9,7 +9,7 @@ import CreditReplyVariantsData from '@specs/models/reply-varians-data/credit';
 export interface FetchGetCreditsParams {
   type_of_person: CustomerType;
   type_of_loan: LoanType;
-  category_id: number;
+  customer_category_id: number;
   term: number;
   sum: number;
 }

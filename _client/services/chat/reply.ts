@@ -138,7 +138,7 @@ export default class ChatReplyService {
     const categoryId = (message.replTo?.replTo?.reply as CategoryReplyVariantsStore).selectedVariant?.customer_category_id;
 
     this.getCredits({
-      type_of_person: typeOfPerson, type_of_loan: loanType, category_id: categoryId!, sum: formData.sum, term: formData.term,
+      type_of_person: typeOfPerson, type_of_loan: loanType, customer_category_id: categoryId!, sum: formData.sum, term: formData.term,
     }).then(res => {
       if (res) {
         const newBotMessage = new BotMessageStore(new CreditReplyVariantsStore(res));
