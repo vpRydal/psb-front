@@ -13,6 +13,7 @@ import UserMessageStore from '@stores/chat/message/user';
 import CategoryReplyVariantsStore from '@stores/chat/reply-variant/category';
 import CustomerTypeReplyVariantsStore from '@stores/chat/reply-variant/customer-type';
 import LoanReplyVariantsStore from '@stores/chat/reply-variant/loan';
+import CustomerUtils from '@utils/customer';
 
 @injectable()
 export default class ChatReplyService {
@@ -44,9 +45,9 @@ export default class ChatReplyService {
       addMessage(new UserMessageStore(finalLastMessage as BotMessageStore));
 
       if (customerType === CustomerType.PRIVATE_PERSON) {
-        addMessage(new BotMessageStore(new LoanReplyVariantsStore([LoanType.CREDIT, LoanType.MORTGAGE, LoanType.CREDIT_CARD])));
+        addMessage(new BotMessageStore(new LoanReplyVariantsStore(CustomerUtils.getCustomerLoanTypes()[CustomerType.PRIVATE_PERSON])));
       } else if (customerType === CustomerType.JURISTIC_PERSON) {
-        addMessage(new BotMessageStore(new LoanReplyVariantsStore([LoanType.REFINANCING])));
+        addMessage(new BotMessageStore(new LoanReplyVariantsStore(CustomerUtils.getCustomerLoanTypes()[CustomerType.JURISTIC_PERSON])));
       }
     });
   }
@@ -99,11 +100,16 @@ export default class ChatReplyService {
   async getCategories(loanType: LoanType) {
     const { botMessages } = this.chatStore;
     const action = this.chatStore.getServerAction('getCategories');
-    const typeOfPerson = botMessages.slice().reverse()
+    const botMessageWithCustomerType = botMessages.slice().reverse()
       .find(message => message.reply.type === ReplyType.CUSTOMER_TYPE && message.reply.selectedVariant);
+    let typeOfPerson = (botMessageWithCustomerType?.reply as CustomerTypeReplyVariantsStore).selectedVariant!;
 
-    if (!typeOfPerson) {
+    if (!botMessageWithCustomerType) {
       return null;
+    }
+
+    if (!CustomerUtils.getCustomerLoanTypes()[typeOfPerson].includes(loanType)) {
+      typeOfPerson = typeOfPerson === CustomerType.JURISTIC_PERSON ? typeOfPerson : CustomerType.PRIVATE_PERSON;
     }
 
     try {
@@ -111,7 +117,7 @@ export default class ChatReplyService {
 
       const response = await fetchGetCategories({
         type_of_loan: loanType,
-        type_of_person: (typeOfPerson.reply as CustomerTypeReplyVariantsStore).selectedVariant!,
+        type_of_person: typeOfPerson,
       });
 
       action.complete();
