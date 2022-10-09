@@ -24,7 +24,7 @@ export const BotTrack = styled.div(() => css`
   margin-right: 40px;
   display: flex;
   position: relative;
-  width: 170px;
+  width: 200px;
   justify-content: center;
 `);
 export const Bot = styled(animated.div)(() => css`
