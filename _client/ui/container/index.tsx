@@ -10,15 +10,15 @@ export interface ContainerProps {
   className?: string;
   children: ReactNode;
 }
-const Container: FC<ContainerProps> = props => {
+const Container = observer<ContainerProps, HTMLDivElement>((props, ref) => {
   const { className, children } = props;
   const uiStore = useInjection(UiStore);
 
   return (
-    <Style.Wrapper className={className} size={uiStore.size}>
+    <Style.Wrapper className={className} size={uiStore.size} ref={ref}>
       {children}
     </Style.Wrapper>
   );
-};
+}, { forwardRef: true });
 
-export default observer(Container);
+export default Container;

@@ -1,6 +1,8 @@
 import { useInjection } from 'inversify-react';
+import { debounce } from 'lodash';
 import { observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useSpring, useSpringRef } from 'react-spring';
 
 import Message from '@components/home/chat/message';
 import * as CommonStyle from '@components/home/chat/message/variants/common-style';
@@ -17,6 +19,25 @@ const Chat = () => {
   const chatStore = useInjection(ChatStore);
   const getCategoriesAction = chatStore.getServerAction('getCategories');
   const getCreditsAction = chatStore.getServerAction('getCredits');
+  const chatTrackRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const conteinerRef = useRef<HTMLDivElement>(null);
+  const messageRef = useRef<HTMLDivElement>(null);
+  const [botStyles, botStylesApi] = useSpring(() => ({
+    from: {
+      top: 0,
+    },
+    config: {
+      duration: 200,
+    },
+  }));
+
+  useEffect(() => {
+    wrapperRef.current?.scroll({
+      behavior: 'smooth',
+      top: (conteinerRef.current?.clientHeight || 0) * 2,
+    });
+  }, [chatStore.messagesPool.length]);
 
   useEffect(() => {
     chatStore.addMessage(new BotMessageStore(new CustomerTypeReplyVariantsStore([
@@ -25,15 +46,17 @@ const Chat = () => {
   }, []);
 
   return (
-    <Style.Wrapper>
-      <Style.AppContainer>
+    <Style.Wrapper ref={wrapperRef}>
+      <Style.AppContainer ref={conteinerRef}>
         <Style.Content>
           <Style.BotTrack>
             <Style.Bot />
           </Style.BotTrack>
-          <Style.ChatTrack>
-            {chatStore.messagesPool.map(message => (
-              <Message message={message} key={message.id} />
+          <Style.ChatTrack ref={chatTrackRef}>
+            {chatStore.messagesPool.map((message, index) => (
+              <div ref={index === chatStore.messagesPool.length - 1 ? messageRef : undefined}>
+                <Message message={message} key={message.id} />
+              </div>
             ))}
             <ServerActionInformer
               serverAction={[getCategoriesAction, getCreditsAction]}

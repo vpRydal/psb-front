@@ -12,6 +12,7 @@ export interface BotMessageProps {
 }
 const BotMessage: FC<BotMessageProps> = props => {
   const { message } = props;
+
   return (
     <CommonStyle.Wrapper>
       <MessageText reply={message.reply} />

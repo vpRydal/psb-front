@@ -1,8 +1,7 @@
-import { math } from 'polished';
+import { animated } from 'react-spring';
 import styled, { css } from 'styled-components';
 
 import Container from '@ui/container';
-import Message from '@ui/message';
 
 export const Wrapper = styled.div(() => css`
   position: fixed;
@@ -24,12 +23,17 @@ export const Content = styled.div(() => css`
 `);
 export const BotTrack = styled.div(() => css`
   margin-right: 40px;
+  display: flex;
+  position: relative;
+  width: 170px;
 `);
-export const Bot = styled.div(() => css`
+export const Bot = styled(animated.div)(() => css`
   background: url("/assets/images/psbshka.gif");
   background-size: contain;
+  position: absolute;
   height: 170px;
   width: 170px;
+  bottom: 100px;
 `);
 
 export const ChatTrack = styled.div(() => css`
