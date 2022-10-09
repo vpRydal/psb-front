@@ -14,7 +14,13 @@ export interface FetchGetCreditsParams {
   sum: number;
 }
 export type FetchGetCreditsResponse = CreditReplyVariantsData
-const fetchGetCredits = (params: FetchGetCreditsParams) => new Promise<AxiosResponse<DefaultRequest<FetchGetCreditsResponse>>>(resolve => {
+const fetchGetCredits = (params: FetchGetCreditsParams) => api
+  .get<DefaultRequest<FetchGetCreditsResponse>>('get-loans', {
+    params,
+  });
+
+/*
+   new Promise<AxiosResponse<DefaultRequest<FetchGetCreditsResponse>>>(resolve => {
   setTimeout(() => {
     resolve({
       data: {
@@ -103,11 +109,8 @@ const fetchGetCredits = (params: FetchGetCreditsParams) => new Promise<AxiosResp
       },
     });
   }, 3000);
-});
+})
 
-/* api
-  .get<DefaultRequest<FetchGetCreditsResponse>>('get-loans', {
-    params,
-  }) */
+   */
 
 export default fetchGetCredits;
