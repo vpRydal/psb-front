@@ -65,6 +65,23 @@ const MessageText: FC<BotMessageProps> = props => {
           <Text>
             <span dangerouslySetInnerHTML={{ __html: (reply as CreditViewReplyVariantsStore).credit.details.replaceAll('\n', '<br/>') }} />
           </Text>
+          <br />
+          <br />
+          <br />
+          <Text>
+            {' '}
+            <Text>
+              <b>
+                Ваш ежемесячный платеж будет составлять:
+              </b>
+            </Text>
+            <b>
+              {' '}
+              {(reply as CreditViewReplyVariantsStore).credit.amount_per_month}
+              {' '}
+              Р
+            </b>
+          </Text>
         </>
       );
       default: return null;

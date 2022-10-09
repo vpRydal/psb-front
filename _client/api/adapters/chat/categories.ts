@@ -5,7 +5,7 @@ export default class CategoriesAdapter {
   static adaptGetCategoryRequest(response: FetchGetCategoriesResponse): CategoryReplyVariantsData {
     const categories = response.categories.map(category => ({
       ...category,
-      minSum: 1000,
+      minSum: 100000,
       minTerm: 1,
     }));
 

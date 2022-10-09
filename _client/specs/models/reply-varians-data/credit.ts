@@ -11,6 +11,7 @@ export interface CreditProduct {
   interest_rate: number;
   maxSum: number;
   max_term_in_years: number;
+  amount_per_month: number;
   min_age: number;
   type_of_person: CustomerType;
   moth_amount: number;
