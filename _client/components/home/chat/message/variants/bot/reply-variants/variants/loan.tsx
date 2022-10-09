@@ -14,17 +14,22 @@ import * as CommonStyle from '../../../common-style';
 export interface BotMessageProps {
   type: LoanType;
   displayOnUser: boolean;
+  disableActions?: boolean;
   message: BotMessageStore;
 }
 const LoanReplyVariant: FC<BotMessageProps> = props => {
-  const { message, type, displayOnUser } = props;
+  const {
+    message, type, displayOnUser, disableActions,
+  } = props;
   const chatReplyService = useInjection(ChatReplyService);
 
   function handleClick() {
-    chatReplyService.selectLoan(type, message);
+    if (!disableActions) {
+      chatReplyService.selectLoan(type, message);
 
-    if (!message.reply.selectedVariant) {
-      message.reply.selectedVariant = type;
+      if (!message.reply.selectedVariant) {
+        message.reply.selectedVariant = type;
+      }
     }
   }
 
