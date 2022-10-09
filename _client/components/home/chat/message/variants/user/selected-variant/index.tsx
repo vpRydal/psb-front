@@ -13,7 +13,7 @@ export interface UserMessageProps {
 const SelectedVariant: FC<UserMessageProps> = props => {
   const { message } = props;
 
-  if (!message.replTo) {
+  if (!message.replTo || !message.replTo.reply.selectedVariant) {
     return null;
   }
 

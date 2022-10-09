@@ -24,10 +24,13 @@ const ReplyVariants: FC<BotMessageProps> = props => {
   function renderContent() {
     switch (message.reply.type) {
       case ReplyType.CUSTOMER_TYPE: return renderWrapper(message.reply.variants.map(value => (
-        <Variants value={value} message={message} />
+        <Variants key={message.id} value={value} message={message} />
       )));
       case ReplyType.LOAN: return renderWrapper(message.reply.variants.map(value => (
-        <Variants value={value} message={message} />
+        <Variants key={message.id} value={value} message={message} />
+      )));
+      case ReplyType.CATEGORY: return renderWrapper(message.reply.variants.map(value => (
+        <Variants key={message.id} value={value} message={message} />
       )));
       default: return null;
     }

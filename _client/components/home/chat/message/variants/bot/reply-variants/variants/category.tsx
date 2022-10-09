@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 
 import ChatReplyService from '@services/chat/reply';
 import Size from '@specs/_common/size';
-import CustomerType from '@specs/_misc/сustomer-type';
+import { CategoryData } from '@specs/models/reply-varians-data/category';
 import Intent from '@specs/ui/intent';
 import { Placement } from '@specs/ui/placement';
 import BotMessageStore from '@stores/chat/message/bot';
@@ -12,22 +12,22 @@ import BotMessageStore from '@stores/chat/message/bot';
 import * as CommonStyle from '../../../common-style';
 
 export interface BotMessageProps {
-  type: CustomerType;
+  category: CategoryData;
   displayOnUser: boolean;
   message: BotMessageStore;
 }
-const CustomerReplyVariant: FC<BotMessageProps> = props => {
+const CategoryReplyVariant: FC<BotMessageProps> = props => {
   const {
-    type, displayOnUser, message,
+    category, displayOnUser, message,
   } = props;
   const chatReplyService = useInjection(ChatReplyService);
 
   function handleClick() {
     if (message) {
-      chatReplyService.selectCustomerType(type, message);
+      chatReplyService.selectCategory(category.id, message);
 
       if (!message.reply.selectedVariant) {
-        message.reply.selectedVariant = type;
+        message.reply.selectedVariant = category;
       }
     }
   }
@@ -38,12 +38,11 @@ const CustomerReplyVariant: FC<BotMessageProps> = props => {
       intent={displayOnUser ? undefined : Intent.PRIMARY}
       size={displayOnUser ? Size.MD : Size.SM}
       activeAnge={displayOnUser ? Placement.RIGHT_END : Placement.LEFT_END}
-      isSelected={message.reply.selectedVariant === type && !displayOnUser}
+      isSelected={(message.reply.selectedVariant as CategoryData)?.id === category.id && !displayOnUser}
     >
-      {type === CustomerType.PRIVATE_PERSON && 'Физическим лицом'}
-      {type === CustomerType.JURISTIC_PERSON && 'Владельцем малого бизнеса'}
+      {category.name}
     </CommonStyle.ReplyVariantMessage>
   );
 };
 
-export default observer(CustomerReplyVariant);
+export default observer(CategoryReplyVariant);

@@ -45,7 +45,8 @@
       "@icons": ["ui/_misc/icons"],
       "@hooks/*": ["hooks/*"],
       "@api": ["api"],
-      "@requests/*": ["api/requests/*"]
+      "@requests/*": ["api/requests/*"],
+      "@adapters/*": ["api/adapters/*"]
     }
   }
 }

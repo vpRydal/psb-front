@@ -20,6 +20,7 @@ export default {
     '@hooks': path.resolve(PATH.client, '/hooks'),
     '@api': path.resolve(PATH.client, '/api'),
     '@requests': path.resolve(PATH.client, '/api/requests'),
+    '@adapters': path.resolve(PATH.client, '/api/adapters'),
   },
   extensions: ['.ts', '.tsx', '.js', '.json', '.scss', '.png', '.jpg', '.gif', '.jpeg'],
 };

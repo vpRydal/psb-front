@@ -5,12 +5,19 @@ import {
 } from 'mobx';
 
 import MessageType from '@specs/_misc/message-type';
-import BaseMessageStore from '@stores/chat/message/base';
+import { ServerActionStore } from '@stores/_misc/server-action';
+import { ServerActionManagerStore } from '@stores/_misc/server-actions-manager';
 import BotMessageStore from '@stores/chat/message/bot';
 import UserMessageStore from '@stores/chat/message/user';
 
+type TServerActionKeys = 'getCategories';
+export type ChatStoreActionManager = ServerActionManagerStore<Record<TServerActionKeys, ServerActionStore>>;
 @injectable()
 export default class ChatStore {
+  private readonly _serverActionManager: ChatStoreActionManager = new ServerActionManagerStore({
+    getCategories: new ServerActionStore(),
+  });
+
   @observable.shallow
   protected _messagesPool: (UserMessageStore | BotMessageStore)[] = []
 
@@ -29,13 +36,23 @@ export default class ChatStore {
   }
 
   @computed
+  get botMessages() {
+    return this._messagesPool.filter(message => message.type === MessageType.BOT) as BotMessageStore[];
+  }
+
+  @computed
+  get userMessages() {
+    return this._messagesPool.filter(message => message.type === MessageType.USER) as UserMessageStore[];
+  }
+
+  @computed
   get lastUserMessage() {
-    return this._messagesPool.find(message => message.type === MessageType.USER) as UserMessageStore | undefined;
+    return last(this.userMessages) as UserMessageStore | undefined;
   }
 
   @computed
   get lastBotMessage() {
-    return this._messagesPool.find(message => message.type === MessageType.BOT) as BotMessageStore | undefined;
+    return last(this.botMessages) as BotMessageStore | undefined;
   }
 
   @action.bound
@@ -52,4 +69,7 @@ export default class ChatStore {
   reset() {
     this._messagesPool = [];
   }
+
+  @action
+  getServerAction = this._serverActionManager.getServerAction;
 }

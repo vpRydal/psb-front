@@ -26,6 +26,7 @@
     "import/first": "error",
     "sort-imports": "off",
     "simple-import-sort/imports": "off",
+    "camelcase": "off",
     "class-methods-use-this": "off",
     "max-len": [2, { "code": 140 }],
     "import/order": [
@@ -102,7 +103,8 @@
           [ "@icons", "./_client/ui/_misc/icons" ],
           [ "@hooks", "./_client/hooks" ],
           [ "@api", "./_client/api" ],
-          [ "@requests", "./_client/api/requests" ]
+          [ "@requests", "./_client/api/requests" ],
+          [ "@adapters", "./_client/api/adapters" ]
         ],
         "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
       }

@@ -32,6 +32,11 @@ const MessageText: FC<BotMessageProps> = props => {
           Какой тип кредитования вас интересует?
         </>
       );
+      case ReplyType.CATEGORY: return (
+        <>
+          К какой категории вы себя относите?
+        </>
+      );
       default: return null;
     }
   }

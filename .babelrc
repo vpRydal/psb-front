@@ -30,7 +30,8 @@
           "@icons": "./_client/ui/_misc/icons",
           "@hooks": "./_client/hooks",
           "@api": "./_client/api",
-          "@requests": "./_client/api/requests"
+          "@requests": "./_client/api/requests",
+          "@adapters": "./_client/api/adapters"
         }
       }
     ]

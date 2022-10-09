@@ -21,8 +21,11 @@ const LoanReplyVariant: FC<BotMessageProps> = props => {
   const chatReplyService = useInjection(ChatReplyService);
 
   function handleClick() {
-    chatReplyService.selectedLoan(type);
-    message.reply.selectedVariant = type;
+    chatReplyService.selectLoan(type, message);
+
+    if (!message.reply.selectedVariant) {
+      message.reply.selectedVariant = type;
+    }
   }
 
   return (
