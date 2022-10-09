@@ -1,6 +1,6 @@
 import { useInjection } from 'inversify-react';
 import { observer } from 'mobx-react-lite';
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 
 import ChatReplyService from '@services/chat/reply';
 import Size from '@specs/_common/size';

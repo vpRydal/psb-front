@@ -60,37 +60,44 @@ const MessageText: FC<BotMessageProps> = props => {
           Предлагаю вам следующие вариант
         </>
       );
-      case ReplyType.CREDIT_VIEW: return (
-        <>
-          <Text textName={TextName.TITLE_H4}>{(reply as CreditViewReplyVariantsStore).credit.title}</Text>
-          <Text>
-            <span dangerouslySetInnerHTML={{ __html: (reply as CreditViewReplyVariantsStore).credit.details.replaceAll('\n', '<br/>') }} />
-          </Text>
-          <br />
-          <br />
-          <br />
-          <Text>
-            {' '}
+      case ReplyType.CREDIT_VIEW: {
+        const { credit } = reply as CreditViewReplyVariantsStore;
+
+        return (
+          <>
+            <Text textName={TextName.TITLE_H4}>{credit.title}</Text>
             <Text>
+              <span dangerouslySetInnerHTML={{ __html: credit.details.replaceAll('\n', '<br/>') }} />
+            </Text>
+            <br />
+            <br />
+            <br />
+            <Text>
+              {' '}
+              <Text>
+                <b>
+                  Ваш ежемесячный платеж будет составлять:
+                </b>
+              </Text>
               <b>
-                Ваш ежемесячный платеж будет составлять:
+                {' '}
+                {(reply as CreditViewReplyVariantsStore).credit.amount_per_month}
+                {' '}
+                Р
               </b>
             </Text>
-            <b>
-              {' '}
-              {(reply as CreditViewReplyVariantsStore).credit.amount_per_month}
-              {' '}
-              Р
-            </b>
-          </Text>
-          <br />
-          <br />
-          Подробнее о кредите
-          {' '}
-          <Style.Link href={(reply as CreditViewReplyVariantsStore).credit.psb_url} target="_blank">тут</Style.Link>
-        </>
-      );
-      default: return null;
+            {credit.psb_url && (
+              <>
+                <br />
+                <br />
+                Подробнее о кредите
+                {' '}
+                <Style.Link href={credit.psb_url} target="_blank">тут</Style.Link>
+              </>
+            )}
+          </>
+        );
+      } default: return null;
     }
   }
 
