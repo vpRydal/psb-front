@@ -10,6 +10,7 @@ import CreditViewReplyVariantsStore from '@stores/chat/reply-variant/credit-view
 import Text from '@ui/_misc/text';
 
 import * as CommonStyle from '../../common-style';
+import * as Style from './style';
 
 export interface BotMessageProps {
   reply: BotMessageStore['reply']
@@ -82,6 +83,11 @@ const MessageText: FC<BotMessageProps> = props => {
               Р
             </b>
           </Text>
+          <br />
+          <br />
+          Подробнее о кредите
+          {' '}
+          <Style.Link href={(reply as CreditViewReplyVariantsStore).credit.psb_url} target="_blank">тут</Style.Link>
         </>
       );
       default: return null;

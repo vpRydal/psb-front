@@ -12,6 +12,7 @@ export interface CreditProduct {
   maxSum: number;
   max_term_in_years: number;
   amount_per_month: number;
+  psb_url: string;
   min_age: number;
   type_of_person: CustomerType;
   moth_amount: number;
