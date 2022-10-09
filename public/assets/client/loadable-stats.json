@@ -1,32 +1,32 @@
 {
   "name": "Clinet",
-  "hash": "c715ce22f04490743403",
+  "hash": "bb91bb2263206991622f",
   "publicPath": "/assets/client/",
   "outputPath": "/home/rydal/Projects/hakaton/front/public/assets/client",
   "assetsByChunkName": {
     "main": [
-      "js/main.c715ce22f04490743403.js",
+      "js/main.bb91bb2263206991622f.js",
       "css/main.782c6bf8.css"
     ],
     "pages-home": [
-      "js/pages-home.c715ce22f04490743403.js"
+      "js/pages-home.bb91bb2263206991622f.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "js/main.c715ce22f04490743403.js",
+      "name": "js/main.bb91bb2263206991622f.js",
       "size": 796802,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "c715ce22f04490743403",
+        "fullhash": "bb91bb2263206991622f",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/main.c715ce22f04490743403.js.map"
+          "sourceMap": "js/main.bb91bb2263206991622f.js.map"
         }
       },
       "chunkNames": [
@@ -43,18 +43,18 @@
     },
     {
       "type": "asset",
-      "name": "js/863.c715ce22f04490743403.js",
+      "name": "js/863.bb91bb2263206991622f.js",
       "size": 75108,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "c715ce22f04490743403",
+        "fullhash": "bb91bb2263206991622f",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/863.c715ce22f04490743403.js.map"
+          "sourceMap": "js/863.bb91bb2263206991622f.js.map"
         }
       },
       "chunkNames": [],
@@ -71,18 +71,18 @@
     },
     {
       "type": "asset",
-      "name": "js/pages-home.c715ce22f04490743403.js",
-      "size": 61327,
+      "name": "js/pages-home.bb91bb2263206991622f.js",
+      "size": 61313,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "fullhash": "c715ce22f04490743403",
+        "fullhash": "bb91bb2263206991622f",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "js/pages-home.c715ce22f04490743403.js.map"
+          "sourceMap": "js/pages-home.bb91bb2263206991622f.js.map"
         }
       },
       "chunkNames": [
@@ -143,7 +143,7 @@
       ],
       "assets": [
         {
-          "name": "js/main.c715ce22f04490743403.js"
+          "name": "js/main.bb91bb2263206991622f.js"
         },
         {
           "name": "css/main.782c6bf8.css"
@@ -164,10 +164,10 @@
       ],
       "assets": [
         {
-          "name": "js/863.c715ce22f04490743403.js"
+          "name": "js/863.bb91bb2263206991622f.js"
         },
         {
-          "name": "js/pages-home.c715ce22f04490743403.js"
+          "name": "js/pages-home.bb91bb2263206991622f.js"
         }
       ],
       "filteredAssets": 0,
@@ -183,20 +183,20 @@
     {
       "id": 179,
       "files": [
-        "js/main.c715ce22f04490743403.js",
+        "js/main.bb91bb2263206991622f.js",
         "css/main.782c6bf8.css"
       ]
     },
     {
       "id": 676,
       "files": [
-        "js/pages-home.c715ce22f04490743403.js"
+        "js/pages-home.bb91bb2263206991622f.js"
       ]
     },
     {
       "id": 863,
       "files": [
-        "js/863.c715ce22f04490743403.js"
+        "js/863.bb91bb2263206991622f.js"
       ]
     }
   ]
