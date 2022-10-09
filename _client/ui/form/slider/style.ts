@@ -76,7 +76,7 @@ export const Value = styled(Text)(({ theme }) => css`
 export const Placeholder = styled(Text)(({ theme }) => css`
   display: block;
   position: absolute;
-  top: -25px
+  top: -27px
 
 `);
 
