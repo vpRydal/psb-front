@@ -1,6 +1,8 @@
 import { animated } from 'react-spring';
 import styled, { css } from 'styled-components';
 
+import { styleOnMobile, styleOnTablet } from '@client/styles/_mixins/conditions';
+import { SizedProps } from '@client/styles/specs';
 import Container from '@ui/container';
 
 export const Wrapper = styled.div(() => css`
@@ -18,14 +20,12 @@ export const AppContainer = styled(Container)(() => css`
   padding-top: 200px;
   overflow-y: auto;
 `);
-export const Content = styled.div(() => css`
-  display: flex;
-`);
 export const BotTrack = styled.div(() => css`
   margin-right: 40px;
   display: flex;
   position: relative;
   width: 170px;
+  justify-content: center;
 `);
 export const Bot = styled(animated.div)(() => css`
   background: url("/assets/images/psbshka.gif");
@@ -35,6 +35,27 @@ export const Bot = styled(animated.div)(() => css`
   width: 170px;
   bottom: 100px;
 `);
+
+export const Content = styled.div<SizedProps>(({ size }) => ({
+  display: 'flex',
+  ...styleOnTablet(size, {
+    [BotTrack]: {
+      marginRight: 20,
+    },
+    [Bot]: {
+      width: 100,
+      height: 100,
+      bottom: 200,
+    },
+  }),
+  ...styleOnMobile(size, {
+    [Bot]: {
+      width: 80,
+      height: 80,
+      bottom: 300,
+    },
+  }),
+}));
 
 export const ChatTrack = styled.div(() => css`
 `);

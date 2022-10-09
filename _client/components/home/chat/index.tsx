@@ -7,6 +7,7 @@ import { useSpring, useSpringRef } from 'react-spring';
 import Message from '@components/home/chat/message';
 import * as CommonStyle from '@components/home/chat/message/variants/common-style';
 import CustomerType from '@specs/_misc/сustomer-type';
+import UiStore from '@stores/_misc/ui';
 import ChatStore from '@stores/chat';
 import BotMessageStore from '@stores/chat/message/bot';
 import CustomerTypeReplyVariantsStore from '@stores/chat/reply-variant/customer-type';
@@ -17,6 +18,7 @@ import * as Style from './style';
 
 const Chat = () => {
   const chatStore = useInjection(ChatStore);
+  const uiStore = useInjection(UiStore);
   const getCategoriesAction = chatStore.getServerAction('getCategories');
   const getCreditsAction = chatStore.getServerAction('getCredits');
   const chatTrackRef = useRef<HTMLDivElement>(null);
@@ -48,7 +50,7 @@ const Chat = () => {
   return (
     <Style.Wrapper ref={wrapperRef}>
       <Style.AppContainer ref={conteinerRef}>
-        <Style.Content>
+        <Style.Content size={uiStore.size}>
           <Style.BotTrack>
             <Style.Bot />
           </Style.BotTrack>
