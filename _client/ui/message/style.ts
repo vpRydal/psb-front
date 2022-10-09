@@ -7,7 +7,7 @@ import Size from '@specs/_common/size';
 import Intent from '@specs/ui/intent';
 import { Placement } from '@specs/ui/placement';
 
-function mapAngle(angle?: Placement): CSSProperties {
+export function mapAngle(angle?: Placement): CSSProperties {
   const borderRagius: CSSProperties = {
     borderTopLeftRadius: angle === Placement.LEFT_START ? 5 : 20,
     borderBottomLeftRadius: angle === Placement.LEFT_END ? 5 : 20,
