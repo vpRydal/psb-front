@@ -24,7 +24,7 @@ const textTheme: TextThemeFactory = theme => ({
     weight: 400,
     color: theme.color.font.PRIMARY,
     uppercase: false,
-    fontSize: '32px',
+    fontSize: '24px',
     tagName: 'span',
   },
   [TextName.TITLE_H1]: {
@@ -64,7 +64,8 @@ const textTheme: TextThemeFactory = theme => ({
     weight: 600,
     uppercase: false,
     color: theme.color.font.PRIMARY,
-    fontSize: '48px',
+    fontSize: '30px',
+    marginBottom: '15px',
     tagName: 'h4',
   },
   [TextName.INPUT]: {

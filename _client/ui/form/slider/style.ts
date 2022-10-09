@@ -2,21 +2,21 @@ import { lighten } from 'polished';
 import styled, { css } from 'styled-components';
 
 import Intent from '@specs/ui/intent';
-import { Placement } from '@specs/ui/placement';
 import Text from '@ui/_misc/text';
-import { mapAngle } from '@ui/message/style';
 
-export const Wrapper = styled.div(({ theme }) => css`
+export const Wrapper = styled.div<{ isDisabled: boolean }>(({ theme, isDisabled }) => css`
   background-color: #ffffff;
-  padding-bottom: 0;
-  padding-right: 0;
-  padding-left: 0;
   padding-top: 30px;
-
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   border-top-right-radius: 20px;
-  border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 20px;
+  
+  ${isDisabled && css`
+    opacity: 0.6;
+    cursor: not-allowed;
+  `}
+  
   .rc-slider {
     transform: translateY(5px);
     
@@ -85,14 +85,14 @@ export const InfoWrapper = styled.div(({ theme }) => css`
   display: flex;
   justify-content: space-between;
   position: relative;
+  align-content: center;
 `);
 
 export const Bottom = styled.div(({ theme }) => ({
   backgroundColor: '#E5E5E5',
   display: 'flex',
   justifyContent: 'space-between',
-  ...mapAngle(Placement.RIGHT_END),
-  padding: '0 30px 30px 30px',
-  borderTopRightRadius: 0,
-  borderTopLeftRadius: 0,
+  padding: '5px 30px 30px 30px',
+  borderBottomRightRadius: 20,
+  borderBottomLeftRadius: 20,
 }));

@@ -10,12 +10,13 @@ import { ServerActionManagerStore } from '@stores/_misc/server-actions-manager';
 import BotMessageStore from '@stores/chat/message/bot';
 import UserMessageStore from '@stores/chat/message/user';
 
-type TServerActionKeys = 'getCategories';
+type TServerActionKeys = 'getCategories' | 'getCredits';
 export type ChatStoreActionManager = ServerActionManagerStore<Record<TServerActionKeys, ServerActionStore>>;
 @injectable()
 export default class ChatStore {
   private readonly _serverActionManager: ChatStoreActionManager = new ServerActionManagerStore({
     getCategories: new ServerActionStore(),
+    getCredits: new ServerActionStore(),
   });
 
   @observable.shallow
@@ -68,6 +69,7 @@ export default class ChatStore {
   @action.bound
   reset() {
     this._messagesPool = [];
+    this._serverActionManager.reset();
   }
 
   @action

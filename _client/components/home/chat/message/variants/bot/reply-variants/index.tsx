@@ -1,3 +1,4 @@
+import uniqueId from 'lodash/uniqueId';
 import { observer } from 'mobx-react-lite';
 import React, { FC, ReactNode } from 'react';
 
@@ -24,13 +25,17 @@ const ReplyVariants: FC<BotMessageProps> = props => {
   function renderContent() {
     switch (message.reply.type) {
       case ReplyType.CUSTOMER_TYPE: return renderWrapper(message.reply.variants.map(value => (
-        <Variants key={message.id} value={value} message={message} />
+        <Variants key={uniqueId('Variants-')} value={value} message={message} />
       )));
       case ReplyType.LOAN: return renderWrapper(message.reply.variants.map(value => (
-        <Variants key={message.id} value={value} message={message} />
+        <Variants key={uniqueId('Variants-')} value={value} message={message} />
       )));
       case ReplyType.CATEGORY: return renderWrapper(message.reply.variants.map(value => (
-        <Variants key={message.id} value={value} message={message} />
+        <Variants key={uniqueId('Variants-')} value={value} message={message} />
+      )));
+      case ReplyType.CREDIT_VIEW:
+      case ReplyType.CREDIT: return renderWrapper(message.reply.variants.map(value => (
+        <Variants key={uniqueId('Variants-')} value={value} message={message} />
       )));
       default: return null;
     }

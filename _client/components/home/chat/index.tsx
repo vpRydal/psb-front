@@ -16,6 +16,7 @@ import * as Style from './style';
 const Chat = () => {
   const chatStore = useInjection(ChatStore);
   const getCategoriesAction = chatStore.getServerAction('getCategories');
+  const getCreditsAction = chatStore.getServerAction('getCredits');
 
   useEffect(() => {
     chatStore.addMessage(new BotMessageStore(new CustomerTypeReplyVariantsStore([
@@ -35,7 +36,7 @@ const Chat = () => {
               <Message message={message} key={message.id} />
             ))}
             <ServerActionInformer
-              serverAction={getCategoriesAction}
+              serverAction={[getCategoriesAction, getCreditsAction]}
               components={{
                 spinnerWrapper: () => (
                   <CommonStyle.BigMessage>
