@@ -1,5 +1,5 @@
 interface CategoryData {
-  id: number;
+  customer_category_id: number;
   name: string;
   /** максимальная сума кредитования */
   maxSum: number;

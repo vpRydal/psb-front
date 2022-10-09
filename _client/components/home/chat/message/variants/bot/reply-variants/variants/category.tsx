@@ -25,7 +25,7 @@ const CategoryReplyVariant: FC<BotMessageProps> = props => {
 
   function handleClick() {
     if (!disableActions) {
-      chatReplyService.selectCategory(category.id, message);
+      chatReplyService.selectCategory(category.customer_category_id, message);
 
       if (!message.reply.selectedVariant) {
         message.reply.selectedVariant = category;
@@ -39,7 +39,7 @@ const CategoryReplyVariant: FC<BotMessageProps> = props => {
       intent={displayOnUser ? undefined : Intent.PRIMARY}
       size={displayOnUser ? Size.MD : Size.SM}
       activeAnge={displayOnUser ? Placement.RIGHT_END : Placement.LEFT_END}
-      isSelected={(message.reply.selectedVariant as CategoryData)?.id === category.id && !displayOnUser}
+      isSelected={(message.reply.selectedVariant as CategoryData)?.customer_category_id === category.customer_category_id && !displayOnUser}
     >
       {category.name}
     </CommonStyle.ReplyVariantMessage>
